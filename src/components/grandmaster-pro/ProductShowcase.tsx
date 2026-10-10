@@ -23,16 +23,15 @@ export function ProductShowcase() {
           </p>
         </div>
 
-        {/* Gallery grid with real product photography */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 mb-16">
-          {GALLERY_ITEMS.map((item, i) => (
+        {/* Gallery grid with real product photography — text brought cleanly below images */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          {GALLERY_ITEMS.map((item) => (
             <div
               key={item.title}
-              className={`group relative rounded-3xl bg-[#F8FAFC] border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:border-[#0052CC] ${
-                i === 0 ? "col-span-2 row-span-2" : ""
-              }`}
+              className="group flex flex-col rounded-3xl bg-white border border-gray-200 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:border-[#0052CC]"
             >
-              <div className="relative w-full h-full min-h-[220px] sm:min-h-[260px] flex items-center justify-center p-4 overflow-hidden">
+              {/* Unobstructed Image: zero text covering the image */}
+              <div className="relative w-full aspect-[4/3] bg-[#F8FAFC] flex items-center justify-center p-5 overflow-hidden border-b border-gray-100">
                 <Image
                   src={item.src}
                   alt={item.title}
@@ -42,40 +41,46 @@ export function ProductShowcase() {
                 />
               </div>
 
-              {/* Caption Overlay */}
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#061325]/95 via-[#061325]/75 to-transparent p-4 sm:p-5 text-white">
-                <p className="font-poppins font-black text-sm sm:text-base leading-tight">
-                  {item.title}
-                </p>
-                <p className="text-white/80 text-xs mt-1">
-                  {item.description}
-                </p>
+              {/* Text Container: brought cleanly DOWN below the image, highly visible and readable on mobile */}
+              <div className="p-5 flex-1 flex flex-col justify-between bg-gradient-to-b from-[#0B1F3A] to-[#061325] text-white">
+                <div>
+                  <span className="text-[11px] font-black uppercase text-[#00AEEF] tracking-wider block mb-1.5">
+                    {item.tag}
+                  </span>
+                  <h3 className="font-poppins font-black text-base sm:text-lg text-white leading-snug">
+                    {item.title}
+                  </h3>
+                  <p className="text-white/90 text-xs sm:text-sm mt-2 leading-relaxed">
+                    {item.description}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
         {/* Cinematic Video Showcase: KITCHEN'S SECRET WEAPON */}
-        <div className="bg-gradient-to-b from-[#0B1F3A] to-[#061325] rounded-3xl p-6 sm:p-12 text-center shadow-2xl border border-white/10 text-white relative overflow-hidden">
+        <div className="bg-gradient-to-b from-[#0B1F3A] to-[#061325] rounded-3xl p-5 sm:p-12 text-center shadow-2xl border border-white/10 text-white relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-[#00AEEF]/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 max-w-3xl mx-auto">
-            <span className="inline-block bg-[#00AEEF] text-[#061325] text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-4 shadow">
+            <span className="inline-block bg-[#00AEEF] text-[#061325] text-xs font-black uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-3 sm:mb-4 shadow">
               FEATURED VIDEO DEMONSTRATION
             </span>
-            <h3 className="font-poppins font-black text-white text-2xl sm:text-3xl lg:text-4xl mb-3">
+            <h3 className="font-poppins font-black text-white text-2xl sm:text-3xl lg:text-4xl mb-2 sm:mb-3">
               Kitchen&apos;s Secret Weapon in Action
             </h3>
-            <p className="text-white/70 text-sm sm:text-base mb-8 max-w-xl mx-auto">
+            <p className="text-white/85 text-sm sm:text-base mb-6 sm:mb-8 max-w-xl mx-auto leading-relaxed">
               Watch how effortlessly Grandmaster Pro grinds, pulverizes, and prepares tough ingredients in seconds.
             </p>
 
-            {/* Video Player */}
+            {/* Video Player — video frame is 100% clean and unobstructed, text is below */}
             <div className="max-w-2xl mx-auto">
               <VideoEmbed
                 videoId="UU-6hPHN-Kg"
                 title="Kitchen's Secret Weapon — Grandmaster Pro Demonstration"
                 caption="Tap to watch real-time grinding power and quiet commercial-grade motor performance."
+                dark={true}
               />
             </div>
           </div>
@@ -172,6 +177,7 @@ export function ProductShowcase() {
 
 const GALLERY_ITEMS = [
   {
+    tag: "Chamber & Locking System",
     src: "/images/gallery-hopper.jpg",
     title: "Commercial Stainless Steel Chamber",
     description: "Deep food-grade chamber with dual secure snap locks and safety induction sensor.",
@@ -179,6 +185,7 @@ const GALLERY_ITEMS = [
     height: 1600,
   },
   {
+    tag: "Multi-Tier Blade Assembly",
     src: "/images/gallery-blades.webp",
     title: "Multi-Tier Grinding Blades",
     description: "Precision-milled stainless steel blades capable of pulverizing coarse dry items into fine flour.",
@@ -186,6 +193,7 @@ const GALLERY_ITEMS = [
     height: 800,
   },
   {
+    tag: "Heavy-Duty Copper Motor",
     src: "/images/gallery-motor.jpg",
     title: "Heavy Copper Motor Core",
     description: "High-torque industrial motor winding engineered for long hours of intense grinding without fading.",
@@ -193,6 +201,7 @@ const GALLERY_ITEMS = [
     height: 1200,
   },
   {
+    tag: "Free Gifts Included",
     src: "/images/gallery-accessories.jpg",
     title: "Free Gifts: Extra Blade + Sieve + Brush",
     description: "Includes 1 extra blade, 1 sieve, 1 cleaning brush, and direct after-purchase customer support.",

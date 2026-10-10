@@ -75,6 +75,7 @@ export function HowItWorks() {
                 videoId="DGKwW-0uR3o"
                 title="Here's How It Works — Grandmaster Pro"
                 caption="Full product walkthrough, motor build, and operational overview."
+                dark={true}
               />
             </div>
 
@@ -87,6 +88,7 @@ export function HowItWorks() {
                 videoId="7qt6eIQnZ00"
                 title="How to Use It — Step-by-Step Demonstration"
                 caption="Loading dry staples, operating the 0-5m timer, and the 270° easy tilt-pour."
+                dark={true}
               />
             </div>
           </div>

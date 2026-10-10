@@ -7,6 +7,7 @@ interface VideoEmbedProps {
   title: string;
   caption?: string;
   autoplayOnClick?: boolean;
+  dark?: boolean;
 }
 
 export function VideoEmbed({
@@ -14,6 +15,7 @@ export function VideoEmbed({
   title,
   caption,
   autoplayOnClick = true,
+  dark = false,
 }: VideoEmbedProps) {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -56,16 +58,7 @@ export function VideoEmbed({
               </svg>
             </div>
 
-            {/* Title Badge on thumbnail */}
-            <div className="absolute bottom-4 inset-x-4 z-10">
-              <p className="text-white font-poppins font-bold text-sm sm:text-base drop-shadow-md line-clamp-2">
-                {title}
-              </p>
-              <p className="text-white/80 text-xs flex items-center gap-1.5 mt-1">
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                Tap to Watch Demonstration
-              </p>
-            </div>
+            {/* Centered Play Button — zero text covering thumbnail */}
           </button>
         ) : (
           <div className="absolute inset-0 w-full h-full overflow-hidden">
@@ -78,22 +71,9 @@ export function VideoEmbed({
               allowFullScreen
             />
 
-            {/* Top Branded Protective Bar: Completely Conceals Channel Name & Avatar */}
-            <div className="absolute top-0 inset-x-0 h-14 bg-gradient-to-b from-[#061325]/95 via-[#061325]/70 to-transparent z-20 pointer-events-auto flex items-center justify-between px-3.5 select-none">
-              <div className="flex items-center gap-2 max-w-[75%]">
-                <span className="w-2 h-2 rounded-full bg-[#00AEEF] animate-pulse flex-shrink-0" />
-                <span className="text-white font-poppins font-bold text-xs sm:text-sm drop-shadow line-clamp-1">
-                  {title}
-                </span>
-              </div>
-              <span className="text-[10px] font-black uppercase tracking-wider text-[#00AEEF] bg-[#061325]/90 px-2.5 py-0.5 rounded-full border border-[#00AEEF]/40 shadow-sm whitespace-nowrap">
-                Home Essentials
-              </span>
-            </div>
-
             {/* Bottom-Right Shield: Covers & Blocks "Watch on YouTube" button */}
             <div
-              className="absolute bottom-2 right-12 z-20 pointer-events-auto bg-[#061325] text-[#00AEEF] px-2.5 py-0.5 rounded text-[10px] font-black uppercase tracking-wider border border-[#00AEEF]/40 shadow-md flex items-center gap-1 cursor-default select-none"
+              className="absolute bottom-2 right-12 z-20 pointer-events-auto bg-[#061325] text-[#00AEEF] px-2 sm:px-2.5 py-0.5 rounded text-[9px] sm:text-[10px] font-black uppercase tracking-wider border border-[#00AEEF]/40 shadow-md flex items-center gap-1 cursor-default select-none"
               title="Official Demonstration Video"
               onClick={(e) => {
                 e.stopPropagation();
@@ -116,11 +96,22 @@ export function VideoEmbed({
         )}
       </div>
 
-      {caption && (
-        <p className="mt-2.5 text-xs text-[#344054] text-center font-medium">
-          {caption}
+      {/* Title & Caption brought completely BELOW the video — zero text covering video, 100% visible and readable on mobile */}
+      <div className="mt-3.5 px-2 text-center">
+        <p className={`font-poppins font-bold text-sm sm:text-base leading-snug flex items-center justify-center gap-2 ${
+          dark ? "text-white" : "text-[#0B1F3A]"
+        }`}>
+          <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse shrink-0" />
+          <span>{title}</span>
         </p>
-      )}
+        {caption && (
+          <p className={`mt-1.5 text-xs sm:text-sm font-medium leading-relaxed max-w-xl mx-auto ${
+            dark ? "text-white/85" : "text-[#344054]"
+          }`}>
+            {caption}
+          </p>
+        )}
+      </div>
     </div>
   );
 }

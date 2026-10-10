@@ -71,6 +71,7 @@ export function SpecsSection({}: Props) {
                 videoId="UN3biGYPDHM"
                 title="Customer Orders on Transit Across Different States"
                 caption="Live evidence of boxed machines being loaded and dispatched to interstate terminals."
+                dark={true}
               />
             </div>
 

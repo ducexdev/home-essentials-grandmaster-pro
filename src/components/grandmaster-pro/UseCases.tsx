@@ -90,6 +90,7 @@ export function UseCases() {
                 videoId="lSExZP7rVIM"
                 title="How it crushes food items in minutes — Video Demo 1"
                 caption="Watch dry ingredients pulverized into ultra-fine powder in real-time."
+                dark={true}
               />
             </div>
 
@@ -102,6 +103,7 @@ export function UseCases() {
                 videoId="MYvxCB89O2U"
                 title="High-speed continuous grinding action — Video Demo 2"
                 caption="Smooth motor sound and rapid ingredient processing without jamming."
+                dark={true}
               />
             </div>
           </div>
