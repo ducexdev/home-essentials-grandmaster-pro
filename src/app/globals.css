@@ -94,6 +94,16 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0;
 }
 
+/* ─── Continuous Testimonials Marquee ─────────── */
+@keyframes marqueeSlide {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
 /* ─── Reduced Motion ─────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

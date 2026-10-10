@@ -1,6 +1,7 @@
 "use client";
 
 import { VideoEmbed } from "./VideoEmbed";
+import { TestimonialCarousel } from "./TestimonialCarousel";
 
 interface Props {
   onOrderClick: () => void;
@@ -15,17 +16,22 @@ export function CustomerReviews({ onOrderClick }: Props) {
     >
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-14 reveal-on-scroll">
+        <div className="text-center mb-10 reveal-on-scroll">
           <div className="inline-flex items-center gap-2 bg-[#0052CC]/10 text-[#0052CC] font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-3">
             <span className="text-amber-500">★★★★★</span>
-            <span>Real Nigerian Customers • Unfiltered Video Proof</span>
+            <span>Real Nigerian Customers • Unfiltered Customer Proof</span>
           </div>
           <h2 id="reviews-heading" className="font-poppins text-3xl lg:text-4xl font-bold text-[#0B1F3A] mb-4">
-            Loved by Over 3,400+ Nigerian Homes & Food Caterers
+            Loved by Over 3,400+ Nigerian Homes &amp; Food Caterers
           </h2>
           <p className="text-[#344054] text-lg max-w-2xl mx-auto">
-            Don&apos;t just take our word for it. Watch real homemakers, mothers, and catering chefs across Nigeria put Grandmaster Pro to the test.
+            Don&apos;t just take our word for it. Read unfiltered chat feedback from real buyers across Nigeria and watch live kitchen demonstrations below.
           </p>
+        </div>
+
+        {/* 3-Column Sliding WhatsApp Testimonial Proof Carousel (Pause on Hover) */}
+        <div className="reveal-on-scroll mb-16">
+          <TestimonialCarousel />
         </div>
 
         {/* 3 Video Reviews Grid */}
