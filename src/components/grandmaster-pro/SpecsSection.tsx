@@ -3,10 +3,10 @@ import Image from "next/image";
 import { VideoEmbed } from "./VideoEmbed";
 
 interface Props {
-  product: ProductConfig;
+  product?: ProductConfig;
 }
 
-export function SpecsSection({ product }: Props) {
+export function SpecsSection({}: Props) {
   return (
     <section
       id="specs"
@@ -30,7 +30,7 @@ export function SpecsSection({ product }: Props) {
         <div className="reveal-on-scroll bg-[#F4F6F8] rounded-2xl overflow-hidden border border-gray-200 mb-10 shadow-sm">
           <table className="w-full text-sm" aria-label="Product specifications">
             <tbody>
-              {getSpecRows(product).map((row, i) => (
+              {getSpecRows().map((row, i) => (
                 <tr
                   key={row.label}
                   className={i % 2 === 0 ? "bg-white" : "bg-[#F8FAFC]"}
@@ -162,10 +162,8 @@ export function SpecsSection({ product }: Props) {
   );
 }
 
-function getSpecRows(product: ProductConfig) {
+function getSpecRows() {
   return [
-    { label: "Product Name", value: product.name || "Grandmaster Pro Commercial High-Speed Pulverizer" },
-    { label: "Brand", value: `${product.brand || "Grandmaster"} (Distributed exclusively by Home Essentials)` },
     { label: "Motor Construction", value: "100% Pure Copper Heavy-Duty High-Torque Motor" },
     { label: "Motor Speed", value: "25,000 – 32,000 RPM (Rotations Per Minute)" },
     { label: "Chamber Material", value: "304 Food-Grade Thickened Surgical Stainless Steel (Rust-Free)" },
