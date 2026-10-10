@@ -183,57 +183,46 @@ export function HeroSection({
               </div>
             </div>
 
-            {/* Interactive Model Selection Cards (Psychological Anchoring) */}
+            {/* Interactive Model Selection Cards (All 7 Promo Sizes) */}
             <div className="pt-2">
-              <p className="text-xs font-black uppercase tracking-wider text-[#00AEEF] mb-3">
-                Select Your Capacity Model:
-              </p>
-              <div className="grid sm:grid-cols-2 gap-3">
+              <div className="flex items-center justify-between gap-2 mb-2.5">
+                <p className="text-xs font-black uppercase tracking-wider text-[#00AEEF]">
+                  Select Capacity &amp; Promo Package:
+                </p>
+                <span className="text-[10px] font-black text-rose-400 bg-rose-500/20 border border-rose-500/40 px-2 py-0.5 rounded-full animate-pulse">
+                  ⚡ Strictly while stock lasts!
+                </span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
                 {availableVariants.map((v) => {
                   const isSelected = selectedVariantId === v.id;
-                  const isFlagship = v.id.includes("2500") || v.id === "standard";
 
                   return (
                     <div
                       key={v.id}
                       onClick={() => onVariantSelect(v.id)}
-                      className={`cursor-pointer rounded-2xl p-4 border-2 transition-all duration-200 relative flex flex-col justify-between ${
+                      className={`cursor-pointer rounded-xl p-2.5 border-2 transition-all duration-200 relative flex flex-col justify-between ${
                         isSelected
-                          ? "bg-gradient-to-br from-[#0052CC]/40 to-[#00AEEF]/20 border-[#00AEEF] shadow-lg shadow-cyan-500/20"
-                          : "bg-white/5 border-white/15 hover:border-white/30 text-white/70"
+                          ? "bg-gradient-to-br from-[#0052CC]/60 to-[#00AEEF]/30 border-[#00AEEF] shadow-lg shadow-cyan-500/20 scale-[1.02]"
+                          : "bg-white/5 border-white/15 hover:border-white/30 text-white/80 hover:bg-white/10"
                       }`}
                     >
-                      {isFlagship && (
-                        <span className="absolute -top-2.5 right-3 bg-[#00AEEF] text-[#061325] text-[9px] font-black uppercase px-2 py-0.5 rounded shadow">
-                          MOST POPULAR
+                      <div className="flex items-center justify-between gap-1 mb-1">
+                        <span className="font-poppins font-black text-xs text-white">
+                          {v.capacity}
                         </span>
-                      )}
-                      <div>
-                        <div className="flex items-center justify-between gap-2">
-                          <h4 className="font-poppins font-bold text-sm text-white">
-                            {v.name}
-                          </h4>
-                          <span className={`w-4 h-4 rounded-full border flex items-center justify-center text-[10px] ${
-                            isSelected ? "border-[#00AEEF] bg-[#00AEEF] text-[#061325] font-black" : "border-white/30"
-                          }`}>
-                            {isSelected ? "✓" : ""}
-                          </span>
-                        </div>
-                        <p className="text-[11px] text-white/70 mt-1 line-clamp-1">
-                          {v.description}
-                        </p>
+                        <span className="text-[9px] font-bold text-rose-300 bg-rose-500/30 px-1.5 py-0.5 rounded">
+                          {v.stockLeft} left
+                        </span>
                       </div>
 
-                      <div className="mt-3 pt-2 border-t border-white/10 flex items-baseline gap-2">
-                        <span className="text-lg font-black text-white">
+                      <div className="mt-1 pt-1 border-t border-white/10">
+                        <div className="text-sm font-black text-[#00AEEF]">
                           {v.priceDisplay}
-                        </span>
-                        <span className="text-xs text-white/40 line-through">
-                          {isFlagship ? "₦120,000" : "₦180,000"}
-                        </span>
-                        <span className="text-[10px] font-black text-[#00AEEF] uppercase ml-auto">
-                          {isFlagship ? "SAVE 38%" : "SAVE 31%"}
-                        </span>
+                        </div>
+                        <div className="text-[10px] text-white/40 line-through">
+                          {v.regularPriceDisplay}
+                        </div>
                       </div>
                     </div>
                   );
@@ -248,7 +237,10 @@ export function HeroSection({
                   onClick={() => onOrderClick(selectedVariantId)}
                   className="flex-1 bg-[#00AEEF] hover:bg-[#0098d4] text-[#061325] font-black text-sm sm:text-base uppercase tracking-wider py-4 px-6 rounded-2xl transition-all shadow-xl shadow-cyan-500/30 active:scale-95 flex items-center justify-center gap-2 group"
                 >
-                  <span>Order Grandmaster Pro Now</span>
+                  <span>
+                    Order {availableVariants.find((v) => v.id === selectedVariantId)?.capacity || "Grandmaster Pro"}{" "}
+                    ({availableVariants.find((v) => v.id === selectedVariantId)?.priceDisplay || ""}) Now
+                  </span>
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </button>
 

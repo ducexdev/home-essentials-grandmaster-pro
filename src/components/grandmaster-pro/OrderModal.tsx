@@ -159,7 +159,7 @@ export function OrderModal({ product, selectedVariantId, onClose }: Props) {
             <div className="w-9 h-9 rounded-lg bg-white border border-gray-200 p-0.5 overflow-hidden flex-shrink-0">
               <Image
                 src="/images/hero-grinder-official.png"
-                alt="Grandmaster Pro 2500A"
+                alt="Grandmaster Pro Official Grinder"
                 width={36}
                 height={36}
                 className="w-full h-full object-contain"
@@ -237,26 +237,45 @@ export function OrderModal({ product, selectedVariantId, onClose }: Props) {
               {/* Variant selector */}
               {availableVariants.length > 1 && (
                 <fieldset>
-                  <legend className="block text-sm font-semibold text-[#0B1F3A] mb-2">
-                    Select Variant <span className="text-red-500" aria-hidden="true">*</span>
-                  </legend>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex items-center justify-between mb-2">
+                    <legend className="text-sm font-bold text-[#0B1F3A]">
+                      Select Package Size <span className="text-red-500" aria-hidden="true">*</span>
+                    </legend>
+                    <span className="text-[10px] font-black text-rose-600 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-full animate-pulse">
+                      Promo: While Stock Lasts!
+                    </span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {availableVariants.map((v) => (
                       <button
                         key={v.id}
                         type="button"
                         onClick={() => setVariantId(v.id)}
-                        className={`px-4 py-2 rounded-lg text-sm font-semibold border-2 transition-all ${
+                        className={`p-3 rounded-xl text-left border-2 transition-all flex flex-col justify-between ${
                           variantId === v.id
-                            ? "bg-[#0052CC] border-[#0052CC] text-white"
-                            : "border-gray-200 text-[#344054] hover:border-[#0052CC]/50"
+                            ? "bg-[#0052CC] border-[#0052CC] text-white shadow-md ring-2 ring-[#0052CC]/20"
+                            : "bg-white border-gray-200 text-[#344054] hover:border-[#0052CC]/50"
                         }`}
                         aria-pressed={variantId === v.id}
                       >
-                        {v.name}
-                        {v.priceKobo > 0 && (
-                          <span className="ml-1 opacity-75 text-xs">{v.priceDisplay}</span>
-                        )}
+                        <div className="flex items-center justify-between gap-1 w-full">
+                          <span className="font-poppins font-black text-xs sm:text-sm">
+                            {v.capacity}
+                          </span>
+                          <span className={`text-[10px] font-extrabold px-1.5 py-0.5 rounded ${
+                            variantId === v.id ? "bg-white/20 text-white" : "bg-rose-50 text-rose-700 border border-rose-200"
+                          }`}>
+                            Only {v.stockLeft} left!
+                          </span>
+                        </div>
+                        <div className="flex items-baseline gap-1.5 mt-1.5">
+                          <span className={`text-sm font-black ${variantId === v.id ? "text-white" : "text-[#0052CC]"}`}>
+                            {v.priceDisplay}
+                          </span>
+                          <span className={`text-[11px] line-through ${variantId === v.id ? "text-white/60" : "text-gray-400"}`}>
+                            {v.regularPriceDisplay}
+                          </span>
+                        </div>
                       </button>
                     ))}
                   </div>

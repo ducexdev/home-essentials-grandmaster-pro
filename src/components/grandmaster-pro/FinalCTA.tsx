@@ -39,7 +39,7 @@ export function FinalCTA({ product, selectedVariantId, onOrderClick, whatsappUrl
           <div className="relative w-28 h-28 sm:w-36 sm:h-36 rounded-2xl bg-white/10 p-2 border border-white/20 shadow-2xl overflow-hidden flex items-center justify-center">
             <Image
               src="/images/hero-grinder-official.png"
-              alt="Grandmaster Pro 2500A Official Product"
+              alt="Grandmaster Pro Commercial Grinder"
               width={160}
               height={160}
               className="w-full h-full object-contain drop-shadow-md"

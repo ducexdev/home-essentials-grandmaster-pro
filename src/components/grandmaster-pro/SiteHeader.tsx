@@ -140,7 +140,7 @@ export function SiteHeader({ onOrderClick, whatsappUrl }: Props) {
             <a href="#use-cases" className="text-white py-2 border-b border-white/5" onClick={() => setMenuOpen(false)}>What It Grinds</a>
             <a href="#how-it-works" className="text-white py-2 border-b border-white/5" onClick={() => setMenuOpen(false)}>Video Demonstrations</a>
             <a href="#reviews" className="text-white py-2 border-b border-white/5" onClick={() => setMenuOpen(false)}>Customer Reviews</a>
-            <a href="#pricing" className="text-[#00AEEF] py-2 border-b border-white/5" onClick={() => setMenuOpen(false)}>Special Pricing &bull; Save 38%</a>
+            <a href="#pricing" className="text-[#00AEEF] py-2 border-b border-white/5" onClick={() => setMenuOpen(false)}>Promo Packages &bull; Save Up to ₦135,000</a>
 
             <div className="pt-2 flex flex-col gap-2">
               <button

@@ -28,6 +28,7 @@ interface Props {
 export function GrandmasterProPage({ product }: Props) {
   const [orderModalOpen, setOrderModalOpen] = useState(false);
   const [selectedVariantId, setSelectedVariantId] = useState<string>(
+    product.variants.find((v) => v.id === "gmp-1000g")?.id ??
     product.variants.find((v) => v.available)?.id ?? ""
   );
 

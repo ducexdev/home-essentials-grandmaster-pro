@@ -49,7 +49,7 @@ export function FAQSection({ product }: Props) {
     {
       question: "How do I place my order right now?",
       answer:
-        "Simply click any 'Order Now' button on this page, choose between the 2500A (2.5kg) or 4500A (4.5kg) model, fill in your delivery name, phone number, and address. We will immediately phone you to confirm your order and dispatch your parcel.",
+        "Simply click any 'Order Now' button on this page, select your preferred capacity model (from 400g up to 5000g), fill in your delivery name, phone number, and address. We will immediately phone you to confirm your order and dispatch your parcel.",
     },
   ];
 

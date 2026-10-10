@@ -18,9 +18,6 @@ export function PricingSection({
   onOrderClick,
   whatsappUrl,
 }: Props) {
-  const variant2500 = product.variants.find((v) => v.id.includes("2500")) || product.variants[0];
-  const variant4500 = product.variants.find((v) => v.id.includes("4500")) || product.variants[1];
-
   return (
     <section
       id="pricing"
@@ -40,10 +37,10 @@ export function PricingSection({
             Direct from warehouse discount. Every order includes our complete ₦37,500 bonus accessory kit + Free Doorstep Delivery.
           </p>
 
-          {/* Scarcity Banner */}
-          <div className="mt-4 inline-flex items-center gap-2 bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold px-4 py-2 rounded-xl">
-            <span className="w-2 h-2 rounded-full bg-amber-500 animate-ping" />
-            <span>⚡ Only 7 units remaining in today&apos;s batch at this promotional rate. Next batch reflects new import rates.</span>
+          {/* Scarcity Banner with promo warning */}
+          <div className="mt-4 inline-flex items-center gap-2 bg-rose-50 border-2 border-rose-300 text-rose-950 text-xs sm:text-sm font-extrabold px-5 py-2.5 rounded-2xl shadow-sm">
+            <span className="w-2.5 h-2.5 rounded-full bg-rose-600 animate-ping" />
+            <span>⚠️ IMPORTANT: This promo is strictly WHILE STOCK LASTS — No extension! (Very Limited Stock)</span>
           </div>
 
           {/* HIGH-CONVERTING FREE GIFTS STRIP */}
@@ -65,225 +62,125 @@ export function PricingSection({
           </div>
         </div>
 
-        {/* Side-by-Side Dual Tier Pricing Cards */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-14">
-          {/* Card 1: 2500A Family Edition */}
-          <div
-            className={`reveal-on-scroll relative rounded-3xl bg-white p-7 sm:p-9 border-2 transition-all duration-200 flex flex-col justify-between shadow-md ${
-              selectedVariantId === variant2500?.id
-                ? "border-[#0052CC] shadow-xl ring-2 ring-[#0052CC]/20"
-                : "border-gray-200 hover:border-[#0052CC]/40"
-            }`}
-          >
-            <div>
-              <div className="flex items-center justify-between gap-2 mb-4">
-                <span className="text-xs font-extrabold uppercase tracking-wider bg-gray-100 text-[#0B1F3A] px-3 py-1 rounded-full">
-                  Home & Family Edition
-                </span>
-                <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">
-                  Save ₦50,000
-                </span>
-              </div>
+        {/* Dynamic All 7 Sizes & Promo Packages Grid */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto mb-14">
+          {product.variants.map((v) => {
+            const isSelected = selectedVariantId === v.id;
+            const isPopular = v.id === "gmp-1000g";
+            const isMaxPower = v.id === "gmp-5000g";
 
-              <h3 className="font-poppins font-bold text-[#0B1F3A] text-2xl mb-1">
-                Grandmaster Pro 2500A
-              </h3>
-              <p className="text-gray-500 text-xs mb-5">
-                2,500g (2.5kg) Capacity • Ideal for everyday households & family meals
-              </p>
-
-              {/* Price display */}
-              <div className="mb-6 p-4 rounded-2xl bg-[#F8FAFC] border border-gray-100">
-                <div className="flex items-baseline gap-3">
-                  <span className="font-poppins font-extrabold text-[#0B1F3A] text-3xl sm:text-4xl">
-                    ₦75,000
-                  </span>
-                  <span className="text-gray-400 line-through text-base font-medium">
-                    ₦125,000
-                  </span>
-                </div>
-                <p className="text-emerald-600 font-semibold text-xs mt-1">
-                  ✓ Free Doorstep Delivery + Zero Pre-payment
-                </p>
-              </div>
-
-              {/* Free Gifts Highlight Box Inside Card */}
-              <div className="mb-5 p-3.5 rounded-xl bg-blue-50/70 border border-[#00AEEF]/40 space-y-1.5">
-                <p className="text-[11px] font-black uppercase text-[#0052CC] flex items-center gap-1.5">
-                  <span>🎁</span> Free Gifts Included In This Box:
-                </p>
-                <div className="grid grid-cols-2 gap-1 text-[11px] text-[#0B1F3A] font-bold">
-                  <div>★ 1 Extra Blade</div>
-                  <div>★ 1 Sifting Sieve</div>
-                  <div>★ 1 Cleaning Brush</div>
-                  <div className="text-emerald-700">★ VIP Support</div>
-                </div>
-              </div>
-
-              {/* What is inside the box */}
-              <div className="space-y-3 mb-8">
-                <p className="text-xs font-bold uppercase tracking-wider text-[#0B1F3A]">Full Package Breakdown:</p>
-                <ul className="space-y-2.5 text-xs text-[#344054]">
-                  <li className="flex items-center gap-2">
-                    <span className="text-[#0052CC] font-bold">✓</span>
-                    <span><strong>1x Grandmaster Pro 2500A Machine</strong> (100% Copper Motor)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-[#00AEEF] font-bold">★</span>
-                    <span className="text-[#0B1F3A]"><strong>FREE GIFT: 1 Extra 6-Leaf Blade Set</strong> (Value ₦15,000)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-[#00AEEF] font-bold">★</span>
-                    <span className="text-[#0B1F3A]"><strong>FREE GIFT: 1 Precision Sifting Sieve</strong> (Value ₦5,000)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-[#00AEEF] font-bold">★</span>
-                    <span className="text-[#0B1F3A]"><strong>FREE GIFT: 1 Grinder Cleaning Brush</strong> (Value ₦3,500)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-600 font-bold">★</span>
-                    <span className="text-emerald-700"><strong>FREE BONUS: VIP After-Purchase Support</strong> (Direct Care)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-[#0052CC] font-bold">★</span>
-                    <span><strong>FREE Express Doorstep Delivery</strong> Nationwide (Value ₦8,000)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-600 font-bold">✓</span>
-                    <span><strong>1 Full Year Warranty</strong> + 14-Day Immediate Swap</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="space-y-3 pt-4 border-t border-gray-100">
-              <button
-                type="button"
-                onClick={() => {
-                  if (variant2500) onVariantSelect(variant2500.id);
-                  onOrderClick(variant2500?.id);
-                }}
-                className="w-full flex items-center justify-center gap-2 bg-[#00AEEF] hover:bg-[#0098d4] text-[#061325] font-extrabold text-base py-4 rounded-xl transition-all shadow-lg shadow-cyan-500/25 active:scale-95"
+            return (
+              <div
+                key={v.id}
+                className={`reveal-on-scroll relative rounded-3xl bg-white p-6 sm:p-7 border-2 transition-all duration-200 flex flex-col justify-between shadow-md hover:shadow-xl ${
+                  isSelected
+                    ? "border-[#0052CC] ring-4 ring-[#0052CC]/20 shadow-2xl"
+                    : isPopular
+                    ? "border-[#00AEEF] ring-2 ring-[#00AEEF]/20"
+                    : "border-gray-200 hover:border-[#0052CC]/40"
+                }`}
               >
-                Order 2500A + Free Gifts (₦75,000) →
-              </button>
-              <p className="text-center text-[11px] text-gray-500 font-medium">
-                🔒 Pay on Delivery • Zero Risk • Open & Inspect First
-              </p>
-            </div>
-          </div>
+                {/* Top Floating Badge */}
+                {v.badge && (
+                  <div className={`absolute -top-3 left-1/2 -translate-x-1/2 text-white font-extrabold text-[10px] sm:text-xs uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md flex items-center gap-1 whitespace-nowrap ${
+                    isPopular ? "bg-gradient-to-r from-[#0052CC] to-[#00AEEF]" : isMaxPower ? "bg-gradient-to-r from-red-600 to-amber-500" : "bg-[#0B1F3A]"
+                  }`}>
+                    <span>{v.badge}</span>
+                  </div>
+                )}
 
-          {/* Card 2: 4500A Commercial Edition (High Value Target) */}
-          <div
-            className={`reveal-on-scroll relative rounded-3xl bg-white p-7 sm:p-9 border-2 transition-all duration-200 flex flex-col justify-between shadow-lg ${
-              selectedVariantId === variant4500?.id
-                ? "border-[#0052CC] ring-4 ring-[#0052CC]/20 shadow-2xl"
-                : "border-[#0052CC]/60 hover:border-[#0052CC]"
-            }`}
-          >
-            {/* Best Value Badge */}
-            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r from-[#0052CC] to-[#00AEEF] text-white font-extrabold text-xs uppercase tracking-wider px-4 py-1.5 rounded-full shadow-md flex items-center gap-1.5">
-              <span>⭐</span>
-              <span>Most Popular For Catering & Food Business</span>
-            </div>
+                <div>
+                  {/* Capacity & Scarcity Pill */}
+                  <div className={`flex items-center justify-between gap-2 mb-3 ${v.badge ? "pt-2" : ""}`}>
+                    <span className="text-xs font-black uppercase tracking-wider bg-blue-50 text-[#0052CC] px-3 py-1 rounded-full border border-blue-200">
+                      Capacity: {v.capacity}
+                    </span>
+                    <span className="inline-flex items-center gap-1.5 text-xs font-black text-rose-700 bg-rose-50 border border-rose-200 px-2.5 py-0.5 rounded-full animate-pulse">
+                      <span className="w-1.5 h-1.5 rounded-full bg-rose-500" />
+                      <span>Only {v.stockLeft} left!</span>
+                    </span>
+                  </div>
 
-            <div>
-              <div className="flex items-center justify-between gap-2 mb-4 pt-2">
-                <span className="text-xs font-extrabold uppercase tracking-wider bg-[#0052CC]/10 text-[#0052CC] px-3 py-1 rounded-full">
-                  Commercial & Bulk Edition
-                </span>
-                <span className="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">
-                  Save ₦50,000
-                </span>
-              </div>
+                  {/* Title & Description */}
+                  <h3 className="font-poppins font-black text-[#0B1F3A] text-xl sm:text-2xl mb-1">
+                    {v.name}
+                  </h3>
+                  <p className="text-gray-500 text-xs mb-4 line-clamp-2">
+                    {v.description}
+                  </p>
 
-              <h3 className="font-poppins font-bold text-[#0B1F3A] text-2xl mb-1">
-                Grandmaster Pro 4500A
-              </h3>
-              <p className="text-gray-500 text-xs mb-5">
-                4,500g (4.5kg) Commercial Capacity • High-torque continuous pulverizing
-              </p>
+                  {/* Price Box */}
+                  <div className="mb-5 p-4 rounded-2xl bg-[#F8FAFC] border border-gray-100">
+                    <div className="flex items-baseline gap-2.5">
+                      <span className="font-poppins font-black text-[#0B1F3A] text-2xl sm:text-3xl tracking-tight">
+                        {v.priceDisplay}
+                      </span>
+                      <span className="text-gray-400 line-through text-sm font-semibold">
+                        {v.regularPriceDisplay}
+                      </span>
+                      <span className="text-[10px] font-black text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded ml-auto whitespace-nowrap">
+                        {v.savingsDisplay}
+                      </span>
+                    </div>
+                    <p className="text-emerald-700 font-bold text-[11px] mt-1.5 flex items-center gap-1">
+                      <span>✓</span> Free Doorstep Delivery + Zero Pre-payment
+                    </p>
+                  </div>
 
-              {/* Price display */}
-              <div className="mb-6 p-4 rounded-2xl bg-blue-50/50 border border-blue-100">
-                <div className="flex items-baseline gap-3">
-                  <span className="font-poppins font-extrabold text-[#0B1F3A] text-3xl sm:text-4xl">
-                    ₦125,000
-                  </span>
-                  <span className="text-gray-400 line-through text-base font-medium">
-                    ₦175,000
-                  </span>
+                  {/* Free Gifts Highlight Box */}
+                  <div className="mb-5 p-3 rounded-xl bg-blue-50/70 border border-[#00AEEF]/40 space-y-1">
+                    <p className="text-[10px] font-black uppercase text-[#0052CC] flex items-center gap-1">
+                      <span>🎁</span> Free Gifts Included:
+                    </p>
+                    <div className="grid grid-cols-2 gap-1 text-[11px] text-[#0B1F3A] font-bold">
+                      <div>★ 1 Extra Blade</div>
+                      <div>★ 1 Sifting Sieve</div>
+                      <div>★ 1 Cleaning Brush</div>
+                      <div className="text-emerald-700">★ VIP Support</div>
+                    </div>
+                  </div>
+
+                  {/* Features list */}
+                  <div className="space-y-2 mb-6 text-xs text-[#344054]">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#0052CC] font-black">✓</span>
+                      <span><strong>100% Pure Copper</strong> Commercial Engine</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#0052CC] font-black">✓</span>
+                      <span><strong>304 Food-Grade</strong> Stainless Steel Chamber</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-[#0052CC] font-black">✓</span>
+                      <span><strong>1 Full Year Warranty</strong> + Immediate Swap</span>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-[#0052CC] font-semibold text-xs mt-1">
-                  ✓ Commercial Grade 4.5kg Chamber + Free Nationwide Waybill
-                </p>
-              </div>
 
-              {/* Free Gifts Highlight Box Inside Card */}
-              <div className="mb-5 p-3.5 rounded-xl bg-blue-50/70 border border-[#00AEEF]/40 space-y-1.5">
-                <p className="text-[11px] font-black uppercase text-[#0052CC] flex items-center gap-1.5">
-                  <span>🎁</span> Free Gifts Included In This Box:
-                </p>
-                <div className="grid grid-cols-2 gap-1 text-[11px] text-[#0B1F3A] font-bold">
-                  <div>★ 1 Extra Commercial Blade</div>
-                  <div>★ 1 Sifting Sieve</div>
-                  <div>★ 1 Cleaning Brush</div>
-                  <div className="text-emerald-700">★ VIP Support</div>
+                {/* Card CTA Button */}
+                <div className="space-y-2 pt-3 border-t border-gray-100">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      onVariantSelect(v.id);
+                      onOrderClick(v.id);
+                    }}
+                    className={`w-full flex items-center justify-center gap-2 font-black text-sm py-4 rounded-xl transition-all shadow-lg active:scale-95 ${
+                      isSelected
+                        ? "bg-[#0052CC] hover:bg-[#0041a8] text-white shadow-blue-500/25"
+                        : "bg-[#00AEEF] hover:bg-[#0098d4] text-[#061325] shadow-cyan-500/25"
+                    }`}
+                  >
+                    <span>Order {v.capacity} ({v.priceDisplay})</span>
+                    <span>→</span>
+                  </button>
+                  <p className="text-center text-[10px] text-gray-500 font-medium">
+                    🔒 Pay on Delivery • Inspect Carton First
+                  </p>
                 </div>
               </div>
-
-              {/* What is inside the box */}
-              <div className="space-y-3 mb-8">
-                <p className="text-xs font-bold uppercase tracking-wider text-[#0B1F3A]">Full Package Breakdown:</p>
-                <ul className="space-y-2.5 text-xs text-[#344054]">
-                  <li className="flex items-center gap-2">
-                    <span className="text-[#0052CC] font-bold">✓</span>
-                    <span><strong>1x Grandmaster Pro 4500A Machine</strong> (Commercial High Torque)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-[#00AEEF] font-bold">★</span>
-                    <span className="text-[#0B1F3A]"><strong>FREE GIFT: 1 Extra Heavy-Duty Blade Set</strong> (Value ₦18,000)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-[#00AEEF] font-bold">★</span>
-                    <span className="text-[#0B1F3A]"><strong>FREE GIFT: 1 Commercial Sifting Sieve</strong> (Value ₦6,000)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-[#00AEEF] font-bold">★</span>
-                    <span className="text-[#0B1F3A]"><strong>FREE GIFT: 1 Grinder Cleaning Brush & Pusher</strong> (Value ₦4,500)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-600 font-bold">★</span>
-                    <span className="text-emerald-700"><strong>FREE BONUS: Lifetime VIP After-Purchase Support</strong></span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-[#00AEEF] font-bold">★</span>
-                    <span><strong>FREE Insured Interstate Waybill</strong> Nationwide (Value ₦10,000)</span>
-                  </li>
-                  <li className="flex items-center gap-2">
-                    <span className="text-emerald-600 font-bold">✓</span>
-                    <span><strong>1 Full Year Commercial Warranty</strong> + Technical Line</span>
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div className="space-y-3 pt-4 border-t border-gray-100">
-              <button
-                type="button"
-                onClick={() => {
-                  if (variant4500) onVariantSelect(variant4500.id);
-                  onOrderClick(variant4500?.id);
-                }}
-                className="w-full flex items-center justify-center gap-2 bg-[#0052CC] hover:bg-[#0041a3] text-white font-extrabold text-base py-4 rounded-xl transition-all shadow-lg shadow-blue-600/30 active:scale-95"
-              >
-                Order 4500A + Free Gifts (₦125,000) →
-              </button>
-              <p className="text-center text-[11px] text-gray-500 font-medium">
-                🔒 Pay on Delivery • Zero Risk • Open & Inspect First
-              </p>
-            </div>
-          </div>
+            );
+          })}
         </div>
 
         {/* WhatsApp & Reassurance Banner */}

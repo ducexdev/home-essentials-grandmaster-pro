@@ -168,7 +168,7 @@ function getSpecRows() {
     { label: "Motor Speed", value: "25,000 – 32,000 RPM (Rotations Per Minute)" },
     { label: "Chamber Material", value: "304 Food-Grade Thickened Surgical Stainless Steel (Rust-Free)" },
     { label: "Blade Configuration", value: "6-Leaf Multi-Layer Crushing Blade Assembly" },
-    { label: "Available Capacities", value: "2500g (2.5kg Family Edition) & 4500g (4.5kg Commercial Edition)" },
+    { label: "Available Capacities", value: "400g, 500g, 800g, 1000g (1kg), 2000g (2kg), 3000g (3kg), and 5000g (5kg)" },
     { label: "Voltage & Frequency", value: "220V – 240V / 50Hz (Standard Nigerian Single-Phase Socket)" },
     { label: "Timer Dial", value: "0 to 5 Minutes Precision Mechanical Shutoff Timer" },
     { label: "Safety System", value: "Air-Overload Circuit Breaker with One-Touch Reset Button" },

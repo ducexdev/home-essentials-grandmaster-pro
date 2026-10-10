@@ -10,10 +10,21 @@
 export interface ProductVariant {
   id: string;
   name: string;
-  /** Price in Naira minor units (kobo). Must be verified before publishing. */
+  capacity: string;
+  /** Price in Naira minor units (kobo). */
   priceKobo: number;
-  /** Display string e.g. "₦45,000" */
+  /** Regular/was price in kobo before promo discount. */
+  regularPriceKobo: number;
+  /** Display string e.g. "₦215,000" */
   priceDisplay: string;
+  /** Display string for original price e.g. "₦260,000" */
+  regularPriceDisplay: string;
+  /** Savings label e.g. "Save ₦45,000" */
+  savingsDisplay: string;
+  /** Real-time promo stock remaining e.g. 2 */
+  stockLeft: number;
+  /** Promotional highlight badge */
+  badge?: string;
   /** Whether this variant is currently available */
   available: boolean;
   /** Short descriptor shown in the variant selector */
@@ -78,20 +89,102 @@ export const PRODUCT_CONFIG: ProductConfig = {
 
   variants: [
     {
-      id: "gmp-2500a",
-      name: "Grandmaster Pro 2500A (2.5kg)",
-      priceKobo: 7500000,
-      priceDisplay: "₦75,000",
+      id: "gmp-400g",
+      name: "Grandmaster Pro 400g",
+      capacity: "400g",
+      priceKobo: 21500000,
+      regularPriceKobo: 26000000,
+      priceDisplay: "₦215,000",
+      regularPriceDisplay: "₦260,000",
+      savingsDisplay: "Save ₦45,000",
+      stockLeft: 2,
+      badge: "Compact Model",
       available: true,
-      description: "2,500g Capacity • Ideal for everyday households & family meals",
+      description: "400g Chamber • Ideal for small households, dried pepper, egusi & spices",
     },
     {
-      id: "gmp-4500a",
-      name: "Grandmaster Pro 4500A (4.5kg)",
-      priceKobo: 12500000,
-      priceDisplay: "₦125,000",
+      id: "gmp-500g",
+      name: "Grandmaster Pro 500g",
+      capacity: "500g",
+      priceKobo: 28800000,
+      regularPriceKobo: 35000000,
+      priceDisplay: "₦288,000",
+      regularPriceDisplay: "₦350,000",
+      savingsDisplay: "Save ₦62,000",
+      stockLeft: 3,
+      badge: "Popular Starter",
       available: true,
-      description: "4,500g Capacity • Commercial catering & food business edition",
+      description: "500g Stainless Chamber • Everyday kitchen flour prep, grains & seasonings",
+    },
+    {
+      id: "gmp-800g",
+      name: "Grandmaster Pro 800g",
+      capacity: "800g",
+      priceKobo: 36500000,
+      regularPriceKobo: 44000000,
+      priceDisplay: "₦365,000",
+      regularPriceDisplay: "₦440,000",
+      savingsDisplay: "Save ₦75,000",
+      stockLeft: 2,
+      badge: "Heavy Duty",
+      available: true,
+      description: "800g High-Output Chamber • Perfect for regular home & soup flour prep",
+    },
+    {
+      id: "gmp-1000g",
+      name: "Grandmaster Pro 1000g (1kg)",
+      capacity: "1000g (1kg)",
+      priceKobo: 44500000,
+      regularPriceKobo: 55000000,
+      priceDisplay: "₦445,000",
+      regularPriceDisplay: "₦550,000",
+      savingsDisplay: "Save ₦105,000",
+      stockLeft: 3,
+      badge: "⭐ Most Popular Family Size",
+      available: true,
+      description: "1kg Heavy-Duty Chamber • The ideal sweet spot for Nigerian families",
+    },
+    {
+      id: "gmp-2000g",
+      name: "Grandmaster Pro 2000g (2kg)",
+      capacity: "2000g (2kg)",
+      priceKobo: 56500000,
+      regularPriceKobo: 63000000,
+      priceDisplay: "₦565,000",
+      regularPriceDisplay: "₦630,000",
+      savingsDisplay: "Save ₦65,000",
+      stockLeft: 3,
+      badge: "Semi-Commercial",
+      available: true,
+      description: "2kg High-Capacity Motor • Great for large households, events & home caterers",
+    },
+    {
+      id: "gmp-3000g",
+      name: "Grandmaster Pro 3000g (3kg)",
+      capacity: "3000g (3kg)",
+      priceKobo: 68500000,
+      regularPriceKobo: 74000000,
+      priceDisplay: "₦685,000",
+      regularPriceDisplay: "₦740,000",
+      savingsDisplay: "Save ₦55,000",
+      stockLeft: 2,
+      badge: "Commercial Grade",
+      available: true,
+      description: "3kg Industrial Swing Chamber • Heavy-duty commercial grinding & restaurants",
+    },
+    {
+      id: "gmp-5000g",
+      name: "Grandmaster Pro 5000g (5kg)",
+      capacity: "5000g (5kg)",
+      priceKobo: 81500000,
+      regularPriceKobo: 95000000,
+      priceDisplay: "₦815,000",
+      regularPriceDisplay: "₦950,000",
+      savingsDisplay: "Save ₦135,000",
+      stockLeft: 2,
+      badge: "🔥 Maximum Power",
+      available: true,
+      description: "5kg Industrial Powerhouse • Maximum commercial volume, mills & food production",
     },
   ],
 
