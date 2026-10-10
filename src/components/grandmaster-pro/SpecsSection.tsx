@@ -10,25 +10,25 @@ export function SpecsSection({}: Props) {
   return (
     <section
       id="specs"
-      className="py-20 bg-white"
+      className="py-16 sm:py-20 bg-white"
       aria-labelledby="specs-heading"
     >
       <div className="max-w-4xl mx-auto px-4">
-        <div className="text-center mb-14 reveal-on-scroll">
-          <div className="inline-flex items-center gap-2 bg-[#0052CC]/10 text-[#0052CC] font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-3">
-            <span>🛡️ Complete Technical Blueprint & Logistics Proof</span>
-          </div>
-          <h2 id="specs-heading" className="font-poppins text-3xl lg:text-4xl font-bold text-[#0B1F3A] mb-4">
+        <div className="text-center mb-12 sm:mb-14 reveal-on-scroll">
+          <span className="inline-block text-[#0052CC] font-black text-xs uppercase tracking-widest mb-2 bg-[#f0f4fc] px-3.5 py-1 rounded-full border border-[#0052CC]/20">
+            TECHNICAL BLUEPRINT &amp; LOGISTICS PROOF
+          </span>
+          <h2 id="specs-heading" className="font-poppins text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B1F3A] mb-3 sm:mb-4">
             Industrial Engineering Specifications
           </h2>
-          <p className="text-[#344054] text-lg max-w-xl mx-auto">
+          <p className="text-[#344054] text-sm sm:text-base lg:text-lg max-w-xl mx-auto leading-relaxed">
             Built to commercial pulverizer standards with 100% pure copper motor and food-grade 304 stainless steel.
           </p>
         </div>
 
         {/* Specs Table */}
-        <div className="reveal-on-scroll bg-[#F4F6F8] rounded-2xl overflow-hidden border border-gray-200 mb-10 shadow-sm">
-          <table className="w-full text-sm" aria-label="Product specifications">
+        <div className="reveal-on-scroll bg-[#F8FAFC] rounded-3xl overflow-hidden border border-gray-200 mb-12 shadow-sm">
+          <table className="w-full text-xs sm:text-sm" aria-label="Product specifications">
             <tbody>
               {getSpecRows().map((row, i) => (
                 <tr
@@ -37,11 +37,11 @@ export function SpecsSection({}: Props) {
                 >
                   <th
                     scope="row"
-                    className="text-left font-semibold text-[#0B1F3A] px-6 py-4 w-1/3 border-r border-gray-100"
+                    className="text-left font-black text-[#0B1F3A] px-5 sm:px-6 py-4 w-2/5 sm:w-1/3 border-r border-gray-100"
                   >
                     {row.label}
                   </th>
-                  <td className="text-[#344054] font-medium px-6 py-4">
+                  <td className="text-[#344054] font-medium px-5 sm:px-6 py-4">
                     {row.value}
                   </td>
                 </tr>
@@ -51,20 +51,22 @@ export function SpecsSection({}: Props) {
         </div>
 
         {/* Nationwide Orders on Transit Video & Evidence */}
-        <div className="reveal-on-scroll bg-[#0B1F3A] rounded-3xl p-6 sm:p-10 border border-white/10 text-white mb-12 shadow-xl">
-          <div className="text-center mb-8">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#00AEEF] mb-1 block">
-              Active Orders In Transit Across Nigeria
+        <div className="reveal-on-scroll bg-gradient-to-b from-[#0B1F3A] to-[#061325] rounded-3xl p-6 sm:p-10 border border-white/10 text-white mb-12 shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-[#00AEEF]/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="text-center mb-8 relative z-10">
+            <span className="text-xs font-black uppercase tracking-wider text-[#00AEEF] mb-1.5 block bg-[#00AEEF]/10 px-3 py-1 rounded-full border border-[#00AEEF]/30 w-fit mx-auto">
+              REAL-TIME DISPATCH EVIDENCE
             </span>
-            <h3 className="font-poppins font-bold text-2xl sm:text-3xl text-white">
-              Daily Shipments Dispatched to Different States
+            <h3 className="font-poppins font-black text-2xl sm:text-3xl text-white">
+              Daily Shipments Dispatched Across All 36 States
             </h3>
-            <p className="text-white/70 text-sm mt-1 max-w-xl mx-auto">
-              We package and ship daily via direct interstate waybills to customers in Lagos, Abuja, Port Harcourt, Kano, Ibadan, Enugu, and all 36 states.
+            <p className="text-white/80 text-xs sm:text-sm mt-1.5 max-w-xl mx-auto leading-relaxed">
+              We package and ship daily via direct interstate waybills to customers in Lagos, Abuja, Port Harcourt, Kano, Ibadan, Enugu, and every state nationwide.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-12 gap-8 items-center">
+          <div className="grid md:grid-cols-12 gap-8 items-center relative z-10">
             {/* Transit Video */}
             <div className="md:col-span-7">
               <VideoEmbed
@@ -87,12 +89,12 @@ export function SpecsSection({}: Props) {
                 />
               </div>
 
-              <div className="p-4 rounded-xl bg-white/5 border border-white/10 text-xs space-y-2 text-white/80">
-                <p className="font-bold text-white text-sm flex items-center gap-1.5">
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10 text-xs space-y-2 text-white/85">
+                <p className="font-black text-white text-sm flex items-center gap-1.5">
                   <span className="text-[#00AEEF]">🚚</span> Direct Waybill Tracking
                 </p>
-                <p>Every single dispatch is assigned a unique waybill tracking slip and courier direct phone contact.</p>
-                <p className="text-[#00AEEF] font-bold">100% Pay On Delivery: Open and inspect your box before paying!</p>
+                <p className="leading-relaxed">Every dispatch is assigned a unique tracking slip and dedicated delivery phone contact.</p>
+                <p className="text-[#00AEEF] font-black">100% Pay On Delivery: Open and inspect your carton before paying!</p>
               </div>
             </div>
           </div>

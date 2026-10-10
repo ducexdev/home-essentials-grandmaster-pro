@@ -71,11 +71,11 @@ export function HeroSection({
 
       <div className="relative max-w-6xl mx-auto px-4">
         {/* Top Scarcity & Social Proof Strip */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-8 pb-4 border-b border-white/10 text-xs">
-          <div className="inline-flex items-center gap-2 bg-[#0052CC]/30 border border-[#0052CC] text-[#00AEEF] px-3.5 py-1.5 rounded-full font-bold">
+        <div className="flex flex-wrap items-center justify-between gap-3 mb-6 sm:mb-8 pb-4 border-b border-white/10 text-xs">
+          <div className="inline-flex items-center gap-2 bg-[#0052CC]/25 border border-[#0052CC]/60 text-[#00AEEF] px-3.5 py-1.5 rounded-full font-bold shadow-sm">
             <span className="w-2 h-2 rounded-full bg-[#00AEEF] animate-ping" />
             <span className="flex items-center gap-1">
-              🔥 NATIONWIDE DELIVERY: BATCH OF TODAY ALMOST SOLD OUT (
+              🔥 WAREHOUSE PROMO ACTIVE: BATCH OF TODAY ALMOST SOLD OUT (
               <span
                 suppressHydrationWarning
                 className={`inline-block font-black transition-all duration-300 ${
@@ -90,92 +90,132 @@ export function HeroSection({
             </span>
           </div>
 
-          <div className="flex items-center gap-2 text-white/80">
+          <div className="flex items-center gap-2 text-white/85 text-xs">
             <div className="flex text-amber-400 text-xs tracking-tighter">★★★★★</div>
-            <span className="font-semibold text-white">4.9/5 Rating</span>
+            <span className="font-bold text-white">4.9/5 Rating</span>
             <span className="text-white/40">&bull;</span>
-            <span className="text-white/70">1,480+ Verified Nigerian Kitchens</span>
+            <span className="text-white/80">3,400+ Verified Nigerian Kitchens</span>
           </div>
         </div>
 
         {/* Hero Grid */}
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-12 items-center">
-          {/* Left Column (7 cols): Copy, Video Demo Trigger, Value Stack */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left Column (7 cols on desktop): Copy, Value Stack, Selector, CTAs */}
           <div className="lg:col-span-7 space-y-6">
-            {/* Main Headline */}
-            <h1 className="font-poppins font-black text-3xl sm:text-4xl md:text-5xl lg:text-[46px] leading-[1.15] tracking-tight text-white">
-              <span className="text-white font-black drop-shadow-lg block sm:inline">
-                THIS IS THE BEST GRINDING MACHINE.{" "}
+            {/* Category / Authority Eyebrow */}
+            <div className="inline-flex items-center gap-2 text-[#00AEEF] text-xs font-black uppercase tracking-widest bg-[#00AEEF]/10 px-3 py-1 rounded-full border border-[#00AEEF]/30">
+              <span>★</span> OFFICIAL COMMERCIAL-GRADE GRINDER
+            </div>
+
+            {/* Main Editorial Headline */}
+            <h1 className="font-poppins font-black text-3xl sm:text-4xl md:text-5xl lg:text-[46px] leading-[1.14] tracking-tight text-white">
+              <span className="block text-white">
+                Grind Stone-Hard Staples Into Silky Flour
               </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] via-sky-300 to-white block sm:inline">
-                EVERY HOME NEEDS THIS BLENDER...
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-sky-200 block mt-1">
+                In 15 Seconds Flat.
               </span>
-              <br />
-              <span className="text-white font-extrabold text-2xl sm:text-3xl md:text-4xl mt-2 inline-block">
-                Grandmaster Pro.{" "}
-                <span className="text-[#00AEEF]">Built to Last.</span>
+              <span className="block text-white/90 font-extrabold text-xl sm:text-2xl md:text-3xl mt-2 tracking-normal">
+                Grandmaster Pro™ <span className="text-[#00AEEF]">Commercial Multi-Function Grinder</span>
               </span>
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-white/80 text-base sm:text-lg leading-relaxed max-w-xl">
-              Stop suffering through stressful, unhygienic market trips and stop burning out cheap plastic blenders. Pulverize dry peppers, dried beans, corn, yam chips, and hard spices into silky powder in under 60 seconds — right inside your kitchen!
+            <p className="text-white/85 text-base sm:text-lg leading-relaxed max-w-xl">
+              Stop suffering through exhausting market trips and stop burning cheap plastic blenders. Pulverize dry yam chips, dried beans, corn, tough spices, and seeds into bakery-smooth powder right inside your kitchen — quietly and effortlessly.
             </p>
+
+            {/* MOBILE ONLY: Product Photo displayed high up for instant visual recognition */}
+            <div className="lg:hidden my-6">
+              <div className="relative rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/20 p-5 backdrop-blur-md shadow-2xl overflow-hidden text-center">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#00AEEF]/20 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="flex items-center justify-between mb-2">
+                  <span className="bg-[#0052CC] text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full shadow">
+                    Commercial 25,000 RPM
+                  </span>
+                  <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Pay On Delivery</span>
+                  </span>
+                </div>
+
+                <div className="relative w-full aspect-square max-h-[300px] flex items-center justify-center my-1 mx-auto">
+                  <Image
+                    src="/images/hero-grinder-official.png"
+                    alt="Grandmaster Pro Commercial Multi-Function Grinder"
+                    width={340}
+                    height={480}
+                    priority
+                    className="w-full h-full object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.85)] scale-105"
+                  />
+                </div>
+
+                <div className="pt-2 border-t border-white/10 grid grid-cols-2 gap-2 text-center text-[10px] font-bold uppercase tracking-wider">
+                  <div className="bg-white/5 p-1.5 rounded-xl border border-white/10 text-[#00AEEF]">
+                    100% PURE COPPER MOTOR
+                  </div>
+                  <div className="bg-white/5 p-1.5 rounded-xl border border-white/10 text-emerald-400">
+                    1-YEAR FULL WARRANTY
+                  </div>
+                </div>
+              </div>
+            </div>
 
             {/* Benefit Checkmarks */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs sm:text-sm font-semibold text-white/90">
               <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 backdrop-blur-sm">
-                <span className="text-[#00AEEF] text-base">✓</span>
-                <span>100% Pure Copper Coil Motor</span>
+                <span className="text-[#00AEEF] text-base font-black">✓</span>
+                <span>100% Pure Copper Induction Motor</span>
               </div>
               <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 backdrop-blur-sm">
-                <span className="text-[#00AEEF] text-base">✓</span>
+                <span className="text-[#00AEEF] text-base font-black">✓</span>
                 <span>25,000 RPM Super-Crushing Speed</span>
               </div>
               <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 backdrop-blur-sm">
-                <span className="text-[#00AEEF] text-base">✓</span>
+                <span className="text-[#00AEEF] text-base font-black">✓</span>
                 <span>Food-Grade 304 Stainless Steel</span>
               </div>
               <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 backdrop-blur-sm">
-                <span className="text-[#00AEEF] text-base">✓</span>
-                <span>Zero Advance Payment (POD)</span>
+                <span className="text-[#00AEEF] text-base font-black">✓</span>
+                <span>Zero Advance Deposit (Pay On Delivery)</span>
               </div>
             </div>
 
-            {/* HIGH-CONVERTING FREE GIFTS & SUPPORT CALLOUT (POPPING VALUE) */}
+            {/* HIGH-CONVERTING FREE GIFTS & SUPPORT CALLOUT */}
             <div className="rounded-2xl p-4 sm:p-5 bg-gradient-to-r from-[#0052CC]/50 via-[#00AEEF]/20 to-[#0052CC]/40 border-2 border-[#00AEEF] shadow-2xl shadow-cyan-500/20 backdrop-blur-md relative overflow-hidden">
               <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                 <div className="flex items-center gap-2">
                   <span className="text-xl sm:text-2xl animate-bounce">🎁</span>
                   <span className="font-poppins font-black text-xs sm:text-sm uppercase tracking-wider text-white">
-                    FREE GIFTS WE OFFER WITH EVERY ORDER:
+                    FREE GIFTS INCLUDED WITH EVERY ORDER:
                   </span>
                 </div>
                 <span className="bg-[#00AEEF] text-[#061325] text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full shadow">
-                  FREE IN BOX
+                  WORTH ₦23,500 — FREE
                 </span>
               </div>
 
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                <div className="bg-[#061325]/80 border border-[#00AEEF]/30 rounded-xl p-3 text-center hover:border-[#00AEEF] transition-colors">
+                <div className="bg-[#061325]/85 border border-[#00AEEF]/30 rounded-xl p-3 text-center hover:border-[#00AEEF] transition-colors">
                   <span className="text-xl block mb-1">🔪</span>
                   <p className="font-black text-white text-xs leading-tight">1 Extra Blade</p>
                   <p className="text-[10px] text-[#00AEEF] mt-0.5 font-bold">Spare 6-Leaf Set</p>
                 </div>
 
-                <div className="bg-[#061325]/80 border border-[#00AEEF]/30 rounded-xl p-3 text-center hover:border-[#00AEEF] transition-colors">
+                <div className="bg-[#061325]/85 border border-[#00AEEF]/30 rounded-xl p-3 text-center hover:border-[#00AEEF] transition-colors">
                   <span className="text-xl block mb-1">🥣</span>
                   <p className="font-black text-white text-xs leading-tight">1 Sieve</p>
                   <p className="text-[10px] text-[#00AEEF] mt-0.5 font-bold">Ultra-Fine Sifter</p>
                 </div>
 
-                <div className="bg-[#061325]/80 border border-[#00AEEF]/30 rounded-xl p-3 text-center hover:border-[#00AEEF] transition-colors">
+                <div className="bg-[#061325]/85 border border-[#00AEEF]/30 rounded-xl p-3 text-center hover:border-[#00AEEF] transition-colors">
                   <span className="text-xl block mb-1">🖌️</span>
                   <p className="font-black text-white text-xs leading-tight">1 Cleaning Brush</p>
                   <p className="text-[10px] text-[#00AEEF] mt-0.5 font-bold">For Easy Grinder Care</p>
                 </div>
 
-                <div className="bg-[#061325]/80 border border-emerald-400/40 rounded-xl p-3 text-center hover:border-emerald-400 transition-colors">
+                <div className="bg-[#061325]/85 border border-emerald-400/40 rounded-xl p-3 text-center hover:border-emerald-400 transition-colors">
                   <span className="text-xl block mb-1">🛡️</span>
                   <p className="font-black text-white text-xs leading-tight">After Purchase</p>
                   <p className="text-[10px] text-emerald-400 mt-0.5 font-bold">Direct VIP Support</p>
@@ -189,13 +229,14 @@ export function HeroSection({
                 <p className="text-xs font-black uppercase tracking-wider text-[#00AEEF]">
                   Select Capacity &amp; Promo Package:
                 </p>
-                <span className="text-[10px] font-black text-rose-400 bg-rose-500/20 border border-rose-500/40 px-2 py-0.5 rounded-full animate-pulse">
-                  ⚡ Strictly while stock lasts!
+                <span className="text-[10px] font-black text-rose-300 bg-rose-500/20 border border-rose-500/40 px-2 py-0.5 rounded-full animate-pulse">
+                  ⚡ Promo strictly while stock lasts!
                 </span>
               </div>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
                 {availableVariants.map((v) => {
                   const isSelected = selectedVariantId === v.id;
+                  const isPopular = v.id === "gmp-1000g";
 
                   return (
                     <div
@@ -203,7 +244,7 @@ export function HeroSection({
                       onClick={() => onVariantSelect(v.id)}
                       className={`cursor-pointer rounded-xl p-2.5 border-2 transition-all duration-200 relative flex flex-col justify-between ${
                         isSelected
-                          ? "bg-gradient-to-br from-[#0052CC]/60 to-[#00AEEF]/30 border-[#00AEEF] shadow-lg shadow-cyan-500/20 scale-[1.02]"
+                          ? "bg-gradient-to-br from-[#0052CC]/70 to-[#00AEEF]/40 border-[#00AEEF] shadow-lg shadow-cyan-500/25 scale-[1.02]"
                           : "bg-white/5 border-white/15 hover:border-white/30 text-white/80 hover:bg-white/10"
                       }`}
                     >
@@ -211,9 +252,15 @@ export function HeroSection({
                         <span className="font-poppins font-black text-xs text-white">
                           {v.capacity}
                         </span>
-                        <span className="text-[9px] font-bold text-rose-300 bg-rose-500/30 px-1.5 py-0.5 rounded">
-                          {v.stockLeft} left
-                        </span>
+                        {isPopular ? (
+                          <span className="text-[8px] font-black uppercase text-amber-300 bg-amber-500/30 px-1 py-0.5 rounded">
+                            Popular
+                          </span>
+                        ) : (
+                          <span className="text-[8px] font-bold text-rose-300 bg-rose-500/30 px-1 py-0.5 rounded">
+                            {v.stockLeft} left
+                          </span>
+                        )}
                       </div>
 
                       <div className="mt-1 pt-1 border-t border-white/10">
@@ -230,16 +277,16 @@ export function HeroSection({
               </div>
             </div>
 
-            {/* Magnetic CTA Group (Accent / CTA Color #00AEEF) */}
+            {/* Magnetic High-Converting CTA Group */}
             <div className="pt-3 space-y-3">
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => onOrderClick(selectedVariantId)}
-                  className="flex-1 bg-[#00AEEF] hover:bg-[#0098d4] text-[#061325] font-black text-sm sm:text-base uppercase tracking-wider py-4 px-6 rounded-2xl transition-all shadow-xl shadow-cyan-500/30 active:scale-95 flex items-center justify-center gap-2 group"
+                  className="flex-1 bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-[#0098d4] hover:brightness-110 text-[#061325] font-black text-sm sm:text-base uppercase tracking-wider py-4 px-6 rounded-2xl transition-all shadow-xl shadow-cyan-500/35 active:scale-95 flex items-center justify-center gap-2 group"
                 >
                   <span>
-                    Order {availableVariants.find((v) => v.id === selectedVariantId)?.capacity || "Grandmaster Pro"}{" "}
-                    ({availableVariants.find((v) => v.id === selectedVariantId)?.priceDisplay || ""}) Now
+                    Claim {availableVariants.find((v) => v.id === selectedVariantId)?.capacity || "Grandmaster Pro"}{" "}
+                    ({availableVariants.find((v) => v.id === selectedVariantId)?.priceDisplay || ""}) — Pay On Delivery
                   </span>
                   <span className="group-hover:translate-x-1 transition-transform">→</span>
                 </button>
@@ -248,14 +295,14 @@ export function HeroSection({
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#25D366] hover:bg-[#1da851] text-white font-bold text-sm py-4 px-5 rounded-2xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-500/20"
+                  className="bg-[#25D366] hover:bg-[#1da851] text-white font-bold text-sm py-4 px-5 rounded-2xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-500/20 active:scale-95"
                 >
                   <span>💬 Chat On WhatsApp</span>
                 </a>
               </div>
 
               {/* Zero-Friction Reassurance Microcopy */}
-              <div className="flex flex-wrap items-center justify-between text-[11px] sm:text-xs text-white/70 pt-1 gap-2">
+              <div className="flex flex-wrap items-center justify-between text-[11px] sm:text-xs text-white/80 pt-1 gap-2">
                 <span className="flex items-center gap-1.5 font-medium text-emerald-400">
                   <span>🔒</span> Pay ₦0 Online — Inspect Carton Before Payment
                 </span>
@@ -266,27 +313,27 @@ export function HeroSection({
             </div>
           </div>
 
-          {/* Right Column (5 cols): Hero Product Visual & Proof Stamps */}
-          <div className="lg:col-span-5 flex justify-center">
+          {/* Right Column (5 cols on desktop): Desktop Hero Product Visual & Proof Stamps */}
+          <div className="hidden lg:flex lg:col-span-5 justify-center">
             <div className="relative w-full max-w-lg">
               {/* Product Showcase Card */}
-              <div className="relative rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/20 p-4 sm:p-6 pb-5 sm:pb-6 backdrop-blur-md shadow-2xl overflow-hidden group">
+              <div className="relative rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/20 p-6 pb-6 backdrop-blur-md shadow-2xl overflow-hidden group">
                 {/* Glow ring */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-96 sm:h-96 bg-[#00AEEF]/25 rounded-full blur-3xl pointer-events-none" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#00AEEF]/25 rounded-full blur-3xl pointer-events-none" />
 
                 {/* Top Badge */}
                 <div className="flex items-center justify-between mb-3">
-                  <span className="bg-[#0052CC] text-white text-[10px] sm:text-xs font-black uppercase px-3 py-1 rounded-full shadow">
+                  <span className="bg-[#0052CC] text-white text-xs font-black uppercase px-3 py-1 rounded-full shadow">
                     Commercial 25,000 RPM
                   </span>
-                  <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                  <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-xs font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>In Stock</span>
+                    <span>In Stock &bull; Ready to Ship</span>
                   </span>
                 </div>
 
-                {/* Machine Photo - sized to fit container perfectly */}
-                <div className="relative w-full aspect-[419/595] max-h-[460px] sm:max-h-[520px] lg:max-h-[550px] flex items-center justify-center my-1">
+                {/* Machine Photo */}
+                <div className="relative w-full aspect-[419/595] max-h-[520px] flex items-center justify-center my-2">
                   <Image
                     src="/images/hero-grinder-official.png"
                     alt="Grandmaster Pro 2500A Commercial Multi-Function Grinder"
@@ -301,23 +348,23 @@ export function HeroSection({
                 <div className="pt-3 border-t border-white/10 grid grid-cols-2 gap-2 text-center text-[10px] font-bold uppercase tracking-wider">
                   <div className="bg-white/5 p-2 rounded-xl border border-white/10">
                     <span className="text-[#00AEEF] block text-xs">100% COPPER</span>
-                    <span className="text-white/60">Heavy Engine</span>
+                    <span className="text-white/70">Heavy Engine</span>
                   </div>
                   <div className="bg-white/5 p-2 rounded-xl border border-white/10">
                     <span className="text-[#00AEEF] block text-xs">PAY ON DELIVERY</span>
-                    <span className="text-white/60">All 36 States</span>
+                    <span className="text-white/70">All 36 States</span>
                   </div>
                 </div>
               </div>
 
               {/* Floating Guarantee Stamp */}
-              <div className="absolute -bottom-5 -left-4 sm:-left-6 bg-white text-[#061325] p-3 rounded-2xl shadow-2xl border border-gray-100 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#0052CC] flex items-center justify-center text-white text-lg font-black shadow">
+              <div className="absolute -bottom-5 -left-4 sm:-left-6 bg-white text-[#061325] p-3.5 rounded-2xl shadow-2xl border border-gray-100 flex items-center gap-3">
+                <div className="w-11 h-11 rounded-xl bg-[#0052CC] flex items-center justify-center text-white text-lg font-black shadow">
                   ✓
                 </div>
                 <div>
                   <p className="text-xs font-black uppercase leading-tight text-[#0052CC]">1-Year Engine Warranty</p>
-                  <p className="text-[10px] text-gray-500">10-Day Free Replacement Policy</p>
+                  <p className="text-[10px] text-gray-600 font-medium">10-Day Free Replacement Policy</p>
                 </div>
               </div>
             </div>

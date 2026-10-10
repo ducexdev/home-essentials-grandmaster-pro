@@ -4,47 +4,47 @@ export function HowItWorks() {
   return (
     <section
       id="how-it-works"
-      className="py-20 bg-white"
+      className="py-16 sm:py-20 bg-white"
       aria-labelledby="hiw-heading"
     >
       <div className="max-w-6xl mx-auto px-4">
-        <div className="text-center mb-14 reveal-on-scroll">
-          <div className="inline-flex items-center gap-2 bg-[#0052CC]/10 text-[#0052CC] font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-3">
-            <span>⚡ Effortless 4-Step Operation</span>
-          </div>
-          <h2 id="hiw-heading" className="font-poppins text-3xl lg:text-4xl font-bold text-[#0B1F3A] mb-4">
+        <div className="text-center mb-12 sm:mb-14 reveal-on-scroll">
+          <span className="inline-block text-[#0052CC] font-black text-xs uppercase tracking-widest mb-2 bg-[#f0f4fc] px-3.5 py-1 rounded-full border border-[#0052CC]/20">
+            EFFORTLESS 4-STEP OPERATION
+          </span>
+          <h2 id="hiw-heading" className="font-poppins text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B1F3A] mb-3 sm:mb-4">
             From Raw Hard Seeds to Ultra-Fine Flour in 2 Minutes
           </h2>
-          <p className="text-[#344054] text-lg max-w-2xl mx-auto">
+          <p className="text-[#344054] text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
             No sweating with manual mortars. No paying transport to dirty market mills. 
-            Enjoy effortless, restaurant-grade pulverizing right on your kitchen counter.
+            Enjoy effortless, commercial-grade pulverizing right on your kitchen counter.
           </p>
         </div>
 
         {/* Steps */}
-        <div className="grid md:grid-cols-4 gap-6 relative mb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5 sm:gap-6 relative mb-16">
           {/* Connector line (desktop only) */}
           <div className="hidden md:block absolute top-10 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-[#0052CC]/20 via-[#00AEEF] to-[#0052CC]/20" aria-hidden="true" />
 
           {STEPS.map((step, i) => (
             <div
               key={step.title}
-              className="reveal-on-scroll relative flex flex-col items-center text-center p-4 rounded-2xl bg-[#F4F6F8]/60 hover:bg-[#F4F6F8] transition-colors"
+              className="reveal-on-scroll relative flex flex-col items-center text-center p-6 rounded-3xl bg-[#F8FAFC] border border-gray-200/80 hover:border-[#0052CC] hover:shadow-lg transition-all"
               style={{ animationDelay: `${i * 120}ms` }}
             >
               {/* Step number badge */}
-              <div className="relative z-10 w-16 h-16 rounded-full bg-gradient-to-br from-[#0052CC] to-[#0B1F3A] flex items-center justify-center shadow-lg shadow-blue-500/20 mb-4">
-                <span className="text-[#00AEEF] font-poppins font-bold text-xl">0{i + 1}</span>
+              <div className="relative z-10 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-to-br from-[#0052CC] to-[#0B1F3A] flex items-center justify-center shadow-lg shadow-blue-500/25 mb-4 group-hover:scale-110 transition-transform">
+                <span className="text-[#00AEEF] font-poppins font-black text-lg sm:text-xl">0{i + 1}</span>
               </div>
 
               {/* Icon */}
               <div className="text-[#0052CC] mb-3">{step.icon}</div>
 
               {/* Text */}
-              <h3 className="font-poppins font-bold text-[#0B1F3A] text-base mb-2">
+              <h3 className="font-poppins font-black text-[#0B1F3A] text-base mb-1.5">
                 {step.title}
               </h3>
-              <p className="text-[#344054] text-xs leading-relaxed">
+              <p className="text-[#475467] text-xs sm:text-sm leading-relaxed">
                 {step.description}
               </p>
             </div>
@@ -52,24 +52,26 @@ export function HowItWorks() {
         </div>
 
         {/* Video Demonstrations: How It Works & How to Use It */}
-        <div className="reveal-on-scroll bg-[#0B1F3A] rounded-3xl p-6 sm:p-10 border border-white/10 text-white shadow-2xl">
-          <div className="text-center mb-8">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#00AEEF] mb-1 block">
-              Watch The Live Process
+        <div className="reveal-on-scroll bg-gradient-to-b from-[#0B1F3A] to-[#061325] rounded-3xl p-6 sm:p-10 border border-white/10 text-white shadow-2xl relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-80 h-80 bg-[#00AEEF]/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="text-center mb-8 relative z-10">
+            <span className="text-xs font-black uppercase tracking-wider text-[#00AEEF] mb-1.5 block bg-[#00AEEF]/10 px-3 py-1 rounded-full border border-[#00AEEF]/30 w-fit mx-auto">
+              LIVE EVIDENCE DEMONSTRATIONS
             </span>
-            <h3 className="font-poppins font-bold text-2xl sm:text-3xl text-white">
+            <h3 className="font-poppins font-black text-2xl sm:text-3xl text-white">
               Watch Grandmaster Pro in Action
             </h3>
-            <p className="text-white/70 text-sm mt-1 max-w-xl mx-auto">
+            <p className="text-white/80 text-xs sm:text-sm mt-1.5 max-w-xl mx-auto leading-relaxed">
               See the exact unboxing, secure lid locking, fast dial operation, and the smooth flour output.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white/5 p-4 sm:p-5 rounded-2xl border border-white/10 backdrop-blur-sm">
-              <h4 className="font-poppins font-bold text-base text-white mb-3 flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#00AEEF]" />
-                Complete Machine Walkthrough
+          <div className="grid md:grid-cols-2 gap-8 relative z-10">
+            <div className="bg-white/5 p-4 sm:p-6 rounded-3xl border border-white/10 backdrop-blur-md shadow-xl">
+              <h4 className="font-poppins font-bold text-sm sm:text-base text-white mb-3.5 flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#00AEEF] animate-pulse" />
+                <span>Complete Machine Walkthrough</span>
               </h4>
               <VideoEmbed
                 videoId="DGKwW-0uR3o"
@@ -79,10 +81,10 @@ export function HowItWorks() {
               />
             </div>
 
-            <div className="bg-white/5 p-4 sm:p-5 rounded-2xl border border-white/10 backdrop-blur-sm">
-              <h4 className="font-poppins font-bold text-base text-white mb-3 flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#0052CC]" />
-                Step-by-Step Loading & Grinding
+            <div className="bg-white/5 p-4 sm:p-6 rounded-3xl border border-white/10 backdrop-blur-md shadow-xl">
+              <h4 className="font-poppins font-bold text-sm sm:text-base text-white mb-3.5 flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#0052CC] animate-pulse" />
+                <span>Step-by-Step Loading &amp; Grinding</span>
               </h4>
               <VideoEmbed
                 videoId="7qt6eIQnZ00"

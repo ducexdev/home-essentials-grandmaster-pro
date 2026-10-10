@@ -6,51 +6,51 @@ export function KeyBenefits() {
   return (
     <section
       id="benefits"
-      className="py-20 bg-white border-b border-gray-100"
+      className="py-16 sm:py-20 bg-white border-b border-gray-100"
       aria-labelledby="benefits-heading"
     >
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-14">
+        <div className="text-center mb-12 sm:mb-14">
           <span className="inline-block text-[#0052CC] font-black text-xs uppercase tracking-widest mb-2 bg-[#f0f4fc] px-3.5 py-1 rounded-full border border-[#0052CC]/20">
             ENGINEERING EXCELLENCE
           </span>
-          <h2 id="benefits-heading" className="font-poppins text-3xl lg:text-4xl font-black text-[#0B1F3A] mb-4">
+          <h2 id="benefits-heading" className="font-poppins text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B1F3A] mb-3 sm:mb-4">
             Why Grandmaster Pro Outlasts Ordinary Blenders
           </h2>
-          <p className="text-[#344054] text-base sm:text-lg max-w-2xl mx-auto">
+          <p className="text-[#344054] text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
             Every component is purpose-built with commercial-grade specifications to effortlessly handle the hardest Nigerian food items.
           </p>
         </div>
 
         {/* 6 Grid Benefits */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 mb-16">
           {BENEFITS.map((benefit) => (
             <div
               key={benefit.title}
-              className="bg-[#F8FAFC] rounded-3xl p-7 border border-gray-100 hover:border-[#0052CC] hover:shadow-xl transition-all duration-300 group flex flex-col justify-between"
+              className="bg-[#F8FAFC] rounded-3xl p-6 sm:p-7 border border-gray-200/80 hover:border-[#0052CC] hover:shadow-xl transition-all duration-300 group flex flex-col justify-between"
             >
               <div>
                 <div className="w-12 h-12 rounded-2xl bg-[#0052CC] text-white flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-[#00AEEF] group-hover:text-[#061325] transition-all shadow-md">
                   {benefit.icon}
                 </div>
-                <h3 className="font-poppins font-black text-[#0B1F3A] text-lg mb-2">
+                <h3 className="font-poppins font-black text-[#0B1F3A] text-base sm:text-lg mb-2">
                   {benefit.title}
                 </h3>
-                <p className="text-[#344054] text-xs sm:text-sm leading-relaxed">
+                <p className="text-[#475467] text-xs sm:text-sm leading-relaxed">
                   {benefit.description}
                 </p>
               </div>
 
-              <div className="mt-4 pt-3 border-t border-gray-200/60 flex items-center gap-1.5 text-xs font-bold text-[#0052CC] group-hover:text-[#00AEEF] transition-colors">
-                <span>✓ Verified Specification</span>
+              <div className="mt-5 pt-3.5 border-t border-gray-200/60 flex items-center gap-1.5 text-xs font-black text-[#0052CC] group-hover:text-[#00AEEF] transition-colors">
+                <span>✓ Verified Industrial Specification</span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Steel Durability Visual Card */}
-        <div className="bg-gradient-to-br from-[#0B1F3A] to-[#061325] rounded-3xl p-6 sm:p-10 text-white shadow-xl border border-white/10 relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#0B1F3A] to-[#061325] rounded-3xl p-6 sm:p-10 text-white shadow-2xl border border-white/10 relative overflow-hidden">
           <div className="absolute top-0 right-0 w-80 h-80 bg-[#00AEEF]/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 grid md:grid-cols-12 gap-8 items-center">
@@ -64,13 +64,13 @@ export function KeyBenefits() {
               />
             </div>
             <div className="md:col-span-7 space-y-4">
-              <span className="text-[#00AEEF] font-black text-xs uppercase tracking-widest block">
-                100% FOOD-GRADE CONSTRUCTION
+              <span className="text-[#00AEEF] font-black text-xs uppercase tracking-widest block bg-[#00AEEF]/10 px-3 py-1 rounded-full border border-[#00AEEF]/30 w-fit">
+                100% FOOD-GRADE 304 STEEL
               </span>
               <h3 className="font-poppins font-black text-2xl sm:text-3xl text-white">
                 Heavy-Gauge Stainless Steel 304 &bull; Built For Class &amp; Durability
               </h3>
-              <p className="text-white/80 text-sm sm:text-base leading-relaxed">
+              <p className="text-white/85 text-sm sm:text-base leading-relaxed">
                 Unlike common blenders with fragile plastic jugs that crack, stain, and warp with hard grains, Grandmaster Pro features a thick food-grade stainless steel drum that resists extreme impacts, scratches, and food odors.
               </p>
               <ul className="space-y-3 text-xs sm:text-sm text-white/90 pt-2">

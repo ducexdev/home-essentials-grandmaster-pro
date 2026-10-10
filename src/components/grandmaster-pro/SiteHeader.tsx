@@ -15,81 +15,84 @@ export function SiteHeader({ onOrderClick, whatsappUrl }: Props) {
   return (
     <>
       {/* Top Psychological Trust & Reassurance Ribbon */}
-      <div className="bg-[#0052CC] text-white text-[11px] sm:text-xs font-semibold py-1.5 px-4 text-center">
-        <div className="max-w-6xl mx-auto flex items-center justify-between gap-2">
+      <div className="bg-gradient-to-r from-[#003882] via-[#0052CC] to-[#003882] text-white text-[11px] sm:text-xs font-semibold py-1.5 px-4 text-center border-b border-white/10">
+        <div className="max-w-6xl mx-auto flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 mx-auto sm:mx-0">
-            <span className="bg-[#00AEEF] text-[#061325] text-[10px] font-black uppercase px-2 py-0.5 rounded shadow-sm animate-pulse">
+            <span className="bg-[#00AEEF] text-[#061325] text-[9px] sm:text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#061325] animate-ping" />
               100% RISK-FREE
             </span>
-            <span>
-              Payment on Delivery Available Nationwide &bull; Inspect Before Paying!
+            <span className="text-white/95 text-[11px] sm:text-xs font-medium">
+              Zero Advance Deposit &bull; <strong className="text-white font-bold">Pay On Delivery Nationwide</strong> &bull; Inspect Before Paying!
             </span>
           </div>
 
           <div className="hidden sm:flex items-center gap-3 text-white/90 text-[11px]">
-            <a href="tel:+2347045787045" className="hover:underline font-bold">
-              📞 0704 578 7045
+            <a href="tel:+2347045787045" className="hover:text-[#00AEEF] transition-colors font-bold flex items-center gap-1.5">
+              <span>📞</span> <span>0704 578 7045</span>
             </a>
-            <span>&bull;</span>
-            <span className="text-[#00AEEF] font-bold">Zero Advance Payment</span>
+            <span className="text-white/40">&bull;</span>
+            <span className="text-[#00AEEF] font-bold">Fast Doorstep Delivery</span>
           </div>
         </div>
       </div>
 
       {/* High-Converting FREE GIFTS Announcement Bar */}
-      <div className="bg-gradient-to-r from-[#061325] via-[#0B2545] to-[#061325] border-b border-[#00AEEF]/40 py-2 px-4 text-center text-white shadow-inner">
+      <div className="bg-gradient-to-r from-[#040C18] via-[#0B2545] to-[#040C18] border-b border-[#00AEEF]/30 py-2 px-4 text-center text-white shadow-inner">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs">
-          <span className="inline-flex items-center gap-1.5 font-black text-[#00AEEF] uppercase tracking-wider bg-[#00AEEF]/20 px-2.5 py-0.5 rounded-full border border-[#00AEEF]/40 animate-pulse">
-            <span className="text-sm">🎁</span> FREE GIFTS TODAY:
+          <span className="inline-flex items-center gap-1.5 font-black text-[#00AEEF] uppercase tracking-wider bg-[#00AEEF]/15 px-2.5 py-0.5 rounded-full border border-[#00AEEF]/40 shadow-[0_0_12px_rgba(0,174,239,0.25)]">
+            <span>🎁</span> INCLUDED FREE TODAY:
           </span>
-          <span className="font-extrabold flex items-center gap-1 text-white">
-            <span className="text-[#00AEEF]">★</span> 1 Extra Blade
+          <span className="font-extrabold flex items-center gap-1 text-white text-[11px] sm:text-xs">
+            <span className="text-[#00AEEF]">★</span> 1 Extra 6-Leaf Blade
           </span>
-          <span className="text-white/40 hidden sm:inline">•</span>
-          <span className="font-extrabold flex items-center gap-1 text-white">
-            <span className="text-[#00AEEF]">★</span> 1 Sifting Sieve
+          <span className="text-white/30 hidden sm:inline">&bull;</span>
+          <span className="font-extrabold flex items-center gap-1 text-white text-[11px] sm:text-xs">
+            <span className="text-[#00AEEF]">★</span> 1 Micro-Mesh Sieve
           </span>
-          <span className="text-white/40 hidden sm:inline">•</span>
-          <span className="font-extrabold flex items-center gap-1 text-white">
-            <span className="text-[#00AEEF]">★</span> 1 Grinder Cleaning Brush
+          <span className="text-white/30 hidden sm:inline">&bull;</span>
+          <span className="font-extrabold flex items-center gap-1 text-white text-[11px] sm:text-xs">
+            <span className="text-[#00AEEF]">★</span> 1 Specialized Cleaning Brush
           </span>
-          <span className="text-white/40 hidden sm:inline">•</span>
-          <span className="font-extrabold text-[#00AEEF] flex items-center gap-1 bg-[#0052CC]/60 border border-[#00AEEF]/50 px-2.5 py-0.5 rounded-full">
+          <span className="text-white/30 hidden sm:inline">&bull;</span>
+          <span className="font-extrabold text-[#00AEEF] flex items-center gap-1 bg-[#0052CC]/40 border border-[#00AEEF]/40 px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs">
             🛡️ VIP After-Purchase Support
           </span>
         </div>
       </div>
 
-      <header className="sticky top-0 z-40 bg-[#061325]/95 backdrop-blur-md border-b border-white/10 shadow-lg">
+      <header className="sticky top-0 z-40 bg-[#061325]/90 backdrop-blur-xl border-b border-white/10 shadow-xl transition-all">
         <div className="max-w-6xl mx-auto px-4 h-16 sm:h-20 flex items-center justify-between">
           {/* Brand Logo & Slogan */}
           <Link href="/grandmaster-pro" className="flex items-center gap-2.5 group">
-            <div className="relative w-8 h-8 sm:w-10 sm:h-10 rounded-lg overflow-hidden bg-white p-0.5 border border-white/20 shadow-md group-hover:scale-105 transition-transform flex-shrink-0">
+            <div className="relative w-9 h-9 sm:w-11 sm:h-11 rounded-xl overflow-hidden bg-white p-1 border border-white/20 shadow-md group-hover:scale-105 transition-transform flex-shrink-0">
               <Image
                 src="/favicon.png"
                 alt="Home Essentials Nigeria"
-                width={40}
-                height={40}
+                width={44}
+                height={44}
                 className="w-full h-full object-contain"
               />
             </div>
             <div>
-              <span className="block text-white font-poppins font-extrabold text-[11px] sm:text-[12px] tracking-tight leading-tight">
+              <span className="block text-white font-poppins font-black text-xs sm:text-sm tracking-tight leading-tight">
                 HOME ESSENTIALS
               </span>
-              <span className="block text-[#00AEEF] text-[9px] sm:text-[10px] font-bold uppercase tracking-wider leading-none mt-0.5">
-                Grandmaster Pro
+              <span className="block text-[#00AEEF] text-[9px] sm:text-[10px] font-bold uppercase tracking-widest leading-none mt-0.5">
+                Grandmaster Pro™
               </span>
             </div>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-6 text-xs font-bold uppercase tracking-wider text-white/80" aria-label="Main navigation">
+          <nav className="hidden lg:flex items-center gap-7 text-xs font-bold uppercase tracking-wider text-white/80" aria-label="Main navigation">
             <a href="#problem-solution" className="hover:text-[#00AEEF] transition-colors">Why It&apos;s Better</a>
             <a href="#use-cases" className="hover:text-[#00AEEF] transition-colors">Food Items</a>
             <a href="#how-it-works" className="hover:text-[#00AEEF] transition-colors">Video Demos</a>
-            <a href="#reviews" className="hover:text-[#00AEEF] transition-colors">Reviews</a>
-            <a href="#pricing" className="hover:text-[#00AEEF] transition-colors text-[#00AEEF]">Discount Offer</a>
+            <a href="#reviews" className="hover:text-[#00AEEF] transition-colors">Customer Reviews</a>
+            <a href="#pricing" className="text-[#00AEEF] hover:text-white transition-colors bg-[#00AEEF]/10 px-3 py-1 rounded-full border border-[#00AEEF]/30">
+              Promo Packages
+            </a>
           </nav>
 
           {/* Action Group */}
@@ -98,35 +101,36 @@ export function SiteHeader({ onOrderClick, whatsappUrl }: Props) {
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 bg-emerald-600/20 hover:bg-emerald-600/30 text-[#25D366] border border-emerald-500/30 text-xs font-bold px-3.5 py-2.5 rounded-lg transition-all"
+              className="flex items-center gap-2 bg-[#25D366]/15 hover:bg-[#25D366]/25 text-[#25D366] border border-[#25D366]/40 text-xs font-bold px-3.5 py-2.5 rounded-xl transition-all shadow-sm"
+              title="Chat with us directly on WhatsApp"
             >
               <WhatsAppIcon />
               <span>WhatsApp</span>
             </a>
 
-            {/* Magnetic CTA Button in Accent #00AEEF */}
+            {/* High-Converting Accent CTA Button */}
             <button
               onClick={onOrderClick}
-              className="flex items-center gap-2 bg-[#00AEEF] hover:bg-[#0098d4] text-white font-black text-xs uppercase tracking-wider px-5 py-3 rounded-xl transition-all shadow-lg shadow-cyan-500/25 active:scale-95"
+              className="flex items-center gap-2 bg-gradient-to-r from-[#00AEEF] to-[#0098d4] hover:brightness-110 text-[#061325] font-black text-xs uppercase tracking-wider px-5 py-3 rounded-xl transition-all shadow-lg shadow-cyan-500/30 active:scale-95 group"
             >
               <span>Order With POD</span>
-              <span>→</span>
+              <span className="group-hover:translate-x-0.5 transition-transform">→</span>
             </button>
           </div>
 
           {/* Mobile Hamburger */}
           <button
-            className="lg:hidden text-white p-2"
+            className="lg:hidden text-white p-2.5 rounded-xl bg-white/5 border border-white/10 active:scale-95 transition-all"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                 <path d="M18 6L6 18M6 6l12 12"/>
               </svg>
             ) : (
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
                 <path d="M3 12h18M3 6h18M3 18h18"/>
               </svg>
             )}
@@ -135,29 +139,44 @@ export function SiteHeader({ onOrderClick, whatsappUrl }: Props) {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="lg:hidden bg-[#061325] border-t border-white/10 px-4 py-5 flex flex-col gap-3 text-xs font-bold uppercase tracking-wider">
-            <a href="#problem-solution" className="text-white py-2 border-b border-white/5" onClick={() => setMenuOpen(false)}>Why It&apos;s Better</a>
-            <a href="#use-cases" className="text-white py-2 border-b border-white/5" onClick={() => setMenuOpen(false)}>What It Grinds</a>
-            <a href="#how-it-works" className="text-white py-2 border-b border-white/5" onClick={() => setMenuOpen(false)}>Video Demonstrations</a>
-            <a href="#reviews" className="text-white py-2 border-b border-white/5" onClick={() => setMenuOpen(false)}>Customer Reviews</a>
-            <a href="#pricing" className="text-[#00AEEF] py-2 border-b border-white/5" onClick={() => setMenuOpen(false)}>Promo Packages &bull; Save Up to ₦135,000</a>
+          <div className="lg:hidden bg-[#061325]/95 backdrop-blur-2xl border-t border-white/10 px-5 py-6 flex flex-col gap-3 text-xs font-bold uppercase tracking-wider shadow-2xl">
+            <a href="#problem-solution" className="text-white py-2.5 border-b border-white/5 flex items-center justify-between" onClick={() => setMenuOpen(false)}>
+              <span>Why It&apos;s Better</span>
+              <span className="text-white/40">→</span>
+            </a>
+            <a href="#use-cases" className="text-white py-2.5 border-b border-white/5 flex items-center justify-between" onClick={() => setMenuOpen(false)}>
+              <span>What It Grinds</span>
+              <span className="text-white/40">→</span>
+            </a>
+            <a href="#how-it-works" className="text-white py-2.5 border-b border-white/5 flex items-center justify-between" onClick={() => setMenuOpen(false)}>
+              <span>Video Demonstrations</span>
+              <span className="text-white/40">→</span>
+            </a>
+            <a href="#reviews" className="text-white py-2.5 border-b border-white/5 flex items-center justify-between" onClick={() => setMenuOpen(false)}>
+              <span>Customer Reviews</span>
+              <span className="text-white/40">→</span>
+            </a>
+            <a href="#pricing" className="text-[#00AEEF] py-2.5 border-b border-white/5 flex items-center justify-between font-black" onClick={() => setMenuOpen(false)}>
+              <span>Promo Packages &bull; Save Up to ₦135,000</span>
+              <span className="text-[#00AEEF]">★</span>
+            </a>
 
-            <div className="pt-2 flex flex-col gap-2">
+            <div className="pt-3 flex flex-col gap-2.5">
               <button
                 onClick={() => { setMenuOpen(false); onOrderClick(); }}
-                className="bg-[#00AEEF] text-white font-black py-3 rounded-xl text-center uppercase tracking-wider shadow-md"
+                className="bg-gradient-to-r from-[#00AEEF] to-[#0098d4] text-[#061325] font-black py-3.5 rounded-xl text-center uppercase tracking-wider shadow-lg shadow-cyan-500/25 active:scale-95 transition-all text-xs"
               >
-                Order with Pay on Delivery →
+                Order With Pay On Delivery →
               </button>
               <a
                 href={whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-[#25D366] text-white font-bold py-3 rounded-xl text-center flex items-center justify-center gap-2"
+                className="bg-[#25D366] text-white font-bold py-3.5 rounded-xl text-center flex items-center justify-center gap-2 shadow-md text-xs active:scale-95 transition-all"
                 onClick={() => setMenuOpen(false)}
               >
                 <WhatsAppIcon />
-                <span>Chat on WhatsApp (0704 578 7045)</span>
+                <span>Chat On WhatsApp (0704 578 7045)</span>
               </a>
             </div>
           </div>

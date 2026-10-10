@@ -26,37 +26,37 @@ export function PricingSection({
     >
       <div className="max-w-6xl mx-auto px-4">
         {/* Section Header */}
-        <div className="text-center mb-14 reveal-on-scroll">
-          <div className="inline-flex items-center gap-2 bg-[#0052CC]/10 text-[#0052CC] font-bold text-xs uppercase tracking-wider px-3.5 py-1.5 rounded-full mb-3">
-            <span>🎁 Limited Time Warehouse Promotional Deal</span>
-          </div>
-          <h2 id="pricing-heading" className="font-poppins text-3xl lg:text-4xl font-bold text-[#0B1F3A] mb-4">
+        <div className="text-center mb-12 sm:mb-14 reveal-on-scroll">
+          <span className="inline-block text-[#0052CC] font-black text-xs uppercase tracking-widest mb-2 bg-[#f0f4fc] px-3.5 py-1 rounded-full border border-[#0052CC]/20">
+            LIMITED WAREHOUSE PROMOTIONAL DEAL
+          </span>
+          <h2 id="pricing-heading" className="font-poppins text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B1F3A] mb-3 sm:mb-4">
             Select Your Grandmaster Pro Package
           </h2>
-          <p className="text-[#344054] text-lg max-w-2xl mx-auto">
-            Direct from warehouse discount. Every order includes our complete ₦37,500 bonus accessory kit + Free Doorstep Delivery.
+          <p className="text-[#344054] text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
+            Direct warehouse promotional pricing. Every order ships with our complete ₦23,500 bonus accessory kit + Free Doorstep Delivery across Nigeria.
           </p>
 
           {/* Scarcity Banner with promo warning */}
-          <div className="mt-4 inline-flex items-center gap-2 bg-rose-50 border-2 border-rose-300 text-rose-950 text-xs sm:text-sm font-extrabold px-5 py-2.5 rounded-2xl shadow-sm">
+          <div className="mt-4 inline-flex items-center gap-2.5 bg-rose-50 border-2 border-rose-300 text-rose-950 text-xs sm:text-sm font-black px-5 py-2.5 rounded-2xl shadow-sm">
             <span className="w-2.5 h-2.5 rounded-full bg-rose-600 animate-ping" />
-            <span>⚠️ IMPORTANT: This promo is strictly WHILE STOCK LASTS — No extension! (Very Limited Stock)</span>
+            <span>⚠️ STRICT NOTICE: This promo is strictly WHILE CURRENT BATCH LASTS — No extension!</span>
           </div>
 
           {/* HIGH-CONVERTING FREE GIFTS STRIP */}
-          <div className="mt-6 max-w-4xl mx-auto rounded-2xl bg-gradient-to-r from-[#0052CC] via-[#09357a] to-[#0052CC] p-4 text-white border-2 border-[#00AEEF] shadow-xl text-left flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
+          <div className="mt-6 max-w-4xl mx-auto rounded-3xl bg-gradient-to-r from-[#061325] via-[#0B2545] to-[#061325] p-5 sm:p-6 text-white border-2 border-[#00AEEF] shadow-2xl text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="flex items-center gap-3.5">
               <span className="text-3xl animate-bounce">🎁</span>
               <div>
-                <p className="font-poppins font-black text-sm uppercase tracking-wide text-white">
-                  GIFTS WE OFFER WITH EVERY MACHINE:
+                <p className="font-poppins font-black text-sm uppercase tracking-wider text-[#00AEEF]">
+                  INCLUDED FREE WITH EVERY MACHINE CARTON:
                 </p>
-                <p className="text-xs text-white/90 font-medium">
-                  1 Extra Blade + 1 Sieve + 1 Brush for Cleaning the Grinder + Dedicated After-Purchase Support
+                <p className="text-xs sm:text-sm text-white/90 font-medium mt-0.5">
+                  1 Extra 6-Leaf Blade + 1 Micro Sieve + 1 Cleaning Brush + Dedicated VIP Support
                 </p>
               </div>
             </div>
-            <span className="bg-[#00AEEF] text-[#061325] text-xs font-black uppercase px-3 py-1.5 rounded-xl shadow whitespace-nowrap">
+            <span className="bg-[#00AEEF] text-[#061325] text-xs font-black uppercase px-3.5 py-1.5 rounded-xl shadow-md whitespace-nowrap">
               ₦0 EXTRA CHARGE
             </span>
           </div>
@@ -72,20 +72,20 @@ export function PricingSection({
             return (
               <div
                 key={v.id}
-                className={`reveal-on-scroll relative rounded-3xl bg-white p-6 sm:p-7 border-2 transition-all duration-200 flex flex-col justify-between shadow-md hover:shadow-xl ${
+                className={`reveal-on-scroll relative rounded-3xl bg-white p-6 sm:p-7 border-2 transition-all duration-300 flex flex-col justify-between shadow-md hover:shadow-2xl ${
                   isSelected
-                    ? "border-[#0052CC] ring-4 ring-[#0052CC]/20 shadow-2xl"
+                    ? "border-[#0052CC] ring-4 ring-[#0052CC]/20 shadow-2xl scale-[1.01]"
                     : isPopular
-                    ? "border-[#00AEEF] ring-2 ring-[#00AEEF]/20"
-                    : "border-gray-200 hover:border-[#0052CC]/40"
+                    ? "border-[#00AEEF] ring-2 ring-[#00AEEF]/20 shadow-xl"
+                    : "border-gray-200 hover:border-[#0052CC]/50"
                 }`}
               >
                 {/* Top Floating Badge */}
                 {v.badge && (
-                  <div className={`absolute -top-3 left-1/2 -translate-x-1/2 text-white font-extrabold text-[10px] sm:text-xs uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md flex items-center gap-1 whitespace-nowrap ${
-                    isPopular ? "bg-gradient-to-r from-[#0052CC] to-[#00AEEF]" : isMaxPower ? "bg-gradient-to-r from-red-600 to-amber-500" : "bg-[#0B1F3A]"
+                  <div className={`absolute -top-3.5 left-1/2 -translate-x-1/2 text-white font-black text-[10px] sm:text-xs uppercase tracking-wider px-4 py-1 rounded-full shadow-lg flex items-center gap-1.5 whitespace-nowrap ${
+                    isPopular ? "bg-gradient-to-r from-[#0052CC] via-[#00AEEF] to-[#0052CC]" : isMaxPower ? "bg-gradient-to-r from-red-600 to-amber-500" : "bg-[#0B1F3A]"
                   }`}>
-                    <span>{v.badge}</span>
+                    <span>★ {v.badge}</span>
                   </div>
                 )}
 
@@ -111,7 +111,7 @@ export function PricingSection({
 
                   {/* Price Box */}
                   <div className="mb-5 p-4 rounded-2xl bg-[#F8FAFC] border border-gray-100">
-                    <div className="flex items-baseline gap-2.5">
+                    <div className="flex items-baseline gap-2.5 flex-wrap">
                       <span className="font-poppins font-black text-[#0B1F3A] text-2xl sm:text-3xl tracking-tight">
                         {v.priceDisplay}
                       </span>
@@ -128,11 +128,11 @@ export function PricingSection({
                   </div>
 
                   {/* Free Gifts Highlight Box */}
-                  <div className="mb-5 p-3 rounded-xl bg-blue-50/70 border border-[#00AEEF]/40 space-y-1">
+                  <div className="mb-5 p-3.5 rounded-2xl bg-blue-50/70 border border-[#00AEEF]/40 space-y-1.5">
                     <p className="text-[10px] font-black uppercase text-[#0052CC] flex items-center gap-1">
-                      <span>🎁</span> Free Gifts Included:
+                      <span>🎁</span> 100% Free Gifts Included:
                     </p>
-                    <div className="grid grid-cols-2 gap-1 text-[11px] text-[#0B1F3A] font-bold">
+                    <div className="grid grid-cols-2 gap-1.5 text-[11px] text-[#0B1F3A] font-bold">
                       <div>★ 1 Extra Blade</div>
                       <div>★ 1 Sifting Sieve</div>
                       <div>★ 1 Cleaning Brush</div>
@@ -141,17 +141,17 @@ export function PricingSection({
                   </div>
 
                   {/* Features list */}
-                  <div className="space-y-2 mb-6 text-xs text-[#344054]">
+                  <div className="space-y-2.5 mb-6 text-xs text-[#344054]">
                     <div className="flex items-center gap-2">
-                      <span className="text-[#0052CC] font-black">✓</span>
+                      <span className="text-[#0052CC] font-black text-sm">✓</span>
                       <span><strong>100% Pure Copper</strong> Commercial Engine</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-[#0052CC] font-black">✓</span>
+                      <span className="text-[#0052CC] font-black text-sm">✓</span>
                       <span><strong>304 Food-Grade</strong> Stainless Steel Chamber</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <span className="text-[#0052CC] font-black">✓</span>
+                      <span className="text-[#0052CC] font-black text-sm">✓</span>
                       <span><strong>1 Full Year Warranty</strong> + Immediate Swap</span>
                     </div>
                   </div>
@@ -165,17 +165,17 @@ export function PricingSection({
                       onVariantSelect(v.id);
                       onOrderClick(v.id);
                     }}
-                    className={`w-full flex items-center justify-center gap-2 font-black text-sm py-4 rounded-xl transition-all shadow-lg active:scale-95 ${
+                    className={`w-full flex items-center justify-center gap-2 font-black text-sm py-4 rounded-xl transition-all shadow-lg active:scale-95 group ${
                       isSelected
                         ? "bg-[#0052CC] hover:bg-[#0041a8] text-white shadow-blue-500/25"
-                        : "bg-[#00AEEF] hover:bg-[#0098d4] text-[#061325] shadow-cyan-500/25"
+                        : "bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-[#0098d4] text-[#061325] shadow-cyan-500/25 hover:brightness-110"
                     }`}
                   >
-                    <span>Order {v.capacity} ({v.priceDisplay})</span>
-                    <span>→</span>
+                    <span>Claim {v.capacity} ({v.priceDisplay})</span>
+                    <span className="group-hover:translate-x-1 transition-transform">→</span>
                   </button>
-                  <p className="text-center text-[10px] text-gray-500 font-medium">
-                    🔒 Pay on Delivery • Inspect Carton First
+                  <p className="text-center text-[10px] text-gray-500 font-bold flex items-center justify-center gap-1">
+                    <span>🔒</span> Pay On Delivery &bull; Inspect Carton Before Payment
                   </p>
                 </div>
               </div>

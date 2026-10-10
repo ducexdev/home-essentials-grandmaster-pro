@@ -123,6 +123,7 @@ export function GrandmasterProPage({ product }: Props) {
         <FinalCTA
           product={product}
           selectedVariantId={selectedVariantId}
+          onVariantSelect={setSelectedVariantId}
           onOrderClick={openOrderModal}
           whatsappUrl={whatsappUrl}
         />
@@ -142,6 +143,8 @@ export function GrandmasterProPage({ product }: Props) {
 
       {/* Mobile sticky CTA bar */}
       <MobileStickyBar
+        selectedVariantName={product.variants.find((v) => v.id === selectedVariantId)?.capacity}
+        selectedVariantPrice={product.variants.find((v) => v.id === selectedVariantId)?.priceDisplay}
         onOrderClick={() => openOrderModal()}
         whatsappUrl={whatsappUrl}
       />
