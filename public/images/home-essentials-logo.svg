@@ -1,0 +1,12 @@
+<svg width="240" height="60" viewBox="0 0 240 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="240" height="60" rx="10" fill="#0B1F3A"/>
+  <!-- Brand Icon -->
+  <g transform="translate(14, 12)">
+    <rect width="36" height="36" rx="8" fill="#155EEF"/>
+    <circle cx="18" cy="18" r="14" stroke="white" stroke-opacity="0.2" stroke-width="2"/>
+    <path d="M10 18H26M18 10L26 18L18 26" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <!-- Brand Name -->
+  <text x="60" y="27" fill="#FFFFFF" font-family="Poppins, sans-serif" font-weight="700" font-size="14" letter-spacing="-0.02em">Home Essentials</text>
+  <text x="60" y="42" fill="#3B82F6" font-family="Inter, sans-serif" font-weight="600" font-size="10" letter-spacing="0.08em">GRANDMASTER PRO</text>
+</svg>
