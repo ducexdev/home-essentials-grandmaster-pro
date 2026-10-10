@@ -77,15 +77,21 @@ export const PRODUCT_CONFIG: ProductConfig = {
   material: null,
 
   variants: [
-    // [PLACEHOLDER] — All prices and sizes below are EXAMPLES only.
-    // Replace with actual Grandmaster Pro variant names and verified prices.
     {
-      id: "standard",
-      name: "Standard",
-      priceKobo: 0, // [PLACEHOLDER] — set actual price in kobo (₦1 = 100 kobo)
-      priceDisplay: "[PRICE — AWAITING APPROVAL]",
-      available: false,
-      description: "[Description — awaiting product details]",
+      id: "gmp-2500a",
+      name: "Grandmaster Pro 2500A (2.5kg)",
+      priceKobo: 7500000,
+      priceDisplay: "₦75,000",
+      available: true,
+      description: "2,500g Capacity • Ideal for everyday households & family meals",
+    },
+    {
+      id: "gmp-4500a",
+      name: "Grandmaster Pro 4500A (4.5kg)",
+      priceKobo: 12500000,
+      priceDisplay: "₦125,000",
+      available: true,
+      description: "4,500g Capacity • Commercial catering & food business edition",
     },
   ],
 
