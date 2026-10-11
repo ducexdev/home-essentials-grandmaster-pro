@@ -6,9 +6,20 @@ const SMTP_PORT = parseInt(process.env.SMTP_PORT || "465", 10);
 const SMTP_SECURE = process.env.SMTP_SECURE === "true" || SMTP_PORT === 465;
 const SMTP_USER = process.env.SMTP_USER || "order@homeessentials.com.ng";
 const SMTP_PASS = process.env.SMTP_PASS || "5Lnnyy(5^Oyz}Jnz";
-const ORDER_EMAIL = process.env.ORDER_NOTIFICATION_EMAIL || "order@homeessentials.com.ng";
+
+// ORDER_NOTIFICATION_EMAIL should be collinsagu100@gmail.com (set in Vercel).
+// cPanel also has a forwarder: order@homeessentials.com.ng → collinsagu100@gmail.com.
+// Exim on Truehost cannot locally route TO order@homeessentials.com.ng via SMTP
+// (even though the Dovecot/IMAP mailbox exists) — so we send directly to Gmail.
+const ORDER_EMAIL = process.env.ORDER_NOTIFICATION_EMAIL || "collinsagu100@gmail.com";
 const FROM_ADDRESS = process.env.EMAIL_FROM_ADDRESS || "order@homeessentials.com.ng";
 const FROM_NAME = process.env.EMAIL_FROM_NAME || "Home Essentials Orders";
+
+// Exim on Truehost performs sender-verification callouts and cannot verify
+// order@homeessentials.com.ng as a MAIL FROM (envelope sender), even though
+// the IMAP mailbox exists. cpanel@ is a system address Exim accepts without callout.
+// We use it as the SMTP envelope sender while keeping the visible From: as order@.
+const SMTP_ENVELOPE_SENDER = `cpanel@${SMTP_HOST.replace(/^mail\./, "")}`;
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
@@ -214,6 +225,7 @@ export type EmailResult =
  * Send order notification email using SMTP (mail.homeessentials.com.ng)
  * with Resend fallback if configured.
  */
+
 export async function sendOrderNotification(order: Order): Promise<EmailResult> {
   const { subject, html, text } = buildOrderEmail(order);
 
@@ -234,7 +246,14 @@ export async function sendOrderNotification(order: Order): Promise<EmailResult> 
       });
 
       const info = await transporter.sendMail({
+        // envelope: sets the SMTP MAIL FROM / RCPT TO separately from the visible headers.
+        // cpanel@ passes Exim sender verification; order@ is shown to the recipient.
+        envelope: {
+          from: SMTP_ENVELOPE_SENDER,
+          to: ORDER_EMAIL,
+        },
         from: `"${FROM_NAME}" <${FROM_ADDRESS}>`,
+        replyTo: FROM_ADDRESS,
         to: ORDER_EMAIL,
         subject,
         text,
