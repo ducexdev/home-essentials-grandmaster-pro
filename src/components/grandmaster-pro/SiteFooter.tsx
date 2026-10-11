@@ -29,7 +29,7 @@ export function SiteFooter({ product }: Props) {
               </div>
               <div>
                 <span className="block text-white font-poppins font-bold text-sm tracking-wide">HOME ESSENTIALS</span>
-                <span className="block text-[#00AEEF] text-xs font-semibold">Grandmaster Pro Official Store</span>
+                <span className="block text-[#00AEEF] text-xs font-semibold">Dry Grinder — Official Store</span>
               </div>
             </div>
             <p className="text-white/50 text-sm leading-relaxed mb-4">

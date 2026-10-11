@@ -60,7 +60,7 @@ export function HowItWorks() {
               LIVE EVIDENCE DEMONSTRATIONS
             </span>
             <h3 className="font-poppins font-black text-2xl sm:text-3xl text-white">
-              Watch Grandmaster Pro in Action
+              Watch This German Grinder in Action
             </h3>
             <p className="text-white/80 text-xs sm:text-sm mt-1.5 max-w-xl mx-auto leading-relaxed">
               See the exact unboxing, secure lid locking, fast dial operation, and the smooth flour output.
@@ -75,7 +75,7 @@ export function HowItWorks() {
               </h4>
               <VideoEmbed
                 videoId="DGKwW-0uR3o"
-                title="Here's How It Works — Grandmaster Pro"
+                title="Here's How It Works — German Grinder Machine"
                 caption="Full product walkthrough, motor build, and operational overview."
                 dark={true}
               />

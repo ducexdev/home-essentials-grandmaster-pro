@@ -16,7 +16,7 @@ const VIDEO_REVIEWS = [
     state: "Lagos State",
     quote:
       "It handled my dried beans and hard yellow corn in under 90 seconds without any stress. Very fast, no heating up, and cleanup was just with the dry brush!",
-    embedTitle: "Happy Customer Review 1 — Grandmaster Pro",
+    embedTitle: "Happy Customer Review 1 — German Grinder Machine",
     caption: "Live customer feedback on daily kitchen performance.",
   },
   {
@@ -27,7 +27,7 @@ const VIDEO_REVIEWS = [
     state: "Kano State",
     quote:
       "No more sending my housemaid to the market mill to grind pepper and spices. Now I do everything right inside my kitchen with total peace of mind and hygiene.",
-    embedTitle: "Happy Customer Review 2 — Grandmaster Pro",
+    embedTitle: "Happy Customer Review 2 — German Grinder Machine",
     caption: "Customer demonstrating speed and ease of use.",
   },
   {
@@ -38,7 +38,7 @@ const VIDEO_REVIEWS = [
     state: "Rivers State",
     quote:
       "The stainless steel is thick and genuine. The blades crush tough dried yam slices and crayfish to smooth flour. Truly industrial grade as advertised.",
-    embedTitle: "Happy Customer Review 3 — Grandmaster Pro",
+    embedTitle: "Happy Customer Review 3 — German Grinder Machine",
     caption: "Reviewing heavy-duty construction and motor strength.",
   },
 ];
@@ -149,7 +149,7 @@ export function CustomerReviews({ onOrderClick }: Props) {
             </h3>
 
             <p className="text-white/75 text-sm sm:text-base mb-8 max-w-xl mx-auto">
-              Join 3,400+ Nigerian families. Order your Grandmaster Pro today with nationwide delivery and pay only when you&apos;ve personally inspected the machine.
+              Join 3,400+ Nigerian families. Order your German Grinder Machine today with nationwide delivery and pay only when you&apos;ve personally inspected the machine.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-md mx-auto">

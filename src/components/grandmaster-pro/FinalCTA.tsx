@@ -80,7 +80,7 @@ export function FinalCTA({
           >
             Stop Straining With Manual Mortars &amp; Burning Cheap Blenders.<br />
             <span className="bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-[#60A5FA] bg-clip-text text-transparent">
-              Own Your Grandmaster Pro Today.
+              Own This German Grinder Machine Today.
             </span>
           </h2>
           <p className="text-white/70 text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
@@ -143,7 +143,7 @@ export function FinalCTA({
                   <div className="relative w-32 h-32 sm:w-36 sm:h-36 rounded-2xl bg-[#0B1F3A] p-2 border border-white/20 shadow-xl overflow-hidden flex items-center justify-center flex-shrink-0">
                     <Image
                       src="/images/hero-grinder-official.png"
-                      alt={`Grandmaster Pro ${selectedVariant.capacity} Commercial Grinder`}
+                      alt={`German Grinder Machine ${selectedVariant.capacity} Commercial Grinder`}
                       width={160}
                       height={160}
                       className="w-full h-full object-contain drop-shadow-lg"
@@ -159,7 +159,7 @@ export function FinalCTA({
                     </div>
 
                     <h3 className="font-poppins font-black text-xl sm:text-2xl text-white">
-                      Grandmaster Pro — {selectedVariant.capacity}
+                      German Grinder Machine — {selectedVariant.capacity}
                     </h3>
 
                     <div className="flex flex-wrap items-baseline justify-center sm:justify-start gap-2.5">
@@ -213,9 +213,9 @@ export function FinalCTA({
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-2xl mx-auto reveal-on-scroll">
           <button
             onClick={() => onOrderClick(currentVariantId)}
-            className="w-full sm:flex-1 min-h-[58px] flex items-center justify-center gap-2.5 bg-[#00AEEF] hover:bg-[#0098d4] text-[#061325] font-black text-base sm:text-lg px-8 py-4 rounded-2xl transition-all duration-200 hover:shadow-2xl hover:shadow-cyan-500/30 active:scale-95 shadow-xl shadow-cyan-500/20"
+            className="w-full sm:flex-1 min-h-[52px] sm:min-h-[56px] flex items-center justify-center gap-2 bg-[#00AEEF] hover:bg-[#0098d4] text-[#061325] font-black text-xs sm:text-sm md:text-base px-4 sm:px-6 py-3.5 sm:py-4 rounded-2xl transition-all duration-200 hover:shadow-2xl hover:shadow-cyan-500/30 active:scale-95 shadow-xl shadow-cyan-500/20 whitespace-nowrap"
           >
-            <span>Claim {selectedVariant?.capacity ?? "Machine"} (Pay On Delivery)</span>
+            <span className="whitespace-nowrap">Claim {selectedVariant?.capacity ?? "Machine"} (Pay On Delivery)</span>
             <span>→</span>
           </button>
           <a

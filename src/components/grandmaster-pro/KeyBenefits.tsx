@@ -16,7 +16,7 @@ export function KeyBenefits() {
             ENGINEERING EXCELLENCE
           </span>
           <h2 id="benefits-heading" className="font-poppins text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B1F3A] mb-3 sm:mb-4">
-            Why Grandmaster Pro Outlasts Ordinary Blenders
+            Why This German Grinder Machine Outlasts Ordinary Blenders
           </h2>
           <p className="text-[#344054] text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
             Every component is purpose-built with commercial-grade specifications to effortlessly handle the hardest Nigerian food items.
@@ -71,7 +71,7 @@ export function KeyBenefits() {
                 Heavy-Gauge Stainless Steel 304 &bull; Built For Class &amp; Durability
               </h3>
               <p className="text-white/85 text-sm sm:text-base leading-relaxed">
-                Unlike common blenders with fragile plastic jugs that crack, stain, and warp with hard grains, Grandmaster Pro features a thick food-grade stainless steel drum that resists extreme impacts, scratches, and food odors.
+                Unlike common blenders with fragile plastic jugs that crack, stain, and warp with hard grains, this German Grinder Machine features a thick food-grade stainless steel drum that resists extreme impacts, scratches, and food odors.
               </p>
               <ul className="space-y-3 text-xs sm:text-sm text-white/90 pt-2">
                 <li className="flex items-center gap-3">

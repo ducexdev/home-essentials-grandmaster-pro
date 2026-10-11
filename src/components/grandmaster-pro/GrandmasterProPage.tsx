@@ -162,7 +162,7 @@ function buildWhatsAppUrl(product: ProductConfig, variantId: string): string {
   const variant = product.variants.find((v) => v.id === variantId);
   const variantText = variant ? ` (${variant.name})` : "";
   const message = encodeURIComponent(
-    `Hello Home Essentials, I am interested in ordering Grandmaster Pro${variantText}. ` +
+    `Hello Home Essentials, I am interested in ordering the German Grinder Machine${variantText}. ` +
       `Please help me confirm the available options, price and delivery details. Thank you!`
   );
   return `https://wa.me/${product.contact.whatsapp}?text=${message}`;

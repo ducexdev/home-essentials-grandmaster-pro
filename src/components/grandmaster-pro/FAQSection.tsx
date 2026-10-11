@@ -24,7 +24,7 @@ export function FAQSection({ product }: Props) {
     {
       question: "What items and accessories are included inside the box?",
       answer:
-        "Every Grandmaster Pro box comes fully equipped with: (1) Heavy-duty pulverizer machine with pure copper motor, (2) FREE Extra 6-leaf stainless blade replacement assembly, (3) FREE 2x replacement carbon brushes, (4) FREE stainless steel sifting sieve, (5) FREE soft cleaning brush, (6) Food pusher / tamper bar, and (7) Comprehensive instruction manual.",
+        "Every German Grinder Machine carton comes fully equipped with: (1) Heavy-duty pulverizer machine with pure copper motor, (2) FREE Extra 6-leaf stainless blade replacement assembly, (3) FREE 2x replacement carbon brushes, (4) FREE stainless steel sifting sieve, (5) FREE soft cleaning brush, (6) Food pusher / tamper bar, and (7) Comprehensive instruction manual.",
     },
     {
       question: "Can it really crush hard Nigerian food staples like dried yam (elubo) and corn?",
@@ -39,7 +39,7 @@ export function FAQSection({ product }: Props) {
     {
       question: "Can it run on a 'Tiger' or medium-sized generator?",
       answer:
-        "The Grandmaster Pro connects to standard 220V–240V home wall outlets. Because of its high-torque industrial copper motor, it is best powered by NEPA/PHCN mains power or a generator rated 2.5kVA and above (it cannot run on a small 0.9kVA 'I-pass-my-neighbor' generator).",
+        "This German Grinder Machine connects to standard 220V–240V home wall outlets. Because of its high-torque industrial copper motor, it is best powered by NEPA/PHCN mains power or a generator rated 2.5kVA and above (it cannot run on a small 0.9kVA 'I-pass-my-neighbor' generator).",
     },
     {
       question: "What is your warranty and guarantee policy?",

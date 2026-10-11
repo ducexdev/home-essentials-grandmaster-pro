@@ -30,7 +30,7 @@ export function UseCases() {
             <div className="lg:col-span-5 relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 aspect-square max-w-md mx-auto w-full p-2">
               <Image
                 src="/images/food-items-grind.jpg"
-                alt="Food items Grandmaster Pro can grind: corn, millet, wheat, pepper, beans, herbs, nuts"
+                alt="Food items this German Grinder Machine can grind: corn, millet, wheat, pepper, beans, herbs, nuts"
                 width={500}
                 height={500}
                 className="w-full h-full object-contain p-2 hover:scale-105 transition-transform duration-500"
@@ -41,7 +41,7 @@ export function UseCases() {
                 DRY &amp; COMMERCIAL-GRADE MILLING
               </span>
               <h3 className="font-poppins font-black text-2xl sm:text-3xl text-white">
-                What Can Grandmaster Pro Pulverize?
+                What Can This German Grinder Machine Pulverize?
               </h3>
               <p className="text-white/85 text-xs sm:text-sm leading-relaxed">
                 Engineered with high-speed Japanese-style rotary cutting blades and a pure copper core that pulverizes fibrous, oily, and rock-hard ingredients into silky-fine powders without leaving coarse grits.

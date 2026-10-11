@@ -57,7 +57,7 @@ export function ProblemSolution() {
             </div>
           </div>
 
-          {/* Column 2: The Grandmaster Pro Transformation */}
+          {/* Column 2: The German Grinder Transformation */}
           <div className="bg-gradient-to-b from-[#0B1F3A] to-[#061325] rounded-3xl p-6 sm:p-8 shadow-2xl border-2 border-[#00AEEF] text-white flex flex-col justify-between relative overflow-hidden">
             <div className="absolute top-0 right-0 w-72 h-72 bg-[#00AEEF]/15 rounded-full blur-3xl pointer-events-none" />
 
@@ -66,7 +66,7 @@ export function ProblemSolution() {
                 ✓
               </div>
               <span className="text-[11px] font-black uppercase tracking-wider text-[#00AEEF] block mb-1">
-                The Grandmaster Pro Transformation
+                The German Grinder Transformation
               </span>
               <h3 className="font-poppins font-black text-xl sm:text-2xl text-white mb-5">
                 Effortless Power Right In Your Kitchen
@@ -143,7 +143,7 @@ export function ProblemSolution() {
         {/* Bottom Statement */}
         <div className="text-center">
           <p className="text-[#0B1F3A] font-poppins font-black text-2xl lg:text-3xl max-w-3xl mx-auto leading-tight">
-            Grandmaster Pro was engineered to eliminate kitchen struggle —
+            This German Grinder Machine was engineered to eliminate kitchen struggle —
             <span className="text-[#0052CC]"> reliably, every single day.</span>
           </p>
         </div>

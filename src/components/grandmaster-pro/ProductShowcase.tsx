@@ -71,14 +71,14 @@ export function ProductShowcase() {
               Kitchen&apos;s Secret Weapon in Action
             </h3>
             <p className="text-white/85 text-sm sm:text-base mb-6 sm:mb-8 max-w-xl mx-auto leading-relaxed">
-              Watch how effortlessly Grandmaster Pro grinds, pulverizes, and prepares tough ingredients in seconds.
+              Watch how effortlessly this German Grinder Machine pulverizes and prepares tough ingredients in seconds.
             </p>
 
             {/* Video Player — video frame is 100% clean and unobstructed, text is below */}
             <div className="max-w-2xl mx-auto">
               <VideoEmbed
                 videoId="UU-6hPHN-Kg"
-                title="Kitchen's Secret Weapon — Grandmaster Pro Demonstration"
+                title="Kitchen's Secret Weapon — German Grinder Machine Demonstration"
                 caption="Tap to watch real-time grinding power and quiet commercial-grade motor performance."
                 dark={true}
               />

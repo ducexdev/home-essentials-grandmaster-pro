@@ -137,7 +137,7 @@ export function OrderModal({ product, selectedVariantId, onClose }: Props) {
         <div className="flex items-center justify-between px-6 pt-5 pb-3 border-b border-gray-100 flex-shrink-0">
           <div>
             <h2 id="modal-title" className="font-poppins font-bold text-[#0B1F3A] text-lg">
-              Order Grandmaster Pro
+              Order Your German Grinder Machine
             </h2>
             <p className="text-gray-500 text-xs">Fill in your delivery details below.</p>
           </div>
@@ -159,14 +159,14 @@ export function OrderModal({ product, selectedVariantId, onClose }: Props) {
             <div className="w-9 h-9 rounded-lg bg-white border border-gray-200 p-0.5 overflow-hidden flex-shrink-0">
               <Image
                 src="/images/hero-grinder-official.png"
-                alt="Grandmaster Pro Official Grinder"
+                alt="Home Essentials German Grinder Machine"
                 width={36}
                 height={36}
                 className="w-full h-full object-contain"
               />
             </div>
             <div>
-              <p className="text-[#0B1F3A] font-bold text-xs leading-tight">Grandmaster Pro</p>
+              <p className="text-[#0B1F3A] font-bold text-xs leading-tight">German Grinder Machine</p>
               <p className="text-gray-500 text-[11px] leading-tight">Pay on Delivery Available</p>
             </div>
           </div>

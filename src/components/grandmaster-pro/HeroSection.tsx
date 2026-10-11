@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { ProductConfig } from "@/lib/product-config";
 import Image from "next/image";
 
@@ -12,6 +12,17 @@ interface Props {
   whatsappUrl: string;
 }
 
+const PERSONAS = [
+  { emoji: "☕", label: "Coffee Enthusiast", sub: "Freshly ground coffee for the perfect cup, every morning" },
+  { emoji: "👨‍🍳", label: "Home Chef", sub: "Elevate flavour with freshly ground herbs and spices" },
+  { emoji: "🏠", label: "Home Cook", sub: "Save hours grinding beans, grains, and seasonings in seconds" },
+  { emoji: "🍽️", label: "Restaurant Owner", sub: "High-powered commercial grinding for busy culinary kitchens" },
+  { emoji: "👴", label: "Elderly Individual", sub: "Effortless, one-button grinding — no strain, no stress" },
+  { emoji: "🥗", label: "Health-Conscious", sub: "Make your own nut flours, spice blends & healthy powders at home" },
+  { emoji: "⏱️", label: "Busy Professional", sub: "Done in 15 seconds — not 15 minutes" },
+  { emoji: "🧴", label: "DIY Enthusiast", sub: "Grind herbs for homemade cosmetics, soaps & candles" },
+];
+
 export function HeroSection({
   product,
   selectedVariantId,
@@ -20,42 +31,52 @@ export function HeroSection({
   whatsappUrl,
 }: Props) {
   const availableVariants = product.variants.filter((v) => v.available);
+  const selectedVariant = availableVariants.find((v) => v.id === selectedVariantId);
 
-  // Dynamic urgency countdown: starts at 8, ticks down gradually to 3, persisted in session
+  // Dynamic urgency countdown
   const [unitsLeft, setUnitsLeft] = useState(8);
   const [isDecremented, setIsDecremented] = useState(false);
+  const [activePersona, setActivePersona] = useState(0);
 
   useEffect(() => {
     try {
       const stored = sessionStorage.getItem("he_units_left");
       if (stored) {
         const parsed = parseInt(stored, 10);
-        if (!isNaN(parsed) && parsed >= 3 && parsed <= 8) {
-          setUnitsLeft(parsed);
-        }
+        if (!isNaN(parsed) && parsed >= 3 && parsed <= 8) setUnitsLeft(parsed);
       }
-    } catch {
-      // Ignore sessionStorage errors
-    }
+    } catch { /* ignore */ }
 
-    // Dynamic timer that decreases unit count periodically to simulate real sales
-    const tickInterval = setInterval(() => {
+    const tick = setInterval(() => {
       setUnitsLeft((prev) => {
-        if (prev <= 3) return 3; // Keep urgency without reaching 0
+        if (prev <= 3) return 3;
         const updated = prev - 1;
-        try {
-          sessionStorage.setItem("he_units_left", updated.toString());
-        } catch {
-          // Ignore
-        }
+        try { sessionStorage.setItem("he_units_left", updated.toString()); } catch { /* ignore */ }
         setIsDecremented(true);
         setTimeout(() => setIsDecremented(false), 1200);
         return updated;
       });
-    }, 18000); // Ticks every 18 seconds
+    }, 18000);
 
-    return () => clearInterval(tickInterval);
+    // Rotate personas automatically
+    const personaTick = setInterval(() => {
+      setActivePersona((p) => (p + 1) % PERSONAS.length);
+    }, 2800);
+
+    return () => { clearInterval(tick); clearInterval(personaTick); };
   }, []);
+
+  const packageScrollRef = useRef<HTMLDivElement>(null);
+
+  const scrollPackages = (direction: "left" | "right") => {
+    if (packageScrollRef.current) {
+      const scrollAmount = 260;
+      packageScrollRef.current.scrollBy({
+        left: direction === "left" ? -scrollAmount : scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <section
@@ -70,12 +91,13 @@ export function HeroSection({
       </div>
 
       <div className="relative max-w-6xl mx-auto px-4">
-        {/* Top Scarcity & Social Proof Strip */}
+
+        {/* ── TOP URGENCY + SOCIAL PROOF STRIP ── */}
         <div className="flex flex-wrap items-center justify-between gap-3 mb-6 sm:mb-8 pb-4 border-b border-white/10 text-xs">
-          <div className="inline-flex items-center gap-2 bg-[#0052CC]/25 border border-[#0052CC]/60 text-[#00AEEF] px-3.5 py-1.5 rounded-full font-bold shadow-sm">
-            <span className="w-2 h-2 rounded-full bg-[#00AEEF] animate-ping" />
+          <div className="inline-flex items-center gap-2 bg-rose-500/20 border border-rose-500/40 text-rose-300 px-3.5 py-1.5 rounded-full font-bold shadow-sm">
+            <span className="w-2 h-2 rounded-full bg-rose-400 animate-ping flex-shrink-0" />
             <span className="flex items-center gap-1">
-              🔥 WAREHOUSE PROMO ACTIVE: BATCH OF TODAY ALMOST SOLD OUT (
+              🚨 LIMITED STOCK ALERT — PROMO ALMOST OVER (
               <span
                 suppressHydrationWarning
                 className={`inline-block font-black transition-all duration-300 ${
@@ -90,60 +112,104 @@ export function HeroSection({
             </span>
           </div>
 
-          <div className="flex items-center gap-2 text-white/85 text-xs">
-            <div className="flex text-amber-400 text-xs tracking-tighter">★★★★★</div>
+          <div className="flex items-center gap-2 text-white/85">
+            <div className="flex text-amber-400 tracking-tighter">★★★★★</div>
             <span className="font-bold text-white">4.9/5 Rating</span>
-            <span className="text-white/40">&bull;</span>
+            <span className="text-white/40">•</span>
             <span className="text-white/80">3,400+ Verified Nigerian Kitchens</span>
           </div>
         </div>
 
-        {/* Hero Grid */}
+        {/* ── HERO GRID ── */}
         <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-          {/* Left Column (7 cols on desktop): Copy, Value Stack, Selector, CTAs */}
+
+          {/* LEFT COLUMN: Copy, Personas, Selector, CTAs */}
           <div className="lg:col-span-7 space-y-6">
-            {/* Category / Authority Eyebrow */}
-            <div className="inline-flex items-center gap-2 text-[#00AEEF] text-xs font-black uppercase tracking-widest bg-[#00AEEF]/10 px-3 py-1 rounded-full border border-[#00AEEF]/30">
-              <span>★</span> OFFICIAL COMMERCIAL-GRADE GRINDER
+
+            {/* Authority Eyebrow */}
+            <div className="inline-flex items-center gap-2 text-[#00AEEF] text-xs font-black uppercase tracking-widest bg-[#00AEEF]/10 px-3 py-1.5 rounded-full border border-[#00AEEF]/30">
+              <span>🇩🇪</span> OFFICIAL GERMAN GRINDER MACHINE — BY HOME ESSENTIALS
             </div>
 
-            {/* Main Editorial Headline */}
-            <h1 className="font-poppins font-black text-3xl sm:text-4xl md:text-5xl lg:text-[46px] leading-[1.14] tracking-tight text-white">
-              <span className="block text-white">
-                Grind Stone-Hard Staples Into Silky Flour
+            {/* ── MAIN HEADLINE (New high-converting copy) ── */}
+            <h1 className="font-poppins font-black leading-[1.1] tracking-tight text-white">
+              <span className="block text-3xl sm:text-4xl lg:text-[44px] text-white">
+                Your Kitchen Deserves a
               </span>
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-sky-200 block mt-1">
-                In 15 Seconds Flat.
+              <span className="block text-3xl sm:text-4xl lg:text-[48px] mt-1 text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-sky-300">
+                10–20 Year Investment,
               </span>
-              <span className="block text-white/90 font-extrabold text-xl sm:text-2xl md:text-3xl mt-2 tracking-normal">
-                Grandmaster Pro™ <span className="text-[#00AEEF]">Commercial Multi-Function Grinder</span>
+              <span className="block text-2xl sm:text-3xl lg:text-[36px] mt-2 text-white/95 font-extrabold">
+                Not Another Blender That Burns Out in 3 Months.
               </span>
             </h1>
 
             {/* Sub-headline */}
             <p className="text-white/85 text-base sm:text-lg leading-relaxed max-w-xl">
-              Stop suffering through exhausting market trips and stop burning cheap plastic blenders. Pulverize dry yam chips, dried beans, corn, tough spices, and seeds into bakery-smooth powder right inside your kitchen — quietly and effortlessly.
+              This <strong className="text-white">German-Engineered Grinder Machine</strong> uses a high-speed industrial motor to pulverize dried beans, corn, yam, spices, coffee, nuts, cereals, and more into <em>bakery-smooth powder in under 15 seconds</em> — right inside your own kitchen. No market trips. No burned-out motors. No excuses.
             </p>
 
-            {/* MOBILE ONLY: Product Photo displayed high up for instant visual recognition */}
-            <div className="lg:hidden my-6">
+            {/* ── ROTATING PERSONA TICKER ── */}
+            <div className="rounded-2xl bg-white/5 border border-white/15 p-4 overflow-hidden">
+              <p className="text-[11px] font-black uppercase tracking-widest text-white/50 mb-3">
+                🎯 This Machine Is a Must-Have If You Are...
+              </p>
+              <div className="relative h-14 overflow-hidden">
+                {PERSONAS.map((p, i) => (
+                  <div
+                    key={p.label}
+                    className={`absolute inset-0 flex items-center gap-3 transition-all duration-500 ${
+                      i === activePersona
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-4 pointer-events-none"
+                    }`}
+                  >
+                    <span className="text-3xl flex-shrink-0">{p.emoji}</span>
+                    <div>
+                      <p className="text-white font-black text-sm sm:text-base leading-tight">
+                        {p.label}
+                      </p>
+                      <p className="text-white/60 text-xs sm:text-sm font-medium leading-snug">
+                        {p.sub}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              {/* Persona dots */}
+              <div className="flex gap-1.5 mt-3">
+                {PERSONAS.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActivePersona(i)}
+                    className={`h-1 rounded-full transition-all duration-300 ${
+                      i === activePersona ? "w-6 bg-[#00AEEF]" : "w-1.5 bg-white/20"
+                    }`}
+                    aria-label={`View persona ${i + 1}`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* ── MOBILE ONLY: Product Photo ── */}
+            <div className="lg:hidden">
               <div className="relative rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/20 p-5 backdrop-blur-md shadow-2xl overflow-hidden text-center">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#00AEEF]/20 rounded-full blur-3xl pointer-events-none" />
 
                 <div className="flex items-center justify-between mb-2">
                   <span className="bg-[#0052CC] text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full shadow">
-                    Commercial 25,000 RPM
+                    🇩🇪 German-Engineered
                   </span>
                   <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>Pay On Delivery</span>
+                    Pay On Delivery
                   </span>
                 </div>
 
                 <div className="relative w-full aspect-square max-h-[300px] flex items-center justify-center my-1 mx-auto">
                   <Image
                     src="/images/hero-grinder-official.png"
-                    alt="Grandmaster Pro Commercial Multi-Function Grinder"
+                    alt="Home Essentials German Grinder Machine"
                     width={340}
                     height={480}
                     priority
@@ -153,7 +219,7 @@ export function HeroSection({
 
                 <div className="pt-2 border-t border-white/10 grid grid-cols-2 gap-2 text-center text-[10px] font-bold uppercase tracking-wider">
                   <div className="bg-white/5 p-1.5 rounded-xl border border-white/10 text-[#00AEEF]">
-                    100% PURE COPPER MOTOR
+                    LASTS 10–20 YEARS
                   </div>
                   <div className="bg-white/5 p-1.5 rounded-xl border border-white/10 text-emerald-400">
                     1-YEAR FULL WARRANTY
@@ -162,173 +228,177 @@ export function HeroSection({
               </div>
             </div>
 
-            {/* Benefit Checkmarks */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs sm:text-sm font-semibold text-white/90">
-              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 backdrop-blur-sm">
-                <span className="text-[#00AEEF] text-base font-black">✓</span>
-                <span>100% Pure Copper Induction Motor</span>
-              </div>
-              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 backdrop-blur-sm">
-                <span className="text-[#00AEEF] text-base font-black">✓</span>
-                <span>25,000 RPM Super-Crushing Speed</span>
-              </div>
-              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 backdrop-blur-sm">
-                <span className="text-[#00AEEF] text-base font-black">✓</span>
-                <span>Food-Grade 304 Stainless Steel</span>
-              </div>
-              <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 backdrop-blur-sm">
-                <span className="text-[#00AEEF] text-base font-black">✓</span>
-                <span>Zero Advance Deposit (Pay On Delivery)</span>
-              </div>
+            {/* ── KEY BENEFIT CHECKMARKS ── */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm font-semibold text-white/90">
+              {[
+                { icon: "✓", label: "100% Pure Copper Induction Motor", color: "text-[#00AEEF]" },
+                { icon: "✓", label: "25,000 RPM — Silky Powder in 15 Secs", color: "text-[#00AEEF]" },
+                { icon: "✓", label: "Food-Grade 304 Stainless Steel Body", color: "text-[#00AEEF]" },
+                { icon: "✓", label: "Zero Advance Deposit — Pay On Delivery", color: "text-emerald-400" },
+                { icon: "✓", label: "Outlasts Your Pots, Plates & Cylinders", color: "text-[#00AEEF]" },
+                { icon: "✓", label: "Brand New — Not Refurbished", color: "text-emerald-400" },
+              ].map((b) => (
+                <div key={b.label} className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 backdrop-blur-sm">
+                  <span className={`${b.color} text-base font-black flex-shrink-0`}>{b.icon}</span>
+                  <span>{b.label}</span>
+                </div>
+              ))}
             </div>
 
-            {/* HIGH-CONVERTING FREE GIFTS & SUPPORT CALLOUT */}
-            <div className="rounded-2xl p-4 sm:p-5 bg-gradient-to-r from-[#0052CC]/50 via-[#00AEEF]/20 to-[#0052CC]/40 border-2 border-[#00AEEF] shadow-2xl shadow-cyan-500/20 backdrop-blur-md relative overflow-hidden">
+            {/* ── FREE GIFTS CALLOUT ── */}
+            <div className="rounded-2xl p-4 sm:p-5 bg-gradient-to-r from-[#0052CC]/50 via-[#00AEEF]/20 to-[#0052CC]/40 border-2 border-[#00AEEF] shadow-2xl shadow-cyan-500/20 backdrop-blur-md">
               <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                 <div className="flex items-center gap-2">
                   <span className="text-xl sm:text-2xl animate-bounce">🎁</span>
                   <span className="font-poppins font-black text-xs sm:text-sm uppercase tracking-wider text-white">
-                    FREE GIFTS INCLUDED WITH EVERY ORDER:
+                    ORDER NOW &amp; GET THESE FREE GIFTS:
                   </span>
                 </div>
                 <span className="bg-[#00AEEF] text-[#061325] text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full shadow">
                   WORTH ₦23,500 — FREE
                 </span>
               </div>
-
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                <div className="bg-[#061325]/85 border border-[#00AEEF]/30 rounded-xl p-3 text-center hover:border-[#00AEEF] transition-colors">
-                  <span className="text-xl block mb-1">🔪</span>
-                  <p className="font-black text-white text-xs leading-tight">1 Extra Blade</p>
-                  <p className="text-[10px] text-[#00AEEF] mt-0.5 font-bold">Spare 6-Leaf Set</p>
-                </div>
+                {[
+                  { icon: "🔪", name: "1 Extra Blade", sub: "Spare 6-Leaf Set" },
+                  { icon: "🥣", name: "1 Sieve", sub: "Ultra-Fine Sifter" },
+                  { icon: "🖌️", name: "1 Cleaning Brush", sub: "For Easy Care" },
+                  { icon: "🛡️", name: "VIP Support", sub: "Lifetime After-Purchase", green: true },
+                ].map((g) => (
+                  <div key={g.name} className={`bg-[#061325]/85 border rounded-xl p-3 text-center ${g.green ? "border-emerald-400/40" : "border-[#00AEEF]/30"}`}>
+                    <span className="text-xl block mb-1">{g.icon}</span>
+                    <p className="font-black text-white text-xs leading-tight">{g.name}</p>
+                    <p className={`text-[10px] mt-0.5 font-bold ${g.green ? "text-emerald-400" : "text-[#00AEEF]"}`}>{g.sub}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-                <div className="bg-[#061325]/85 border border-[#00AEEF]/30 rounded-xl p-3 text-center hover:border-[#00AEEF] transition-colors">
-                  <span className="text-xl block mb-1">🥣</span>
-                  <p className="font-black text-white text-xs leading-tight">1 Sieve</p>
-                  <p className="text-[10px] text-[#00AEEF] mt-0.5 font-bold">Ultra-Fine Sifter</p>
+            {/* ── TOP HORIZONTAL MECHANISM: PACKAGE SIZE SLIDER ── */}
+            <div className="relative">
+              <div className="flex items-center justify-between gap-2 mb-2">
+                <div className="flex items-center gap-2">
+                  <p className="text-xs font-black uppercase tracking-wider text-[#00AEEF]">
+                    📌 Select Machine Capacity &amp; Promo Price:
+                  </p>
+                  <span className="hidden sm:inline text-[10px] text-white/50 font-bold">
+                    (Slide horizontally to view all 7 sizes)
+                  </span>
                 </div>
-
-                <div className="bg-[#061325]/85 border border-[#00AEEF]/30 rounded-xl p-3 text-center hover:border-[#00AEEF] transition-colors">
-                  <span className="text-xl block mb-1">🖌️</span>
-                  <p className="font-black text-white text-xs leading-tight">1 Cleaning Brush</p>
-                  <p className="text-[10px] text-[#00AEEF] mt-0.5 font-bold">For Easy Grinder Care</p>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => scrollPackages("left")}
+                    className="w-7 h-7 rounded-full bg-white/10 hover:bg-[#00AEEF] hover:text-[#061325] text-white flex items-center justify-center text-xs font-black transition-all active:scale-90 border border-white/15"
+                    aria-label="Scroll packages left"
+                  >
+                    ←
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scrollPackages("right")}
+                    className="w-7 h-7 rounded-full bg-white/10 hover:bg-[#00AEEF] hover:text-[#061325] text-white flex items-center justify-center text-xs font-black transition-all active:scale-90 border border-white/15"
+                    aria-label="Scroll packages right"
+                  >
+                    →
+                  </button>
                 </div>
+              </div>
 
-                <div className="bg-[#061325]/85 border border-emerald-400/40 rounded-xl p-3 text-center hover:border-emerald-400 transition-colors">
-                  <span className="text-xl block mb-1">🛡️</span>
-                  <p className="font-black text-white text-xs leading-tight">After Purchase</p>
-                  <p className="text-[10px] text-emerald-400 mt-0.5 font-bold">Direct VIP Support</p>
+              {/* Horizontal Scroll Track */}
+              <div className="relative group">
+                <div
+                  ref={packageScrollRef}
+                  className="flex gap-2.5 overflow-x-auto scrollbar-none snap-x snap-mandatory py-1 select-none scroll-smooth"
+                  style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+                >
+                  {availableVariants.map((v) => {
+                    const isSelected = selectedVariantId === v.id;
+                    const isPopular = v.id === "gmp-1000g";
+                    return (
+                      <div
+                        key={v.id}
+                        onClick={() => onVariantSelect(v.id)}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => e.key === "Enter" && onVariantSelect(v.id)}
+                        className={`flex-shrink-0 w-[142px] sm:w-[155px] snap-start cursor-pointer rounded-2xl p-3 border-2 transition-all duration-200 relative flex flex-col justify-between ${
+                          isSelected
+                            ? "bg-gradient-to-br from-[#0052CC]/80 to-[#00AEEF]/50 border-[#00AEEF] shadow-lg shadow-cyan-500/30 ring-2 ring-[#00AEEF]/40 scale-[1.02]"
+                            : "bg-white/5 border-white/15 hover:border-white/35 hover:bg-white/10"
+                        }`}
+                        aria-pressed={isSelected}
+                      >
+                        <div className="flex items-center justify-between gap-1 mb-1">
+                          <span className="font-poppins font-black text-xs text-white truncate">{v.capacity}</span>
+                          {isPopular ? (
+                            <span className="text-[8px] font-black uppercase text-amber-300 bg-amber-500/30 px-1 py-0.5 rounded">Popular</span>
+                          ) : (
+                            <span className="text-[8px] font-bold text-rose-300 bg-rose-500/30 px-1 py-0.5 rounded">{v.stockLeft} left</span>
+                          )}
+                        </div>
+                        <div className="mt-1 pt-1 border-t border-white/10">
+                          <div className="text-sm font-black text-[#00AEEF] leading-tight">{v.priceDisplay}</div>
+                          <div className="text-[10px] text-white/40 line-through">{v.regularPriceDisplay}</div>
+                          {v.savingsDisplay && (
+                            <div className="text-[9px] text-emerald-400 font-black mt-0.5">{v.savingsDisplay}</div>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>
 
-            {/* Interactive Model Selection Cards (All 7 Promo Sizes) */}
-            <div className="pt-2">
-              <div className="flex items-center justify-between gap-2 mb-2.5">
-                <p className="text-xs font-black uppercase tracking-wider text-[#00AEEF]">
-                  Select Capacity &amp; Promo Package:
-                </p>
-                <span className="text-[10px] font-black text-rose-300 bg-rose-500/20 border border-rose-500/40 px-2 py-0.5 rounded-full animate-pulse">
-                  ⚡ Promo strictly while stock lasts!
-                </span>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2">
-                {availableVariants.map((v) => {
-                  const isSelected = selectedVariantId === v.id;
-                  const isPopular = v.id === "gmp-1000g";
-
-                  return (
-                    <div
-                      key={v.id}
-                      onClick={() => onVariantSelect(v.id)}
-                      className={`cursor-pointer rounded-xl p-2.5 border-2 transition-all duration-200 relative flex flex-col justify-between ${
-                        isSelected
-                          ? "bg-gradient-to-br from-[#0052CC]/70 to-[#00AEEF]/40 border-[#00AEEF] shadow-lg shadow-cyan-500/25 scale-[1.02]"
-                          : "bg-white/5 border-white/15 hover:border-white/30 text-white/80 hover:bg-white/10"
-                      }`}
-                    >
-                      <div className="flex items-center justify-between gap-1 mb-1">
-                        <span className="font-poppins font-black text-xs text-white">
-                          {v.capacity}
-                        </span>
-                        {isPopular ? (
-                          <span className="text-[8px] font-black uppercase text-amber-300 bg-amber-500/30 px-1 py-0.5 rounded">
-                            Popular
-                          </span>
-                        ) : (
-                          <span className="text-[8px] font-bold text-rose-300 bg-rose-500/30 px-1 py-0.5 rounded">
-                            {v.stockLeft} left
-                          </span>
-                        )}
-                      </div>
-
-                      <div className="mt-1 pt-1 border-t border-white/10">
-                        <div className="text-sm font-black text-[#00AEEF]">
-                          {v.priceDisplay}
-                        </div>
-                        <div className="text-[10px] text-white/40 line-through">
-                          {v.regularPriceDisplay}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Magnetic High-Converting CTA Group */}
-            <div className="pt-3 space-y-3">
+            {/* ── CTA BUTTONS (Single Straight Line Guaranteed) ── */}
+            <div className="space-y-3 pt-1">
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => onOrderClick(selectedVariantId)}
-                  className="flex-1 bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-[#0098d4] hover:brightness-110 text-[#061325] font-black text-sm sm:text-base uppercase tracking-wider py-4 px-6 rounded-2xl transition-all shadow-xl shadow-cyan-500/35 active:scale-95 flex items-center justify-center gap-2 group"
+                  className="flex-1 min-w-0 bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-[#0098d4] hover:brightness-110 text-[#061325] font-black uppercase py-4 px-4 sm:px-6 rounded-2xl transition-all shadow-xl shadow-cyan-500/35 active:scale-95 flex items-center justify-center gap-2 group whitespace-nowrap overflow-hidden"
                 >
-                  <span>
-                    Claim {availableVariants.find((v) => v.id === selectedVariantId)?.capacity || "Grandmaster Pro"}{" "}
-                    ({availableVariants.find((v) => v.id === selectedVariantId)?.priceDisplay || ""}) — Pay On Delivery
+                  <span className="whitespace-nowrap truncate text-[11px] xs:text-xs sm:text-[13px] md:text-sm font-black tracking-tight sm:tracking-normal">
+                    Order {selectedVariant?.capacity ?? "Your Machine"} ({selectedVariant?.priceDisplay ?? ""}) — Pay On Delivery
                   </span>
-                  <span className="group-hover:translate-x-1 transition-transform">→</span>
+                  <span className="group-hover:translate-x-1 transition-transform flex-shrink-0">→</span>
                 </button>
-
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-[#25D366] hover:bg-[#1da851] text-white font-bold text-sm py-4 px-5 rounded-2xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-500/20 active:scale-95"
+                  className="flex-shrink-0 bg-[#25D366] hover:bg-[#1da851] text-white font-bold text-xs sm:text-sm py-4 px-4 sm:px-5 rounded-2xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-500/20 active:scale-95 whitespace-nowrap"
                 >
-                  <span>💬 Chat On WhatsApp</span>
+                  💬 Chat On WhatsApp
                 </a>
               </div>
 
-              {/* Zero-Friction Reassurance Microcopy */}
-              <div className="flex flex-wrap items-center justify-between text-[11px] sm:text-xs text-white/80 pt-1 gap-2">
+              {/* Zero-Risk Microcopy */}
+              <div className="flex flex-wrap items-center justify-between text-[11px] sm:text-xs text-white/80 gap-2">
                 <span className="flex items-center gap-1.5 font-medium text-emerald-400">
-                  <span>🔒</span> Pay ₦0 Online — Inspect Carton Before Payment
+                  🔒 Pay ₦0 Now — Inspect Carton Before Payment
                 </span>
                 <span className="flex items-center gap-1.5 font-medium text-[#00AEEF]">
-                  <span>🚚</span> Doorstep Delivery Across 36 States
+                  🚚 Free Doorstep Delivery — All 36 States + FCT
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Right Column (5 cols on desktop): Desktop Hero Product Visual & Proof Stamps */}
+          {/* ── RIGHT COLUMN: Desktop Product Visual ── */}
           <div className="hidden lg:flex lg:col-span-5 justify-center">
             <div className="relative w-full max-w-lg">
-              {/* Product Showcase Card */}
-              <div className="relative rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/20 p-6 pb-6 backdrop-blur-md shadow-2xl overflow-hidden group">
-                {/* Glow ring */}
+              <div className="relative rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/20 p-6 pb-8 backdrop-blur-md shadow-2xl overflow-hidden group">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#00AEEF]/25 rounded-full blur-3xl pointer-events-none" />
 
-                {/* Top Badge */}
+                {/* Top Badges */}
                 <div className="flex items-center justify-between mb-3">
                   <span className="bg-[#0052CC] text-white text-xs font-black uppercase px-3 py-1 rounded-full shadow">
-                    Commercial 25,000 RPM
+                    🇩🇪 German-Engineered
                   </span>
                   <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-xs font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
                     <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    <span>In Stock &bull; Ready to Ship</span>
+                    In Stock • Ready to Ship
                   </span>
                 </div>
 
@@ -336,7 +406,7 @@ export function HeroSection({
                 <div className="relative w-full aspect-[419/595] max-h-[520px] flex items-center justify-center my-2">
                   <Image
                     src="/images/hero-grinder-official.png"
-                    alt="Grandmaster Pro 2500A Commercial Multi-Function Grinder"
+                    alt="Home Essentials German Grinder Machine — 25,000 RPM Industrial Motor"
                     width={419}
                     height={595}
                     priority
@@ -344,27 +414,37 @@ export function HeroSection({
                   />
                 </div>
 
-                {/* Bottom Trust Stamp Bar */}
+                {/* Slogan stamp */}
+                <div className="text-center py-2 mb-2">
+                  <p className="font-poppins font-black text-base text-[#00AEEF] tracking-wide uppercase">
+                    Grandmaster Pro™
+                  </p>
+                  <p className="text-white/50 text-xs font-semibold tracking-widest">
+                    Built to Last. Built for Nigeria.
+                  </p>
+                </div>
+
+                {/* Bottom Trust Stamps */}
                 <div className="pt-3 border-t border-white/10 grid grid-cols-2 gap-2 text-center text-[10px] font-bold uppercase tracking-wider">
                   <div className="bg-white/5 p-2 rounded-xl border border-white/10">
-                    <span className="text-[#00AEEF] block text-xs">100% COPPER</span>
-                    <span className="text-white/70">Heavy Engine</span>
+                    <span className="text-[#00AEEF] block text-xs">LASTS 10–20 YRS</span>
+                    <span className="text-white/70">Pure Copper Engine</span>
                   </div>
                   <div className="bg-white/5 p-2 rounded-xl border border-white/10">
                     <span className="text-[#00AEEF] block text-xs">PAY ON DELIVERY</span>
-                    <span className="text-white/70">All 36 States</span>
+                    <span className="text-white/70">All 36 States + FCT</span>
                   </div>
                 </div>
               </div>
 
-              {/* Floating Guarantee Stamp */}
+              {/* Floating Warranty Badge */}
               <div className="absolute -bottom-5 -left-4 sm:-left-6 bg-white text-[#061325] p-3.5 rounded-2xl shadow-2xl border border-gray-100 flex items-center gap-3">
                 <div className="w-11 h-11 rounded-xl bg-[#0052CC] flex items-center justify-center text-white text-lg font-black shadow">
                   ✓
                 </div>
                 <div>
                   <p className="text-xs font-black uppercase leading-tight text-[#0052CC]">1-Year Engine Warranty</p>
-                  <p className="text-[10px] text-gray-600 font-medium">10-Day Free Replacement Policy</p>
+                  <p className="text-[10px] text-gray-600 font-medium">Brand New — Not Refurbished</p>
                 </div>
               </div>
             </div>

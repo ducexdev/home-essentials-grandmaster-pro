@@ -87,11 +87,11 @@ export function SiteHeader({ onOrderClick, whatsappUrl }: Props) {
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-7 text-xs font-bold uppercase tracking-wider text-white/80" aria-label="Main navigation">
             <a href="#problem-solution" className="hover:text-[#00AEEF] transition-colors">Why It&apos;s Better</a>
-            <a href="#use-cases" className="hover:text-[#00AEEF] transition-colors">Food Items</a>
-            <a href="#how-it-works" className="hover:text-[#00AEEF] transition-colors">Video Demos</a>
-            <a href="#reviews" className="hover:text-[#00AEEF] transition-colors">Customer Reviews</a>
+            <a href="#use-cases" className="hover:text-[#00AEEF] transition-colors">Items</a>
+            <a href="#how-it-works" className="hover:text-[#00AEEF] transition-colors">Demos</a>
+            <a href="#reviews" className="hover:text-[#00AEEF] transition-colors">Reviews</a>
             <a href="#pricing" className="text-[#00AEEF] hover:text-white transition-colors bg-[#00AEEF]/10 px-3 py-1 rounded-full border border-[#00AEEF]/30">
-              Promo Packages
+              Promo
             </a>
           </nav>
 
@@ -145,19 +145,19 @@ export function SiteHeader({ onOrderClick, whatsappUrl }: Props) {
               <span className="text-white/40">→</span>
             </a>
             <a href="#use-cases" className="text-white py-2.5 border-b border-white/5 flex items-center justify-between" onClick={() => setMenuOpen(false)}>
-              <span>What It Grinds</span>
+              <span>Items</span>
               <span className="text-white/40">→</span>
             </a>
             <a href="#how-it-works" className="text-white py-2.5 border-b border-white/5 flex items-center justify-between" onClick={() => setMenuOpen(false)}>
-              <span>Video Demonstrations</span>
+              <span>Demos</span>
               <span className="text-white/40">→</span>
             </a>
             <a href="#reviews" className="text-white py-2.5 border-b border-white/5 flex items-center justify-between" onClick={() => setMenuOpen(false)}>
-              <span>Customer Reviews</span>
+              <span>Reviews</span>
               <span className="text-white/40">→</span>
             </a>
             <a href="#pricing" className="text-[#00AEEF] py-2.5 border-b border-white/5 flex items-center justify-between font-black" onClick={() => setMenuOpen(false)}>
-              <span>Promo Packages &bull; Save Up to ₦135,000</span>
+              <span>Promo &bull; Save Up to ₦135,000</span>
               <span className="text-[#00AEEF]">★</span>
             </a>
 

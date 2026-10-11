@@ -77,8 +77,8 @@ export interface ProductConfig {
  */
 export const PRODUCT_CONFIG: ProductConfig = {
   slug: "grandmaster-pro",
-  name: "Grandmaster Pro",
-  tagline: "Built to Last.",
+  name: "German Grinder Machine",
+  tagline: "Grandmaster Pro — Built to Last.",
   brand: "Home Essentials",
 
   // [PLACEHOLDER] — replace with verified wattage from product documentation
@@ -90,7 +90,7 @@ export const PRODUCT_CONFIG: ProductConfig = {
   variants: [
     {
       id: "gmp-400g",
-      name: "Grandmaster Pro 400g",
+      name: "German Grinder Machine 400g",
       capacity: "400g",
       priceKobo: 21500000,
       regularPriceKobo: 26000000,
@@ -104,7 +104,7 @@ export const PRODUCT_CONFIG: ProductConfig = {
     },
     {
       id: "gmp-500g",
-      name: "Grandmaster Pro 500g",
+      name: "German Grinder Machine 500g",
       capacity: "500g",
       priceKobo: 28800000,
       regularPriceKobo: 35000000,
@@ -118,7 +118,7 @@ export const PRODUCT_CONFIG: ProductConfig = {
     },
     {
       id: "gmp-800g",
-      name: "Grandmaster Pro 800g",
+      name: "German Grinder Machine 800g",
       capacity: "800g",
       priceKobo: 36500000,
       regularPriceKobo: 44000000,
@@ -132,7 +132,7 @@ export const PRODUCT_CONFIG: ProductConfig = {
     },
     {
       id: "gmp-1000g",
-      name: "Grandmaster Pro 1000g (1kg)",
+      name: "German Grinder Machine 1000g (1kg)",
       capacity: "1000g (1kg)",
       priceKobo: 44500000,
       regularPriceKobo: 55000000,
@@ -146,7 +146,7 @@ export const PRODUCT_CONFIG: ProductConfig = {
     },
     {
       id: "gmp-2000g",
-      name: "Grandmaster Pro 2000g (2kg)",
+      name: "German Grinder Machine 2000g (2kg)",
       capacity: "2000g (2kg)",
       priceKobo: 56500000,
       regularPriceKobo: 63000000,
@@ -160,7 +160,7 @@ export const PRODUCT_CONFIG: ProductConfig = {
     },
     {
       id: "gmp-3000g",
-      name: "Grandmaster Pro 3000g (3kg)",
+      name: "German Grinder Machine 3000g (3kg)",
       capacity: "3000g (3kg)",
       priceKobo: 68500000,
       regularPriceKobo: 74000000,
@@ -174,7 +174,7 @@ export const PRODUCT_CONFIG: ProductConfig = {
     },
     {
       id: "gmp-5000g",
-      name: "Grandmaster Pro 5000g (5kg)",
+      name: "German Grinder Machine 5000g (5kg)",
       capacity: "5000g (5kg)",
       priceKobo: 81500000,
       regularPriceKobo: 95000000,
