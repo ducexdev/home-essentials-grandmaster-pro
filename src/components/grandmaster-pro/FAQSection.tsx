@@ -51,6 +51,21 @@ export function FAQSection({ product }: Props) {
       answer:
         "Simply click any 'Order Now' button on this page, select your preferred capacity model (from 400g up to 5000g), fill in your delivery name, phone number, and address. We will immediately phone you to confirm your order and dispatch your parcel.",
     },
+    {
+      question: "Can it grind both wet and dry ingredients?",
+      answer:
+        "This machine is purpose-built and optimised for dry grinding only. It is not designed for wet blending or wet milling. For dry applications — beans, egusi, melon seeds, corn, spices, grains, dried pepper, and similar hard dry foodstuffs — it delivers exceptionally fast, fine, and consistent results that ordinary multi-purpose blenders simply cannot match. If you need a wet blender as well, we recommend keeping your regular blender for liquid-based tasks and using this machine exclusively for dry grinding.",
+    },
+    {
+      question: "Is it rechargeable or battery-powered?",
+      answer:
+        "No, this is not a rechargeable or battery-powered device. It is a high-performance, electrically-powered industrial grinder that connects directly to a standard 220V–240V mains socket. This design is intentional — the pure copper induction motor requires a sustained power supply to deliver the 25,000 RPM torque necessary for commercial-grade grinding. Rechargeable grinders, by comparison, are limited in power output and cannot sustain the heavy-duty performance this machine is built for.",
+    },
+    {
+      question: "Can I run it on solar power?",
+      answer:
+        "Yes, you can power this machine on solar electricity — provided your solar inverter is sufficiently rated. Your inverter must be able to handle the machine's peak motor load (we recommend a pure sine wave inverter rated 2.5kVA or higher for stable, safe operation). A properly rated solar-plus-inverter setup will run this machine smoothly, making it a reliable grinding solution even during extended grid outages. Please consult your solar installer to confirm your inverter's load capacity before use.",
+    },
   ];
 
   return (
