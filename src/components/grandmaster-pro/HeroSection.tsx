@@ -31,7 +31,7 @@ export function HeroSection({
   whatsappUrl,
 }: Props) {
   const availableVariants = product.variants.filter((v) => v.available);
-  const selectedVariant = availableVariants.find((v) => v.id === selectedVariantId);
+  const selectedVariant = availableVariants.find((v) => v.id === selectedVariantId) || availableVariants[0];
 
   // Dynamic urgency countdown
   const [unitsLeft, setUnitsLeft] = useState(8);
@@ -70,7 +70,7 @@ export function HeroSection({
 
   const scrollPackages = (direction: "left" | "right") => {
     if (packageScrollRef.current) {
-      const scrollAmount = 260;
+      const scrollAmount = 240;
       packageScrollRef.current.scrollBy({
         left: direction === "left" ? -scrollAmount : scrollAmount,
         behavior: "smooth",
@@ -81,7 +81,7 @@ export function HeroSection({
   return (
     <section
       id="hero"
-      className="relative bg-gradient-to-b from-[#061325] via-[#091e3a] to-[#061325] overflow-hidden text-white pt-10 pb-16 lg:pt-16 lg:pb-24 border-b border-white/10"
+      className="relative bg-gradient-to-b from-[#061325] via-[#091e3a] to-[#061325] overflow-x-hidden text-white pt-6 pb-12 sm:pt-10 sm:pb-16 lg:pt-16 lg:pb-24 border-b border-white/10 w-full"
       aria-label="Product introduction"
     >
       {/* Background Glows */}
@@ -90,14 +90,14 @@ export function HeroSection({
         <div className="absolute top-1/3 right-[-10%] w-[450px] h-[450px] bg-[#00AEEF]/10 rounded-full blur-[120px]" />
       </div>
 
-      <div className="relative max-w-6xl mx-auto px-4">
+      <div className="relative w-full max-w-6xl mx-auto px-3.5 sm:px-4 min-w-0">
 
         {/* ── TOP URGENCY + SOCIAL PROOF STRIP ── */}
-        <div className="flex flex-wrap items-center justify-between gap-3 mb-6 sm:mb-8 pb-4 border-b border-white/10 text-xs">
-          <div className="inline-flex items-center gap-2 bg-rose-500/20 border border-rose-500/40 text-rose-300 px-3.5 py-1.5 rounded-full font-bold shadow-sm">
+        <div className="flex flex-wrap items-center justify-between gap-2.5 mb-5 sm:mb-8 pb-3.5 sm:pb-4 border-b border-white/10 text-xs w-full min-w-0">
+          <div className="inline-flex items-center gap-2 bg-rose-500/20 border border-rose-500/40 text-rose-300 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full font-bold shadow-sm text-[11px] sm:text-xs">
             <span className="w-2 h-2 rounded-full bg-rose-400 animate-ping flex-shrink-0" />
             <span className="flex items-center gap-1">
-              🚨 LIMITED STOCK ALERT — PROMO ALMOST OVER (
+              🚨 LIMITED PROMO (
               <span
                 suppressHydrationWarning
                 className={`inline-block font-black transition-all duration-300 ${
@@ -112,50 +112,50 @@ export function HeroSection({
             </span>
           </div>
 
-          <div className="flex items-center gap-2 text-white/85">
+          <div className="flex items-center gap-2 text-white/85 text-[11px] sm:text-xs">
             <div className="flex text-amber-400 tracking-tighter">★★★★★</div>
             <span className="font-bold text-white">4.9/5 Rating</span>
             <span className="text-white/40">•</span>
-            <span className="text-white/80">3,400+ Verified Nigerian Kitchens</span>
+            <span className="text-white/80">3,400+ Verified Buyers</span>
           </div>
         </div>
 
         {/* ── HERO GRID ── */}
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center w-full min-w-0">
 
-          {/* LEFT COLUMN: Copy, Personas, Selector, CTAs */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* LEFT COLUMN: Copy, Photo, Personas, Selector, CTAs */}
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6 w-full min-w-0">
 
             {/* Authority Eyebrow */}
-            <div className="inline-flex items-center gap-2 text-[#00AEEF] text-xs font-black uppercase tracking-widest bg-[#00AEEF]/10 px-3 py-1.5 rounded-full border border-[#00AEEF]/30">
-              <span>🇩🇪</span> OFFICIAL GERMAN GRINDER MACHINE — BY HOME ESSENTIALS
+            <div className="inline-flex items-center gap-1.5 text-[#00AEEF] text-[11px] sm:text-xs font-black uppercase tracking-widest bg-[#00AEEF]/10 px-3 py-1 rounded-full border border-[#00AEEF]/30 max-w-full">
+              <span>🇩🇪</span> <span className="truncate">OFFICIAL GERMAN GRINDER MACHINE</span>
             </div>
 
-            {/* ── MAIN HEADLINE (New high-converting copy) ── */}
-            <h1 className="font-poppins font-black leading-[1.1] tracking-tight text-white">
-              <span className="block text-3xl sm:text-4xl lg:text-[44px] text-white">
+            {/* ── MAIN HEADLINE (Responsive fluid typography, never overflows mobile) ── */}
+            <h1 className="font-poppins font-black leading-[1.15] tracking-tight text-white break-words w-full">
+              <span className="block text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] text-white">
                 Your Kitchen Deserves a
               </span>
-              <span className="block text-3xl sm:text-4xl lg:text-[48px] mt-1 text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-sky-300">
+              <span className="block text-2xl xs:text-3xl sm:text-4xl lg:text-[46px] mt-1 text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-sky-300">
                 10–20 Year Investment,
               </span>
-              <span className="block text-2xl sm:text-3xl lg:text-[36px] mt-2 text-white/95 font-extrabold">
+              <span className="block text-xl xs:text-2xl sm:text-3xl lg:text-[34px] mt-1.5 text-white/95 font-extrabold">
                 Not Another Blender That Burns Out in 3 Months.
               </span>
             </h1>
 
             {/* Sub-headline */}
-            <p className="text-white/85 text-base sm:text-lg leading-relaxed max-w-xl">
+            <p className="text-white/85 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl break-words">
               This <strong className="text-white">German-Engineered Grinder Machine</strong> uses a high-speed industrial motor to pulverize dried beans, corn, yam, spices, coffee, nuts, cereals, and more into <em>bakery-smooth powder in under 15 seconds</em> — right inside your own kitchen. No market trips. No burned-out motors. No excuses.
             </p>
 
-            {/* ── MOBILE ONLY: Product Photo (Prominently visible high up on mobile screens) ── */}
-            <div className="lg:hidden my-3">
-              <div className="relative rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/20 p-4 sm:p-5 backdrop-blur-md shadow-2xl overflow-hidden text-center">
+            {/* ── MOBILE ONLY: Product Photo Card (Immediately visible above the fold on phones) ── */}
+            <div className="lg:hidden my-3 w-full min-w-0">
+              <div className="relative rounded-3xl bg-gradient-to-b from-[#0B2545]/80 via-white/5 to-[#061325] border-2 border-[#00AEEF]/40 p-4 backdrop-blur-md shadow-2xl text-center w-full overflow-hidden">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#00AEEF]/20 rounded-full blur-3xl pointer-events-none" />
 
                 <div className="flex items-center justify-between mb-2">
-                  <span className="bg-[#0052CC] text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full shadow">
+                  <span className="bg-[#0052CC] text-white text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full shadow">
                     🇩🇪 German-Engineered
                   </span>
                   <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
@@ -164,15 +164,16 @@ export function HeroSection({
                   </span>
                 </div>
 
-                {/* Explicit height container ensures Next.js fill never collapses on iOS Safari / Mobile Chrome */}
-                <div className="relative w-full h-[280px] sm:h-[320px] max-w-[320px] mx-auto my-2">
+                {/* Guaranteed visible image container — works on 100% of mobile browsers */}
+                <div className="relative w-full h-[260px] xs:h-[300px] flex items-center justify-center my-2 mx-auto">
                   <Image
                     src="/images/hero-grinder-official.png"
                     alt="Home Essentials German Grinder Machine"
-                    fill
-                    sizes="(max-width: 640px) 90vw, 340px"
+                    width={419}
+                    height={595}
+                    unoptimized
                     priority
-                    className="object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.85)]"
+                    className="w-auto h-full max-h-[260px] xs:max-h-[300px] max-w-full object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.85)] mx-auto"
                   />
                 </div>
 
@@ -188,26 +189,26 @@ export function HeroSection({
             </div>
 
             {/* ── ROTATING PERSONA TICKER ── */}
-            <div className="rounded-2xl bg-white/5 border border-white/15 p-4 overflow-hidden">
-              <p className="text-[11px] font-black uppercase tracking-widest text-white/50 mb-3">
+            <div className="rounded-2xl bg-white/5 border border-white/15 p-3.5 sm:p-4 overflow-hidden w-full min-w-0">
+              <p className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-white/50 mb-2 sm:mb-3">
                 🎯 This Machine Is a Must-Have If You Are...
               </p>
-              <div className="relative h-14 overflow-hidden">
+              <div className="relative h-14 overflow-hidden w-full min-w-0">
                 {PERSONAS.map((p, i) => (
                   <div
                     key={p.label}
-                    className={`absolute inset-0 flex items-center gap-3 transition-all duration-500 ${
+                    className={`absolute inset-0 flex items-center gap-2.5 sm:gap-3 transition-all duration-500 w-full min-w-0 ${
                       i === activePersona
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-4 pointer-events-none"
                     }`}
                   >
-                    <span className="text-3xl flex-shrink-0">{p.emoji}</span>
-                    <div>
-                      <p className="text-white font-black text-sm sm:text-base leading-tight">
+                    <span className="text-2xl sm:text-3xl flex-shrink-0">{p.emoji}</span>
+                    <div className="min-w-0 flex-1">
+                      <p className="text-white font-black text-xs sm:text-sm leading-tight truncate">
                         {p.label}
                       </p>
-                      <p className="text-white/60 text-xs sm:text-sm font-medium leading-snug">
+                      <p className="text-white/60 text-[11px] sm:text-xs font-medium leading-snug line-clamp-2">
                         {p.sub}
                       </p>
                     </div>
@@ -215,13 +216,13 @@ export function HeroSection({
                 ))}
               </div>
               {/* Persona dots */}
-              <div className="flex gap-1.5 mt-3">
+              <div className="flex gap-1.5 mt-2.5">
                 {PERSONAS.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setActivePersona(i)}
                     className={`h-1 rounded-full transition-all duration-300 ${
-                      i === activePersona ? "w-6 bg-[#00AEEF]" : "w-1.5 bg-white/20"
+                      i === activePersona ? "w-5 bg-[#00AEEF]" : "w-1.5 bg-white/20"
                     }`}
                     aria-label={`View persona ${i + 1}`}
                   />
@@ -230,7 +231,7 @@ export function HeroSection({
             </div>
 
             {/* ── KEY BENEFIT CHECKMARKS ── */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs sm:text-sm font-semibold text-white/90">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm font-semibold text-white/90 w-full min-w-0">
               {[
                 { icon: "✓", label: "100% Pure Copper Induction Motor", color: "text-[#00AEEF]" },
                 { icon: "✓", label: "25,000 RPM — Silky Powder in 15 Secs", color: "text-[#00AEEF]" },
@@ -239,54 +240,49 @@ export function HeroSection({
                 { icon: "✓", label: "Outlasts Your Pots, Plates & Cylinders", color: "text-[#00AEEF]" },
                 { icon: "✓", label: "Brand New — Not Refurbished", color: "text-emerald-400" },
               ].map((b) => (
-                <div key={b.label} className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3.5 py-2.5 backdrop-blur-sm">
-                  <span className={`${b.color} text-base font-black flex-shrink-0`}>{b.icon}</span>
-                  <span>{b.label}</span>
+                <div key={b.label} className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl px-3 py-2 sm:py-2.5 backdrop-blur-sm min-w-0">
+                  <span className={`${b.color} text-sm font-black flex-shrink-0`}>{b.icon}</span>
+                  <span className="truncate">{b.label}</span>
                 </div>
               ))}
             </div>
 
-            {/* ── FREE GIFTS CALLOUT ── */}
-            <div className="rounded-2xl p-4 sm:p-5 bg-gradient-to-r from-[#0052CC]/50 via-[#00AEEF]/20 to-[#0052CC]/40 border-2 border-[#00AEEF] shadow-2xl shadow-cyan-500/20 backdrop-blur-md">
-              <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
+            {/* ── FREE GIFTS CALLOUT (Fits both columns cleanly on mobile) ── */}
+            <div className="rounded-2xl p-3.5 sm:p-5 bg-gradient-to-r from-[#0052CC]/50 via-[#00AEEF]/20 to-[#0052CC]/40 border-2 border-[#00AEEF] shadow-2xl shadow-cyan-500/20 backdrop-blur-md w-full min-w-0">
+              <div className="flex flex-wrap items-center justify-between gap-1.5 mb-2.5 sm:mb-3">
                 <div className="flex items-center gap-2">
-                  <span className="text-xl sm:text-2xl animate-bounce">🎁</span>
-                  <span className="font-poppins font-black text-xs sm:text-sm uppercase tracking-wider text-white">
+                  <span className="text-lg sm:text-2xl animate-bounce">🎁</span>
+                  <span className="font-poppins font-black text-xs sm:text-sm uppercase tracking-wide text-white">
                     ORDER NOW &amp; GET THESE FREE GIFTS:
                   </span>
                 </div>
-                <span className="bg-[#00AEEF] text-[#061325] text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full shadow">
+                <span className="bg-[#00AEEF] text-[#061325] text-[9px] sm:text-[10px] font-black uppercase px-2 py-0.5 rounded-full shadow">
                   WORTH ₦23,500 — FREE
                 </span>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 w-full min-w-0">
                 {[
                   { icon: "🔪", name: "1 Extra Blade", sub: "Spare 6-Leaf Set" },
                   { icon: "🥣", name: "1 Sieve", sub: "Ultra-Fine Sifter" },
                   { icon: "🖌️", name: "1 Cleaning Brush", sub: "For Easy Care" },
-                  { icon: "🛡️", name: "VIP Support", sub: "Lifetime After-Purchase", green: true },
+                  { icon: "🛡️", name: "VIP Support", sub: "Lifetime Support", green: true },
                 ].map((g) => (
-                  <div key={g.name} className={`bg-[#061325]/85 border rounded-xl p-3 text-center ${g.green ? "border-emerald-400/40" : "border-[#00AEEF]/30"}`}>
-                    <span className="text-xl block mb-1">{g.icon}</span>
-                    <p className="font-black text-white text-xs leading-tight">{g.name}</p>
-                    <p className={`text-[10px] mt-0.5 font-bold ${g.green ? "text-emerald-400" : "text-[#00AEEF]"}`}>{g.sub}</p>
+                  <div key={g.name} className={`bg-[#061325]/85 border rounded-xl p-2 sm:p-2.5 text-center min-w-0 ${g.green ? "border-emerald-400/40" : "border-[#00AEEF]/30"}`}>
+                    <span className="text-lg block mb-0.5">{g.icon}</span>
+                    <p className="font-black text-white text-[11px] sm:text-xs leading-tight truncate">{g.name}</p>
+                    <p className={`text-[9px] sm:text-[10px] mt-0.5 font-bold truncate ${g.green ? "text-emerald-400" : "text-[#00AEEF]"}`}>{g.sub}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* ── TOP HORIZONTAL MECHANISM: PACKAGE SIZE SLIDER ── */}
-            <div className="relative">
+            <div className="relative w-full min-w-0 max-w-full">
               <div className="flex items-center justify-between gap-2 mb-2">
-                <div className="flex items-center gap-2">
-                  <p className="text-xs font-black uppercase tracking-wider text-[#00AEEF]">
-                    📌 Select Machine Capacity &amp; Promo Price:
-                  </p>
-                  <span className="hidden sm:inline text-[10px] text-white/50 font-bold">
-                    (Slide horizontally to view all 7 sizes)
-                  </span>
-                </div>
-                <div className="flex items-center gap-1.5">
+                <p className="text-xs font-black uppercase tracking-wider text-[#00AEEF]">
+                  📌 Select Capacity &amp; Promo Price:
+                </p>
+                <div className="flex items-center gap-1.5 flex-shrink-0">
                   <button
                     type="button"
                     onClick={() => scrollPackages("left")}
@@ -307,87 +303,85 @@ export function HeroSection({
               </div>
 
               {/* Horizontal Scroll Track */}
-              <div className="relative group">
+              <div className="w-full min-w-0 overflow-hidden">
                 <div
                   ref={packageScrollRef}
-                  className="flex gap-2.5 overflow-x-auto scrollbar-none snap-x snap-mandatory py-1 select-none scroll-smooth"
+                  className="flex gap-2 overflow-x-auto scrollbar-none snap-x snap-mandatory py-1 select-none scroll-smooth w-full min-w-0"
                   style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
                 >
                   {availableVariants.map((v) => {
                     const isSelected = selectedVariantId === v.id;
                     const isPopular = v.id === "gmp-1000g";
                     return (
-                      <div
+                      <button
                         key={v.id}
+                        type="button"
                         onClick={() => onVariantSelect(v.id)}
-                        role="button"
-                        tabIndex={0}
-                        onKeyDown={(e) => e.key === "Enter" && onVariantSelect(v.id)}
-                        className={`flex-shrink-0 w-[142px] sm:w-[155px] snap-start cursor-pointer rounded-2xl p-3 border-2 transition-all duration-200 relative flex flex-col justify-between ${
+                        className={`flex-shrink-0 w-[130px] sm:w-[150px] snap-start text-left cursor-pointer rounded-2xl p-2.5 sm:p-3 border-2 transition-all duration-200 relative flex flex-col justify-between ${
                           isSelected
                             ? "bg-gradient-to-br from-[#0052CC]/80 to-[#00AEEF]/50 border-[#00AEEF] shadow-lg shadow-cyan-500/30 ring-2 ring-[#00AEEF]/40 scale-[1.02]"
                             : "bg-white/5 border-white/15 hover:border-white/35 hover:bg-white/10"
                         }`}
                         aria-pressed={isSelected}
                       >
-                        <div className="flex items-center justify-between gap-1 mb-1">
+                        <div className="flex items-center justify-between gap-1 mb-1 w-full">
                           <span className="font-poppins font-black text-xs text-white truncate">{v.capacity}</span>
                           {isPopular ? (
-                            <span className="text-[8px] font-black uppercase text-amber-300 bg-amber-500/30 px-1 py-0.5 rounded">Popular</span>
+                            <span className="text-[8px] font-black uppercase text-amber-300 bg-amber-500/30 px-1 py-0.5 rounded flex-shrink-0">Popular</span>
                           ) : (
-                            <span className="text-[8px] font-bold text-rose-300 bg-rose-500/30 px-1 py-0.5 rounded">{v.stockLeft} left</span>
+                            <span className="text-[8px] font-bold text-rose-300 bg-rose-500/30 px-1 py-0.5 rounded flex-shrink-0">{v.stockLeft} left</span>
                           )}
                         </div>
-                        <div className="mt-1 pt-1 border-t border-white/10">
-                          <div className="text-sm font-black text-[#00AEEF] leading-tight">{v.priceDisplay}</div>
+                        <div className="mt-1 pt-1 border-t border-white/10 w-full">
+                          <div className="text-xs sm:text-sm font-black text-[#00AEEF] leading-tight">{v.priceDisplay}</div>
                           <div className="text-[10px] text-white/40 line-through">{v.regularPriceDisplay}</div>
                           {v.savingsDisplay && (
                             <div className="text-[9px] text-emerald-400 font-black mt-0.5">{v.savingsDisplay}</div>
                           )}
                         </div>
-                      </div>
+                      </button>
                     );
                   })}
                 </div>
               </div>
             </div>
 
-            {/* ── CTA BUTTONS (Single Straight Line Guaranteed) ── */}
-            <div className="space-y-3 pt-1">
-              <div className="flex flex-col sm:flex-row gap-3">
+            {/* ── CTA BUTTONS (Responsive, fits all mobile screens with zero overflow) ── */}
+            <div className="space-y-2.5 pt-1 w-full min-w-0">
+              <div className="flex flex-col sm:flex-row gap-2.5 w-full min-w-0">
                 <button
                   onClick={() => onOrderClick(selectedVariantId)}
-                  className="flex-1 min-w-0 bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-[#0098d4] hover:brightness-110 text-[#061325] font-black uppercase py-4 px-4 sm:px-6 rounded-2xl transition-all shadow-xl shadow-cyan-500/35 active:scale-95 flex items-center justify-center gap-2 group whitespace-nowrap overflow-hidden"
+                  className="w-full sm:flex-1 bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-[#0098d4] hover:brightness-110 text-[#061325] font-black uppercase py-3.5 sm:py-4 px-3 sm:px-6 rounded-2xl transition-all shadow-xl shadow-cyan-500/35 active:scale-95 flex items-center justify-center gap-2 group min-w-0"
                 >
-                  <span className="whitespace-nowrap truncate text-[11px] xs:text-xs sm:text-[13px] md:text-sm font-black tracking-tight sm:tracking-normal">
-                    Order {selectedVariant?.capacity ?? "Your Machine"} ({selectedVariant?.priceDisplay ?? ""}) — Pay On Delivery
+                  <span className="text-xs sm:text-sm font-black text-center leading-tight">
+                    Order {selectedVariant.capacity} ({selectedVariant.priceDisplay}) — Pay On Delivery
                   </span>
-                  <span className="group-hover:translate-x-1 transition-transform flex-shrink-0">→</span>
+                  <span className="group-hover:translate-x-1 transition-transform flex-shrink-0 text-sm">→</span>
                 </button>
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-shrink-0 bg-[#25D366] hover:bg-[#1da851] text-white font-bold text-xs sm:text-sm py-4 px-4 sm:px-5 rounded-2xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-500/20 active:scale-95 whitespace-nowrap"
+                  className="w-full sm:w-auto bg-[#25D366] hover:bg-[#1da851] text-white font-bold text-xs sm:text-sm py-3.5 sm:py-4 px-4 sm:px-5 rounded-2xl transition-all flex items-center justify-center gap-2 shadow-lg shadow-green-500/20 active:scale-95 whitespace-nowrap min-w-0"
                 >
                   💬 Chat On WhatsApp
                 </a>
               </div>
 
               {/* Zero-Risk Microcopy */}
-              <div className="flex flex-wrap items-center justify-between text-[11px] sm:text-xs text-white/80 gap-2">
-                <span className="flex items-center gap-1.5 font-medium text-emerald-400">
-                  🔒 Pay ₦0 Now — Inspect Carton Before Payment
+              <div className="flex flex-wrap items-center justify-between text-[10px] sm:text-xs text-white/80 gap-1.5 pt-0.5">
+                <span className="flex items-center gap-1 font-medium text-emerald-400">
+                  🔒 Pay ₦0 Now — Inspect Carton First
                 </span>
-                <span className="flex items-center gap-1.5 font-medium text-[#00AEEF]">
-                  🚚 Free Doorstep Delivery — All 36 States + FCT
+                <span className="flex items-center gap-1 font-medium text-[#00AEEF]">
+                  🚚 Free Delivery Across 36 States + FCT
                 </span>
               </div>
             </div>
           </div>
 
           {/* ── RIGHT COLUMN: Desktop Product Visual ── */}
-          <div className="hidden lg:flex lg:col-span-5 justify-center">
+          <div className="hidden lg:flex lg:col-span-5 justify-center w-full min-w-0">
             <div className="relative w-full max-w-lg">
               <div className="relative rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/20 p-6 pb-8 backdrop-blur-md shadow-2xl overflow-hidden group">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#00AEEF]/25 rounded-full blur-3xl pointer-events-none" />
@@ -403,15 +397,16 @@ export function HeroSection({
                   </span>
                 </div>
 
-                {/* Machine Photo */}
-                <div className="relative w-full h-[460px] max-w-[380px] mx-auto my-2">
+                {/* Machine Photo Desktop */}
+                <div className="relative w-full h-[460px] max-w-[380px] mx-auto my-2 flex items-center justify-center">
                   <Image
                     src="/images/hero-grinder-official.png"
                     alt="Home Essentials German Grinder Machine — 25,000 RPM Industrial Motor"
-                    fill
-                    sizes="(min-width: 1024px) 420px, 100vw"
+                    width={419}
+                    height={595}
+                    unoptimized
                     priority
-                    className="object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.9)] group-hover:scale-105 transition-transform duration-500"
+                    className="w-auto h-full max-h-[460px] max-w-full object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.9)] group-hover:scale-105 transition-transform duration-500 mx-auto"
                   />
                 </div>
 
