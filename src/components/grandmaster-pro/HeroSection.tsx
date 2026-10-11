@@ -131,15 +131,15 @@ export function HeroSection({
               <span>🇩🇪</span> <span className="truncate">OFFICIAL GERMAN GRINDER MACHINE</span>
             </div>
 
-            {/* ── MAIN HEADLINE (Responsive fluid typography, never overflows mobile) ── */}
-            <h1 className="font-poppins font-black leading-[1.15] tracking-tight text-white break-words w-full">
-              <span className="block text-2xl xs:text-3xl sm:text-4xl lg:text-[42px] text-white">
+            {/* ── MAIN HEADLINE (Responsive fluid typography, high-impact on mobile) ── */}
+            <h1 className="font-poppins font-black leading-[1.12] tracking-tight text-white break-words w-full">
+              <span className="block text-[28px] xs:text-[32px] sm:text-4xl lg:text-[44px] text-white">
                 Your Kitchen Deserves a
               </span>
-              <span className="block text-2xl xs:text-3xl sm:text-4xl lg:text-[46px] mt-1 text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-sky-300">
+              <span className="block text-[32px] xs:text-[38px] sm:text-4xl lg:text-[48px] mt-1 leading-[1.08] text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-sky-300">
                 10–20 Year Investment,
               </span>
-              <span className="block text-xl xs:text-2xl sm:text-3xl lg:text-[34px] mt-1.5 text-white/95 font-extrabold">
+              <span className="block text-[22px] xs:text-[26px] sm:text-3xl lg:text-[34px] mt-1.5 leading-[1.18] text-white/95 font-extrabold">
                 Not Another Blender That Burns Out in 3 Months.
               </span>
             </h1>
@@ -149,23 +149,23 @@ export function HeroSection({
               This <strong className="text-white">German-Engineered Grinder Machine</strong> uses a high-speed industrial motor to pulverize dried beans, corn, yam, spices, coffee, nuts, cereals, and more into <em>bakery-smooth powder in under 15 seconds</em> — right inside your own kitchen. No market trips. No burned-out motors. No excuses.
             </p>
 
-            {/* ── MOBILE ONLY: Product Photo Card (Immediately visible above the fold on phones) ── */}
-            <div className="lg:hidden my-3 w-full min-w-0">
-              <div className="relative rounded-3xl bg-gradient-to-b from-[#0B2545]/80 via-white/5 to-[#061325] border-2 border-[#00AEEF]/40 p-4 backdrop-blur-md shadow-2xl text-center w-full overflow-hidden">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#00AEEF]/20 rounded-full blur-3xl pointer-events-none" />
+            {/* ── MOBILE ONLY: Product Photo Card (Prominently enlarged for high mobile conversion) ── */}
+            <div className="lg:hidden my-4 w-full min-w-0">
+              <div className="relative rounded-3xl bg-gradient-to-b from-[#0B2545]/90 via-[#091E3A]/70 to-[#061325] border-2 border-[#00AEEF]/50 p-4 sm:p-5 backdrop-blur-md shadow-2xl text-center w-full overflow-hidden">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-80 sm:h-80 bg-[#00AEEF]/25 rounded-full blur-3xl pointer-events-none" />
 
-                <div className="flex items-center justify-between mb-2">
-                  <span className="bg-[#0052CC] text-white text-[10px] font-black uppercase px-2.5 py-0.5 rounded-full shadow">
+                <div className="flex items-center justify-between mb-3">
+                  <span className="bg-[#0052CC] text-white text-[11px] font-black uppercase px-3 py-1 rounded-full shadow">
                     🇩🇪 German-Engineered
                   </span>
-                  <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[11px] font-bold px-3 py-1 rounded-full flex items-center gap-1.5">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
                     Pay On Delivery
                   </span>
                 </div>
 
-                {/* Guaranteed visible image container — works on 100% of mobile browsers */}
-                <div className="relative w-full h-[260px] xs:h-[300px] flex items-center justify-center my-2 mx-auto">
+                {/* Guaranteed visible, significantly enlarged image container */}
+                <div className="relative w-full h-[340px] xs:h-[400px] sm:h-[440px] flex items-center justify-center my-3 mx-auto">
                   <Image
                     src="/images/hero-grinder-official.png"
                     alt="Home Essentials German Grinder Machine"
@@ -173,15 +173,15 @@ export function HeroSection({
                     height={595}
                     unoptimized
                     priority
-                    className="w-auto h-full max-h-[260px] xs:max-h-[300px] max-w-full object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.85)] mx-auto"
+                    className="w-auto h-full max-h-[340px] xs:max-h-[400px] sm:max-h-[440px] max-w-full object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.9)] mx-auto"
                   />
                 </div>
 
-                <div className="pt-2.5 border-t border-white/10 grid grid-cols-2 gap-2 text-center text-[10px] font-bold uppercase tracking-wider">
-                  <div className="bg-white/5 p-1.5 rounded-xl border border-white/10 text-[#00AEEF]">
+                <div className="pt-3 border-t border-white/10 grid grid-cols-2 gap-2 text-center text-[11px] sm:text-xs font-bold uppercase tracking-wider">
+                  <div className="bg-white/5 p-2 rounded-xl border border-white/10 text-[#00AEEF]">
                     LASTS 10–20 YEARS
                   </div>
-                  <div className="bg-white/5 p-1.5 rounded-xl border border-white/10 text-emerald-400">
+                  <div className="bg-white/5 p-2 rounded-xl border border-white/10 text-emerald-400">
                     1-YEAR FULL WARRANTY
                   </div>
                 </div>
