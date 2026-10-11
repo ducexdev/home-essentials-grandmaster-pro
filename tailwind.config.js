@@ -7,6 +7,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        xs: "420px",
+      },
       colors: {
         brand: {
           navy: "#0B1F3A",

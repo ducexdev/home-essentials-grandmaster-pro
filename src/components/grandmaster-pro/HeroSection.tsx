@@ -149,6 +149,44 @@ export function HeroSection({
               This <strong className="text-white">German-Engineered Grinder Machine</strong> uses a high-speed industrial motor to pulverize dried beans, corn, yam, spices, coffee, nuts, cereals, and more into <em>bakery-smooth powder in under 15 seconds</em> — right inside your own kitchen. No market trips. No burned-out motors. No excuses.
             </p>
 
+            {/* ── MOBILE ONLY: Product Photo (Prominently visible high up on mobile screens) ── */}
+            <div className="lg:hidden my-3">
+              <div className="relative rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/20 p-4 sm:p-5 backdrop-blur-md shadow-2xl overflow-hidden text-center">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#00AEEF]/20 rounded-full blur-3xl pointer-events-none" />
+
+                <div className="flex items-center justify-between mb-2">
+                  <span className="bg-[#0052CC] text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full shadow">
+                    🇩🇪 German-Engineered
+                  </span>
+                  <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                    Pay On Delivery
+                  </span>
+                </div>
+
+                {/* Explicit height container ensures Next.js fill never collapses on iOS Safari / Mobile Chrome */}
+                <div className="relative w-full h-[280px] sm:h-[320px] max-w-[320px] mx-auto my-2">
+                  <Image
+                    src="/images/hero-grinder-official.png"
+                    alt="Home Essentials German Grinder Machine"
+                    fill
+                    sizes="(max-width: 640px) 90vw, 340px"
+                    priority
+                    className="object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.85)]"
+                  />
+                </div>
+
+                <div className="pt-2.5 border-t border-white/10 grid grid-cols-2 gap-2 text-center text-[10px] font-bold uppercase tracking-wider">
+                  <div className="bg-white/5 p-1.5 rounded-xl border border-white/10 text-[#00AEEF]">
+                    LASTS 10–20 YEARS
+                  </div>
+                  <div className="bg-white/5 p-1.5 rounded-xl border border-white/10 text-emerald-400">
+                    1-YEAR FULL WARRANTY
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* ── ROTATING PERSONA TICKER ── */}
             <div className="rounded-2xl bg-white/5 border border-white/15 p-4 overflow-hidden">
               <p className="text-[11px] font-black uppercase tracking-widest text-white/50 mb-3">
@@ -188,43 +226,6 @@ export function HeroSection({
                     aria-label={`View persona ${i + 1}`}
                   />
                 ))}
-              </div>
-            </div>
-
-            {/* ── MOBILE ONLY: Product Photo ── */}
-            <div className="lg:hidden">
-              <div className="relative rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/20 p-5 backdrop-blur-md shadow-2xl overflow-hidden text-center">
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-[#00AEEF]/20 rounded-full blur-3xl pointer-events-none" />
-
-                <div className="flex items-center justify-between mb-2">
-                  <span className="bg-[#0052CC] text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full shadow">
-                    🇩🇪 German-Engineered
-                  </span>
-                  <span className="bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] font-bold px-2.5 py-0.5 rounded-full flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    Pay On Delivery
-                  </span>
-                </div>
-
-                <div className="relative w-full aspect-square max-h-[300px] flex items-center justify-center my-1 mx-auto">
-                  <Image
-                    src="/images/hero-grinder-official.png"
-                    alt="Home Essentials German Grinder Machine"
-                    width={340}
-                    height={480}
-                    priority
-                    className="w-full h-full object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,0.85)] scale-105"
-                  />
-                </div>
-
-                <div className="pt-2 border-t border-white/10 grid grid-cols-2 gap-2 text-center text-[10px] font-bold uppercase tracking-wider">
-                  <div className="bg-white/5 p-1.5 rounded-xl border border-white/10 text-[#00AEEF]">
-                    LASTS 10–20 YEARS
-                  </div>
-                  <div className="bg-white/5 p-1.5 rounded-xl border border-white/10 text-emerald-400">
-                    1-YEAR FULL WARRANTY
-                  </div>
-                </div>
               </div>
             </div>
 
@@ -403,14 +404,14 @@ export function HeroSection({
                 </div>
 
                 {/* Machine Photo */}
-                <div className="relative w-full aspect-[419/595] max-h-[520px] flex items-center justify-center my-2">
+                <div className="relative w-full h-[460px] max-w-[380px] mx-auto my-2">
                   <Image
                     src="/images/hero-grinder-official.png"
                     alt="Home Essentials German Grinder Machine — 25,000 RPM Industrial Motor"
-                    width={419}
-                    height={595}
+                    fill
+                    sizes="(min-width: 1024px) 420px, 100vw"
                     priority
-                    className="w-full h-full object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.9)] scale-105 group-hover:scale-110 transition-transform duration-500"
+                    className="object-contain drop-shadow-[0_25px_35px_rgba(0,0,0,0.9)] group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
 
