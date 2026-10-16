@@ -28,8 +28,8 @@ export function SiteHeader({ onOrderClick, whatsappUrl }: Props) {
           </div>
 
           <div className="hidden sm:flex items-center gap-3 text-white/90 text-[11px]">
-            <a href="tel:+2347045787045" className="hover:text-[#00AEEF] transition-colors font-bold flex items-center gap-1.5">
-              <span>📞</span> <span>0704 578 7045</span>
+            <a href="tel:+2348089208005" className="hover:text-[#00AEEF] transition-colors font-bold flex items-center gap-1.5">
+              <span>📞</span> <span>0808 920 8005</span>
             </a>
             <span className="text-white/40">&bull;</span>
             <span className="text-[#00AEEF] font-bold">Fast Doorstep Delivery</span>

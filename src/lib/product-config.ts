@@ -207,9 +207,9 @@ export const PRODUCT_CONFIG: ProductConfig = {
 
   contact: {
     email: "order@homeessentials.com.ng",
-    whatsapp: "2347045787045",
-    whatsappDisplay: "+234 704 578 7045",
-    phone: "+234 704 578 7045",
+    whatsapp: "2348089208005",
+    whatsappDisplay: "+234 808 920 8005",
+    phone: "+234 808 920 8005",
   },
 };
 

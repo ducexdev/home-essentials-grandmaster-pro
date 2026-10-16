@@ -1,28 +1,19 @@
 import nodemailer from "nodemailer";
 import { Order } from "@/types/order";
 
-const SMTP_HOST = process.env.SMTP_HOST || "mail.homeessentials.com.ng";
-const SMTP_PORT = parseInt(process.env.SMTP_PORT || "465", 10);
-const SMTP_SECURE = process.env.SMTP_SECURE === "true" || SMTP_PORT === 465;
-const SMTP_USER = process.env.SMTP_USER || "order@homeessentials.com.ng";
-const SMTP_PASS = process.env.SMTP_PASS || "5Lnnyy(5^Oyz}Jnz";
-
-// ORDER_NOTIFICATION_EMAIL should be collinsagu100@gmail.com (set in Vercel).
-// cPanel also has a forwarder: order@homeessentials.com.ng → collinsagu100@gmail.com.
-// Exim on Truehost cannot locally route TO order@homeessentials.com.ng via SMTP
-// (even though the Dovecot/IMAP mailbox exists) — so we send directly to Gmail.
-const ORDER_EMAIL = process.env.ORDER_NOTIFICATION_EMAIL || "collinsagu100@gmail.com";
-const FROM_ADDRESS = process.env.EMAIL_FROM_ADDRESS || "order@homeessentials.com.ng";
+// ---------------------------------------------------------------------------
+// Gmail SMTP Configuration
+// Uses Gmail's official SMTP relay (smtp.gmail.com) with an App Password.
+// Set these variables in Vercel → Settings → Environment Variables.
+// ---------------------------------------------------------------------------
+const GMAIL_USER = process.env.GMAIL_USER || "naijahomeessentials4u@gmail.com";
+const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD || "";
+const ORDER_EMAIL = process.env.ORDER_NOTIFICATION_EMAIL || "naijahomeessentials4u@gmail.com";
 const FROM_NAME = process.env.EMAIL_FROM_NAME || "Home Essentials Orders";
 
-// Exim on Truehost performs sender-verification callouts and cannot verify
-// order@homeessentials.com.ng as a MAIL FROM (envelope sender), even though
-// the IMAP mailbox exists. cpanel@ is a system address Exim accepts without callout.
-// We use it as the SMTP envelope sender while keeping the visible From: as order@.
-const SMTP_ENVELOPE_SENDER = `cpanel@${SMTP_HOST.replace(/^mail\./, "")}`;
-
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
-
+// ---------------------------------------------------------------------------
+// Helpers
+// ---------------------------------------------------------------------------
 function formatNaira(kobo: number): string {
   const naira = kobo / 100;
   return new Intl.NumberFormat("en-NG", {
@@ -32,6 +23,18 @@ function formatNaira(kobo: number): string {
   }).format(naira);
 }
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+// ---------------------------------------------------------------------------
+// Email template
+// ---------------------------------------------------------------------------
 function buildOrderEmail(order: Order): { subject: string; html: string; text: string } {
   const subject = `🛒 New Order: ${order.orderReference} — ${order.variantName} (${order.customerName})`;
 
@@ -199,7 +202,7 @@ Attribution: Source: ${order.utmSource || "Direct"} | Campaign: ${order.utmCampa
 
     <div class="footer">
       Order Received: ${new Date(order.createdAt).toLocaleString("en-NG", { timeZone: "Africa/Lagos" })} WAT<br>
-      Grandmaster Pro™ — Official Order Processing Desk
+      Home Essentials™ — Official Order Processing Desk
     </div>
   </div>
 </body>
@@ -208,121 +211,56 @@ Attribution: Source: ${order.utmSource || "Direct"} | Campaign: ${order.utmCampa
   return { subject, html, text };
 }
 
-function escapeHtml(str: string): string {
-  return str
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
-
+// ---------------------------------------------------------------------------
+// Types
+// ---------------------------------------------------------------------------
 export type EmailResult =
   | { sent: true; messageId?: string }
   | { sent: false; error: string };
 
+// ---------------------------------------------------------------------------
+// Send order notification via Gmail SMTP
+// ---------------------------------------------------------------------------
 /**
- * Send order notification email using SMTP (mail.homeessentials.com.ng)
- * with Resend fallback if configured.
+ * Sends an order notification email to the business Gmail inbox.
+ *
+ * Requires two Vercel environment variables:
+ *   GMAIL_USER         — the Gmail address (naijahomeessentials4u@gmail.com)
+ *   GMAIL_APP_PASSWORD — a 16-character Google App Password (NOT the normal login password)
  */
-
 export async function sendOrderNotification(order: Order): Promise<EmailResult> {
+  if (!GMAIL_APP_PASSWORD) {
+    console.error("[Email] GMAIL_APP_PASSWORD is not set. Cannot send notification.");
+    return { sent: false, error: "GMAIL_APP_PASSWORD environment variable is not configured." };
+  }
+
   const { subject, html, text } = buildOrderEmail(order);
 
-  // 1. Primary: SMTP via nodemailer (mail.homeessentials.com.ng)
-  if (SMTP_HOST && SMTP_USER && SMTP_PASS) {
-    try {
-      const transporter = nodemailer.createTransport({
-        host: SMTP_HOST,
-        port: SMTP_PORT,
-        secure: SMTP_SECURE,
-        auth: {
-          user: SMTP_USER,
-          pass: SMTP_PASS,
-        },
-        tls: {
-          rejectUnauthorized: false,
-        },
-      });
+  try {
+    const transporter = nodemailer.createTransport({
+      host: "smtp.gmail.com",
+      port: 465,
+      secure: true, // SSL
+      auth: {
+        user: GMAIL_USER,
+        pass: GMAIL_APP_PASSWORD,
+      },
+    });
 
-      const info = await transporter.sendMail({
-        // envelope: sets the SMTP MAIL FROM / RCPT TO separately from the visible headers.
-        // cpanel@ passes Exim sender verification; order@ is shown to the recipient.
-        envelope: {
-          from: SMTP_ENVELOPE_SENDER,
-          to: ORDER_EMAIL,
-        },
-        from: `"${FROM_NAME}" <${FROM_ADDRESS}>`,
-        replyTo: FROM_ADDRESS,
-        to: ORDER_EMAIL,
-        subject,
-        text,
-        html,
-      });
+    const info = await transporter.sendMail({
+      from: `"${FROM_NAME}" <${GMAIL_USER}>`,
+      to: ORDER_EMAIL,
+      replyTo: ORDER_EMAIL,
+      subject,
+      text,
+      html,
+    });
 
-      console.log(`[Email] SMTP notification sent for ${order.orderReference}. MessageId: ${info.messageId}`);
-      return { sent: true, messageId: info.messageId };
-    } catch (smtpErr) {
-      const errorMsg = smtpErr instanceof Error ? smtpErr.message : String(smtpErr);
-      console.error(`[Email] SMTP failed for ${order.orderReference}: ${errorMsg}`);
-
-      // If Resend is available as secondary fallback
-      if (RESEND_API_KEY) {
-        console.log(`[Email] Attempting Resend fallback for ${order.orderReference}...`);
-        try {
-          const res = await fetch("https://api.resend.com/emails", {
-            method: "POST",
-            headers: {
-              Authorization: `Bearer ${RESEND_API_KEY}`,
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              from: `${FROM_NAME} <${FROM_ADDRESS}>`,
-              to: [ORDER_EMAIL],
-              subject,
-              html,
-            }),
-          });
-          if (res.ok) {
-            console.log(`[Email] Resend fallback succeeded for ${order.orderReference}`);
-            return { sent: true };
-          }
-        } catch {
-          // ignore fallback error
-        }
-      }
-
-      return { sent: false, error: errorMsg };
-    }
+    console.log(`[Email] Gmail notification sent for ${order.orderReference}. MessageId: ${info.messageId}`);
+    return { sent: true, messageId: info.messageId };
+  } catch (err) {
+    const errorMsg = err instanceof Error ? err.message : String(err);
+    console.error(`[Email] Gmail SMTP failed for ${order.orderReference}: ${errorMsg}`);
+    return { sent: false, error: errorMsg };
   }
-
-  // 2. Resend only if SMTP not configured
-  if (RESEND_API_KEY) {
-    try {
-      const response = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${RESEND_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: `${FROM_NAME} <${FROM_ADDRESS}>`,
-          to: [ORDER_EMAIL],
-          subject,
-          html,
-        }),
-      });
-
-      if (!response.ok) {
-        const body = await response.text().catch(() => "");
-        return { sent: false, error: `Resend error ${response.status}: ${body}` };
-      }
-
-      return { sent: true };
-    } catch (err) {
-      return { sent: false, error: String(err) };
-    }
-  }
-
-  return { sent: false, error: "No email transport configured." };
 }
