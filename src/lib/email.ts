@@ -18,6 +18,7 @@ const SMTP_ENVELOPE_SENDER = `cpanel@${SMTP_HOST.replace(/^mail\./, "")}`;
 const ORDER_EMAIL = process.env.ORDER_NOTIFICATION_EMAIL || "naijahomeessentials4u@gmail.com";
 const FROM_NAME = process.env.EMAIL_FROM_NAME || "Home Essentials Orders";
 const FROM_ADDRESS = process.env.EMAIL_FROM_ADDRESS || "order@homeessentials.com.ng";
+const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -272,6 +273,9 @@ export async function sendOrderNotification(order: Order): Promise<EmailResult> 
         user: SMTP_USER,
         pass: SMTP_PASS,
       },
+      connectionTimeout: 10000,
+      greetingTimeout: 5000,
+      socketTimeout: 15000,
       tls: {
         rejectUnauthorized: false,
       },
@@ -294,7 +298,34 @@ export async function sendOrderNotification(order: Order): Promise<EmailResult> 
     return { sent: true, messageId: info.messageId };
   } catch (err) {
     const errorMsg = err instanceof Error ? err.message : String(err);
-    console.error(`[Email] Notification delivery failed for ${order.orderReference}: ${errorMsg}`);
+    console.error(`[Email] Primary SMTP failed for ${order.orderReference}: ${errorMsg}`);
+
+    // Strategy 3: Resend HTTP API Fallback (if RESEND_API_KEY is configured in Vercel)
+    if (RESEND_API_KEY) {
+      try {
+        console.log(`[Email] Attempting Resend fallback for ${order.orderReference}...`);
+        const res = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: `${FROM_NAME} <onboarding@resend.dev>`,
+            to: [ORDER_EMAIL],
+            subject,
+            html,
+          }),
+        });
+        if (res.ok) {
+          console.log(`[Email] Resend fallback succeeded for ${order.orderReference}`);
+          return { sent: true };
+        }
+      } catch (resendErr) {
+        console.error(`[Email] Resend fallback also failed:`, resendErr);
+      }
+    }
+
     return { sent: false, error: errorMsg };
   }
 }

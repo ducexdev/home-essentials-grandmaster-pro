@@ -222,7 +222,7 @@ export async function POST(request: NextRequest): Promise<NextResponse<OrderSubm
       {
         success: false,
         error:
-          "We are experiencing technical difficulties. Please place your order via WhatsApp at +234 704 578 7045 and we will assist you immediately.",
+          "We are experiencing technical difficulties. Please place your order via WhatsApp at +234 808 920 8005 and we will assist you immediately.",
       },
       { status: 503 }
     );
