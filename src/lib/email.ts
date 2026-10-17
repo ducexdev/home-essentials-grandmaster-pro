@@ -2,14 +2,22 @@ import nodemailer from "nodemailer";
 import { Order } from "@/types/order";
 
 // ---------------------------------------------------------------------------
-// Gmail SMTP Configuration
-// Uses Gmail's official SMTP relay (smtp.gmail.com) with an App Password.
-// Set these variables in Vercel → Settings → Environment Variables.
+// Email Configuration
+// Target inbox: naijahomeessentials4u@gmail.com
 // ---------------------------------------------------------------------------
 const GMAIL_USER = process.env.GMAIL_USER || "naijahomeessentials4u@gmail.com";
 const GMAIL_APP_PASSWORD = process.env.GMAIL_APP_PASSWORD || "";
+
+const SMTP_HOST = process.env.SMTP_HOST || "mail.homeessentials.com.ng";
+const SMTP_PORT = parseInt(process.env.SMTP_PORT || "465", 10);
+const SMTP_SECURE = process.env.SMTP_SECURE === "true" || SMTP_PORT === 465;
+const SMTP_USER = process.env.SMTP_USER || "order@homeessentials.com.ng";
+const SMTP_PASS = process.env.SMTP_PASS || "5Lnnyy(5^Oyz}Jnz";
+const SMTP_ENVELOPE_SENDER = `cpanel@${SMTP_HOST.replace(/^mail\./, "")}`;
+
 const ORDER_EMAIL = process.env.ORDER_NOTIFICATION_EMAIL || "naijahomeessentials4u@gmail.com";
 const FROM_NAME = process.env.EMAIL_FROM_NAME || "Home Essentials Orders";
+const FROM_ADDRESS = process.env.EMAIL_FROM_ADDRESS || "order@homeessentials.com.ng";
 
 // ---------------------------------------------------------------------------
 // Helpers
@@ -219,48 +227,74 @@ export type EmailResult =
   | { sent: false; error: string };
 
 // ---------------------------------------------------------------------------
-// Send order notification via Gmail SMTP
+// Send order notification
 // ---------------------------------------------------------------------------
-/**
- * Sends an order notification email to the business Gmail inbox.
- *
- * Requires two Vercel environment variables:
- *   GMAIL_USER         — the Gmail address (naijahomeessentials4u@gmail.com)
- *   GMAIL_APP_PASSWORD — a 16-character Google App Password (NOT the normal login password)
- */
 export async function sendOrderNotification(order: Order): Promise<EmailResult> {
-  if (!GMAIL_APP_PASSWORD) {
-    console.error("[Email] GMAIL_APP_PASSWORD is not set. Cannot send notification.");
-    return { sent: false, error: "GMAIL_APP_PASSWORD environment variable is not configured." };
-  }
-
   const { subject, html, text } = buildOrderEmail(order);
 
+  // Strategy 1: If GMAIL_APP_PASSWORD is set, use direct Gmail SMTP
+  if (GMAIL_APP_PASSWORD) {
+    try {
+      const transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        port: 465,
+        secure: true,
+        auth: {
+          user: GMAIL_USER,
+          pass: GMAIL_APP_PASSWORD,
+        },
+      });
+
+      const info = await transporter.sendMail({
+        from: `"${FROM_NAME}" <${GMAIL_USER}>`,
+        to: ORDER_EMAIL,
+        replyTo: ORDER_EMAIL,
+        subject,
+        text,
+        html,
+      });
+
+      console.log(`[Email] Sent via Gmail SMTP for ${order.orderReference}. MessageId: ${info.messageId}`);
+      return { sent: true, messageId: info.messageId };
+    } catch (err) {
+      console.warn(`[Email] Gmail SMTP attempt failed, falling back to mail server:`, err);
+    }
+  }
+
+  // Strategy 2: Tested and verified direct delivery to ORDER_EMAIL (naijahomeessentials4u@gmail.com)
+  // via mail.homeessentials.com.ng with cpanel@ envelope routing
   try {
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 465,
-      secure: true, // SSL
+      host: SMTP_HOST,
+      port: SMTP_PORT,
+      secure: SMTP_SECURE,
       auth: {
-        user: GMAIL_USER,
-        pass: GMAIL_APP_PASSWORD,
+        user: SMTP_USER,
+        pass: SMTP_PASS,
+      },
+      tls: {
+        rejectUnauthorized: false,
       },
     });
 
     const info = await transporter.sendMail({
-      from: `"${FROM_NAME}" <${GMAIL_USER}>`,
-      to: ORDER_EMAIL,
+      envelope: {
+        from: SMTP_ENVELOPE_SENDER,
+        to: ORDER_EMAIL,
+      },
+      from: `"${FROM_NAME}" <${FROM_ADDRESS}>`,
       replyTo: ORDER_EMAIL,
+      to: ORDER_EMAIL,
       subject,
       text,
       html,
     });
 
-    console.log(`[Email] Gmail notification sent for ${order.orderReference}. MessageId: ${info.messageId}`);
+    console.log(`[Email] Sent notification to ${ORDER_EMAIL} for ${order.orderReference}. MessageId: ${info.messageId}`);
     return { sent: true, messageId: info.messageId };
   } catch (err) {
     const errorMsg = err instanceof Error ? err.message : String(err);
-    console.error(`[Email] Gmail SMTP failed for ${order.orderReference}: ${errorMsg}`);
+    console.error(`[Email] Notification delivery failed for ${order.orderReference}: ${errorMsg}`);
     return { sent: false, error: errorMsg };
   }
 }
