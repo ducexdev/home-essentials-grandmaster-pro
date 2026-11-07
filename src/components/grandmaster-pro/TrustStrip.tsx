@@ -54,7 +54,7 @@ export function TrustStrip({}: Props) {
             GUARANTEED PEACE OF MIND
           </span>
           <h2 className="font-poppins font-black text-2xl sm:text-3xl text-[#0B1F3A]">
-            Why Over 3,400+ Nigerians Trust Home Essentials
+            Why Over 3,400+ Nigerians Trust This Grinder
           </h2>
           <p className="text-[#475467] text-xs sm:text-sm mt-1.5 max-w-xl mx-auto">
             We eliminate 100% of online shopping risk so you can order with total confidence today.

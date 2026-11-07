@@ -126,18 +126,13 @@ export function HeroSection({
           {/* LEFT COLUMN: Copy, Photo, Personas, Selector, CTAs */}
           <div className="lg:col-span-7 space-y-4 sm:space-y-6 w-full min-w-0">
 
-            {/* Authority Eyebrow */}
-            <div className="inline-flex items-center gap-1.5 text-[#00AEEF] text-[11px] sm:text-xs font-black uppercase tracking-widest bg-[#00AEEF]/10 px-3 py-1 rounded-full border border-[#00AEEF]/30 max-w-full">
-              <span>🇩🇪</span> <span className="truncate">OFFICIAL GERMAN GRINDER MACHINE</span>
-            </div>
-
             {/* ── MAIN HEADLINE (Responsive fluid typography, high-impact on mobile) ── */}
-            <h1 className="font-poppins font-black leading-[1.12] tracking-tight text-white break-words w-full">
+            <h1 className="font-poppins font-black leading-[1.15] tracking-tight text-white break-words w-full">
               <span className="block text-[26px] xs:text-[30px] sm:text-4xl lg:text-[42px] text-white">
-                STOP WASTING MONEY ON WEAK GRINDERS.
+                Stop Wasting Money on Weak Grinders.
               </span>
-              <span className="block text-[28px] xs:text-[32px] sm:text-4xl lg:text-[46px] mt-1.5 leading-[1.08] text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-sky-300">
-                INVEST IN ONE THAT&apos;S BUILT TO LAST 10–20 YEARS!
+              <span className="block text-[28px] xs:text-[32px] sm:text-4xl lg:text-[46px] mt-1.5 leading-[1.12] text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-sky-300">
+                Invest in One that&apos;s Built to Last 10-20 Years!
               </span>
             </h1>
 
