@@ -16,24 +16,14 @@ export function SiteHeader({ onOrderClick, whatsappUrl }: Props) {
     <>
       {/* Top Psychological Trust & Reassurance Ribbon */}
       <div className="bg-gradient-to-r from-[#003882] via-[#0052CC] to-[#003882] text-white text-[11px] sm:text-xs font-semibold py-1.5 px-4 text-center border-b border-white/10">
-        <div className="max-w-6xl mx-auto flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2 mx-auto sm:mx-0">
-            <span className="bg-[#00AEEF] text-[#061325] text-[9px] sm:text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#061325] animate-ping" />
-              100% RISK-FREE
-            </span>
-            <span className="text-white/95 text-[11px] sm:text-xs font-medium">
-              Zero Advance Deposit &bull; <strong className="text-white font-bold">Pay On Delivery Nationwide</strong> &bull; Inspect Before Paying!
-            </span>
-          </div>
-
-          <div className="hidden sm:flex items-center gap-3 text-white/90 text-[11px]">
-            <a href="tel:+2348089208005" className="hover:text-[#00AEEF] transition-colors font-bold flex items-center gap-1.5">
-              <span>📞</span> <span>0808 920 8005</span>
-            </a>
-            <span className="text-white/40">&bull;</span>
-            <span className="text-[#00AEEF] font-bold">Fast Doorstep Delivery</span>
-          </div>
+        <div className="max-w-6xl mx-auto flex items-center justify-center gap-2">
+          <span className="bg-[#00AEEF] text-[#061325] text-[9px] sm:text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#061325] animate-ping" />
+            100% RISK-FREE
+          </span>
+          <span className="text-white/95 text-[11px] sm:text-xs font-medium">
+            <strong className="text-white font-bold">Pay On Delivery Nationwide</strong> &bull; Inspect Before Paying!
+          </span>
         </div>
       </div>
 
