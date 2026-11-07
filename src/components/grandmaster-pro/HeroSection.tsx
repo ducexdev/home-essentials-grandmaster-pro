@@ -138,7 +138,7 @@ export function HeroSection({
 
             {/* Sub-headline */}
             <p className="text-white/85 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl break-words">
-              This <strong className="text-white">German-Engineered Grinder Machine</strong> uses a high-speed industrial motor to pulverize dried beans, corn, yam, spices, coffee, nuts, cereals, and more into <em>bakery-smooth powder in under 15 seconds</em> — right inside your own kitchen. No market trips. No burned-out motors. No excuses.
+              This <strong className="text-white">Grinder Machine</strong> uses a high-speed industrial motor to pulverize all kinds of dried food items, herbs, and more into <em>bakery-smooth powder in under 15 seconds</em>. Your kitchen deserves a long-term investment, not another grinder that starts giving you problems after a few months.
             </p>
 
             {/* ── MOBILE ONLY: Product Photo Card (Prominently enlarged for high mobile conversion) ── */}
