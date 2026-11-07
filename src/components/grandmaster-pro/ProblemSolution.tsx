@@ -12,26 +12,15 @@ export function ProblemSolution() {
       <div className="max-w-6xl mx-auto px-4">
         {/* Section header */}
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-14">
-          <span className="inline-block text-[#0052CC] font-black text-xs uppercase tracking-widest mb-3 bg-[#f0f4fc] px-3.5 py-1 rounded-full border border-[#0052CC]/20">
+          <span className="inline-block text-[#0052CC] font-black text-xs uppercase tracking-widest mb-2 bg-[#f0f4fc] px-3.5 py-1 rounded-full border border-[#0052CC]/20">
             THE NIGERIAN KITCHEN REALITY
           </span>
-          <h2 id="problem-heading" className="font-poppins text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B1F3A] mb-4 sm:mb-5 leading-tight">
-            Let&apos;s Be Honest...
+          <h2 id="problem-heading" className="font-poppins text-2xl sm:text-3xl lg:text-4xl font-black text-[#0B1F3A] mb-3 leading-tight">
+            What Nigerian Homes Deal With Daily
           </h2>
-          <div className="space-y-4 text-[#344054] text-sm sm:text-base lg:text-lg leading-relaxed text-left sm:text-center">
-            <p>
-              There&apos;s nothing more frustrating than spending your hard-earned money on a grinder, only to find yourself battling with overheating, poor performance, frequent breakdowns or expensive repairs when you need it most.
-            </p>
-            <p>
-              You buy one today, start managing it tomorrow, and before long, you&apos;re already thinking about getting another one.
-            </p>
-            <p>
-              It&apos;s not just the money you lose. It&apos;s the time, the inconvenience and the unnecessary stress that comes with owning equipment you cannot confidently depend on.
-            </p>
-            <p className="font-semibold text-[#0B1F3A] bg-amber-500/10 border border-amber-500/20 rounded-2xl py-3 px-5 inline-block text-left sm:text-center">
-              And if you&apos;re running a restaurant, food business or catering operation, you already know how costly unreliable equipment can be.
-            </p>
-          </div>
+          <p className="text-[#344054] text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
+            Traditional food processing shouldn&apos;t cost you hours of market stress, unhygienic meals, or burnt-out home blenders.
+          </p>
         </div>
 
         {/* Contrast Grid: Agitation vs Transformation */}
@@ -46,7 +35,7 @@ export function ProblemSolution() {
                 The Painful Market &amp; Cheap Blender Routine
               </span>
               <h3 className="font-poppins font-black text-xl sm:text-2xl text-[#0B1F3A] mb-5">
-                What Nigerian Homes Deal With Daily
+                The Daily Grinding Struggles
               </h3>
               <ul className="space-y-4">
                 {PROBLEMS.map((p) => (

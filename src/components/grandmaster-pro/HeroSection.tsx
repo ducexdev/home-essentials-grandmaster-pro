@@ -181,10 +181,11 @@ export function HeroSection({
             </div>
 
             {/* ── ROTATING PERSONA TICKER ── */}
-            <div className="rounded-2xl bg-white/5 border border-white/15 p-3.5 sm:p-4 overflow-hidden w-full min-w-0">
-              <p className="text-[10px] sm:text-[11px] font-black uppercase tracking-widest text-white/50 mb-2 sm:mb-3">
-                🎯 This Machine Is a Must-Have If You Are...
-              </p>
+            <div className="rounded-2xl bg-gradient-to-r from-[#0052CC]/25 via-[#0A2540]/80 to-[#0052CC]/15 border-2 border-[#00AEEF]/50 p-4 sm:p-4.5 overflow-hidden w-full min-w-0 shadow-lg shadow-cyan-500/10 backdrop-blur-md">
+              <div className="inline-flex items-center gap-1.5 bg-[#00AEEF] text-[#061325] text-[11px] sm:text-xs font-black uppercase tracking-wider px-3 py-1 rounded-full shadow-md mb-2.5">
+                <span className="text-sm">🎯</span>
+                <span>This Machine Is a Must-Have If You Are...</span>
+              </div>
               <div className="relative h-14 overflow-hidden w-full min-w-0">
                 {PERSONAS.map((p, i) => (
                   <div
@@ -197,10 +198,10 @@ export function HeroSection({
                   >
                     <span className="text-2xl sm:text-3xl flex-shrink-0">{p.emoji}</span>
                     <div className="min-w-0 flex-1">
-                      <p className="text-white font-black text-xs sm:text-sm leading-tight truncate">
+                      <p className="text-white font-black text-sm sm:text-base leading-tight truncate">
                         {p.label}
                       </p>
-                      <p className="text-white/60 text-[11px] sm:text-xs font-medium leading-snug line-clamp-2">
+                      <p className="text-white/80 text-xs sm:text-[13px] font-medium leading-snug line-clamp-2">
                         {p.sub}
                       </p>
                     </div>
@@ -213,8 +214,8 @@ export function HeroSection({
                   <button
                     key={i}
                     onClick={() => setActivePersona(i)}
-                    className={`h-1 rounded-full transition-all duration-300 ${
-                      i === activePersona ? "w-5 bg-[#00AEEF]" : "w-1.5 bg-white/20"
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      i === activePersona ? "w-6 bg-[#00AEEF]" : "w-2 bg-white/25 hover:bg-white/40"
                     }`}
                     aria-label={`View persona ${i + 1}`}
                   />
