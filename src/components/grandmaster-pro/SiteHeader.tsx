@@ -37,29 +37,6 @@ export function SiteHeader({ onOrderClick, whatsappUrl }: Props) {
         </div>
       </div>
 
-      {/* High-Converting FREE GIFTS Announcement Bar */}
-      <div className="bg-gradient-to-r from-[#040C18] via-[#0B2545] to-[#040C18] border-b border-[#00AEEF]/30 py-2 px-4 text-center text-white shadow-inner">
-        <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-x-4 gap-y-1.5 text-xs">
-          <span className="inline-flex items-center gap-1.5 font-black text-[#00AEEF] uppercase tracking-wider bg-[#00AEEF]/15 px-2.5 py-0.5 rounded-full border border-[#00AEEF]/40 shadow-[0_0_12px_rgba(0,174,239,0.25)]">
-            <span>🎁</span> INCLUDED FREE TODAY:
-          </span>
-          <span className="font-extrabold flex items-center gap-1 text-white text-[11px] sm:text-xs">
-            <span className="text-[#00AEEF]">★</span> 1 Extra 6-Leaf Blade
-          </span>
-          <span className="text-white/30 hidden sm:inline">&bull;</span>
-          <span className="font-extrabold flex items-center gap-1 text-white text-[11px] sm:text-xs">
-            <span className="text-[#00AEEF]">★</span> 1 Micro-Mesh Sieve
-          </span>
-          <span className="text-white/30 hidden sm:inline">&bull;</span>
-          <span className="font-extrabold flex items-center gap-1 text-white text-[11px] sm:text-xs">
-            <span className="text-[#00AEEF]">★</span> 1 Specialized Cleaning Brush
-          </span>
-          <span className="text-white/30 hidden sm:inline">&bull;</span>
-          <span className="font-extrabold text-[#00AEEF] flex items-center gap-1 bg-[#0052CC]/40 border border-[#00AEEF]/40 px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs">
-            🛡️ VIP After-Purchase Support
-          </span>
-        </div>
-      </div>
 
       <header className="sticky top-0 z-40 bg-[#061325]/90 backdrop-blur-xl border-b border-white/10 shadow-xl transition-all">
         <div className="max-w-6xl mx-auto px-4 h-16 sm:h-20 flex items-center justify-between">

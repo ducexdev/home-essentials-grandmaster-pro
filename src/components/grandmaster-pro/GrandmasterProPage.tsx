@@ -12,7 +12,6 @@ import { HowItWorks } from "./HowItWorks";
 import { UseCases } from "./UseCases";
 import { CustomerReviews } from "./CustomerReviews";
 import { PricingSection } from "./PricingSection";
-import { SpecsSection } from "./SpecsSection";
 import { FAQSection } from "./FAQSection";
 import { FinalCTA } from "./FinalCTA";
 import { SiteFooter } from "./SiteFooter";
@@ -113,8 +112,6 @@ export function GrandmasterProPage({ product }: Props) {
           whatsappUrl={whatsappUrl}
         />
 
-        {/* J: Specs */}
-        <SpecsSection product={product} />
 
         {/* M: FAQ */}
         <FAQSection product={product} />

@@ -133,14 +133,11 @@ export function HeroSection({
 
             {/* ── MAIN HEADLINE (Responsive fluid typography, high-impact on mobile) ── */}
             <h1 className="font-poppins font-black leading-[1.12] tracking-tight text-white break-words w-full">
-              <span className="block text-[28px] xs:text-[32px] sm:text-4xl lg:text-[44px] text-white">
-                Your Kitchen Deserves a
+              <span className="block text-[26px] xs:text-[30px] sm:text-4xl lg:text-[42px] text-white">
+                STOP WASTING MONEY ON WEAK GRINDERS.
               </span>
-              <span className="block text-[32px] xs:text-[38px] sm:text-4xl lg:text-[48px] mt-1 leading-[1.08] text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-sky-300">
-                10–20 Year Investment,
-              </span>
-              <span className="block text-[22px] xs:text-[26px] sm:text-3xl lg:text-[34px] mt-1.5 leading-[1.18] text-white/95 font-extrabold">
-                Not Another Blender That Burns Out in 3 Months.
+              <span className="block text-[28px] xs:text-[32px] sm:text-4xl lg:text-[46px] mt-1.5 leading-[1.08] text-transparent bg-clip-text bg-gradient-to-r from-[#00D2FF] via-[#00AEEF] to-sky-300">
+                INVEST IN ONE THAT&apos;S BUILT TO LAST 10–20 YEARS!
               </span>
             </h1>
 
