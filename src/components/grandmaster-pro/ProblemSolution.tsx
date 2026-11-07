@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 export function ProblemSolution() {
   return (
     <section
@@ -19,7 +17,7 @@ export function ProblemSolution() {
             What Nigerian Homes Deal With Daily
           </h2>
           <p className="text-[#344054] text-sm sm:text-base lg:text-lg max-w-2xl mx-auto leading-relaxed">
-            Traditional food processing shouldn&apos;t cost you hours of market stress, unhygienic meals, or burnt-out home blenders.
+            Traditional food processing shouldn&apos;t cost you hours of market stress, unhygienic meals, or burnt home blenders.
           </p>
         </div>
 
@@ -53,7 +51,7 @@ export function ProblemSolution() {
             </div>
             <div className="mt-6 pt-4 border-t border-red-100 text-xs font-bold text-red-600 flex items-center gap-2">
               <span>⚠️</span>
-              <span>Result: Wasted money, burnt food, bad hygiene, and daily kitchen stress.</span>
+              <span>Result: Wasted money, burnt food, bad hygiene, and daily kitchen stress but here&apos;s something worth considering: GRANDMASTER PRO</span>
             </div>
           </div>
 
@@ -88,54 +86,6 @@ export function ProblemSolution() {
             <div className="relative z-10 mt-6 pt-4 border-t border-white/10 text-xs font-bold text-[#00AEEF] flex items-center gap-2">
               <span>✨</span>
               <span>Result: 100% clean hygienic food, zero market runs, and a machine built to last 10+ years.</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Engineering & Safety Highlight */}
-        <div className="bg-white rounded-3xl p-6 sm:p-10 shadow-sm border border-gray-200 mb-14">
-          <div className="grid lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-5 relative rounded-2xl overflow-hidden bg-gray-50 border border-gray-200 aspect-[4/3] sm:aspect-square">
-              <Image
-                src="/images/safety-features.jpg"
-                alt="Safety induction switch and overload protection engineering"
-                width={790}
-                height={791}
-                className="w-full h-full object-contain p-2 hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-            <div className="lg:col-span-7">
-              <span className="inline-block text-[#0052CC] font-black text-xs uppercase tracking-wider mb-2 bg-[#f0f4fc] px-3 py-1 rounded">
-                BUILT-IN PROTECTIVE TECHNOLOGY
-              </span>
-              <h3 className="font-poppins font-black text-2xl lg:text-3xl text-[#0B1F3A] mb-4">
-                Dual Safety Protection &amp; Overload Reset Switch
-              </h3>
-              <div className="space-y-4 text-xs sm:text-sm text-[#344054]">
-                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-[#F8FAFC] border border-gray-100">
-                  <div className="w-8 h-8 rounded-xl bg-[#0052CC] text-white flex items-center justify-center flex-shrink-0 mt-0.5 font-black text-xs shadow-sm">
-                    1
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#0B1F3A] text-sm mb-1">Safety Induction Snap Switch</h4>
-                    <p className="text-gray-600 leading-relaxed text-xs sm:text-sm">
-                      The chamber cover features an induction snap. The safety lock must be tightened before the machine powers on. If the cover is opened while running, it immediately cuts power to safeguard your hands.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-3.5 p-3.5 rounded-2xl bg-[#F8FAFC] border border-gray-100">
-                  <div className="w-8 h-8 rounded-xl bg-[#00AEEF] text-[#061325] flex items-center justify-center flex-shrink-0 mt-0.5 font-black text-xs shadow-sm">
-                    2
-                  </div>
-                  <div>
-                    <h4 className="font-bold text-[#0B1F3A] text-sm mb-1">Overload &amp; Overheat Protection</h4>
-                    <p className="text-gray-600 leading-relaxed text-xs sm:text-sm">
-                      Equipped with an intelligent thermal circuit breaker. If the machine encounters severe resistance or overheating, it automatically shuts down to prevent motor coil damage. Once cooled, simply press the reset button.
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </div>

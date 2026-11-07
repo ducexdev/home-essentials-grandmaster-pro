@@ -201,9 +201,9 @@ export function PricingSection({
           </div>
         </div>
 
-        {/* ── ACTIVE SPOTLIGHT PACKAGE SUMMARY (Zero-Scroll Instant View) ── */}
+        {/* ── ACTIVE SPOTLIGHT PACKAGE SUMMARY (Zero-Scroll Instant View, Hidden on Mobile) ── */}
         {selectedVariant && (
-          <div className="mb-10 max-w-5xl mx-auto reveal-on-scroll">
+          <div className="hidden md:block mb-10 max-w-5xl mx-auto reveal-on-scroll">
             <div className="bg-white rounded-3xl p-6 sm:p-8 border-2 border-[#0052CC] shadow-xl relative overflow-hidden">
               <div className="absolute top-0 right-0 bg-[#0052CC] text-white text-[10px] sm:text-xs font-black uppercase px-4 py-1.5 rounded-bl-2xl">
                 ★ Currently Selected: {selectedVariant.capacity}

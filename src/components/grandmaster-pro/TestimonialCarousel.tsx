@@ -99,6 +99,8 @@ export function TestimonialCarousel() {
         className="relative overflow-hidden rounded-3xl bg-[#F8FAFC] border border-gray-200/80 p-4 sm:p-6 shadow-inner group"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
+        onTouchStart={() => setIsHovered(true)}
+        onTouchEnd={() => setTimeout(() => setIsHovered(false), 2500)}
       >
         {/* Soft edge fade masks */}
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-[#F8FAFC] to-transparent z-10" />
@@ -110,11 +112,10 @@ export function TestimonialCarousel() {
           style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
         >
           <div
-            className={`flex gap-4 sm:gap-6 ${
-              isHovered ? "[animation-play-state:paused]" : ""
-            }`}
+            className="flex gap-4 sm:gap-6 hover:[animation-play-state:paused] group-hover:[animation-play-state:paused]"
             style={{
               animation: "marqueeSlide 55s linear infinite",
+              animationPlayState: isHovered ? "paused" : "running",
               width: "max-content",
             }}
           >
